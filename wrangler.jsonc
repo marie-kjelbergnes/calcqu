@@ -15,7 +15,7 @@
 	"workers_dev": false,
 	"route": {
 		"pattern": "calcqu.com/*",
-		"zone_name": "calqu.com",
+		"zone_name": "calcqu.com",
 	},
 	"kv_namespaces": [
 		{
