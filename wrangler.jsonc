@@ -1,39 +1,41 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  // Top-level configuration
-  "name": "my-worker",
-  "main": "src/index.js",
-  // Set this to today's date
-  "compatibility_date": "2026-04-20",
-  "compatibility_flags": ["nodejs_compat"],
-  "assets": {
-    "directory": "./public/",
-    "binding": "ASSETS"
-  },
-  "workers_dev": false,
-  "route": {
-    "pattern": "example.org/*",
-    "zone_name": "example.org",
-  },
-  "kv_namespaces": [
-    {
-      "binding": "<MY_NAMESPACE>",
-      "id": "<KV_ID>",
-    },
-  ],
-  "env": {
-    "staging": {
-      "name": "my-worker-staging",
-      "route": {
-        "pattern": "staging.example.org/*",
-        "zone_name": "example.org",
-      },
-      "kv_namespaces": [
-        {
-          "binding": "<MY_NAMESPACE>",
-          "id": "<STAGING_KV_ID>",
-        },
-      ],
-    },
-  },
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	// Top-level configuration
+	"name": "my-worker",
+	"main": "src/index.js",
+	// Set this to today's date
+	"compatibility_date": "2026-04-20",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"assets": {
+		"directory": "./public/",
+		"binding": "ASSETS"
+	},
+	"workers_dev": false,
+	"route": {
+		"pattern": "example.org/*",
+		"zone_name": "example.org",
+	},
+	"kv_namespaces": [
+		{
+			"binding": "MY_KV",
+			"id": "fcf5d8292e9d4ea1802cfade6487e998"
+		},
+	],
+	"env": {
+		"staging": {
+			"name": "my-worker-staging",
+			"route": {
+				"pattern": "staging.example.org/*",
+				"zone_name": "example.org",
+			},
+			"kv_namespaces": [
+				{
+					"binding": "<MY_NAMESPACE>",
+					"id": "<STAGING_KV_ID>",
+				},
+			],
+		},
+	},
 }
