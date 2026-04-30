@@ -1,42 +1,13 @@
-# sv
+# calcqu
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+I will be using compute engine for now, and developing my own engine (as I've done it before). It will consist of
+1. Parser + AST (easy, can reuse compute engine?)
+2. Canonical form + basic simplification (Flatten nested sums/products, sort terms, combine like terms, reduce rationals, apply identity rules)
+3. Polynomial arithmetic (Represent polynomials in a useful internal form (sparse dictionary or dense coefficient list), multiply/divide them, compute GCDs (Euclidean algorithm over polynomials), factor over the rationals.)
+4. Equation solving (Linear equations: Gaussian elimination, trivial. Polynomial equations: factor (Layer 3), then apply quadratic/cubic/quartic formulas to factors. Beyond degree 4 you need numerical root-finding (Durand-Kerner, Aberth - well-documented algorithms). Systems of polynomial equations: Gröbner bases. This is where it gets hard - Buchberger's algorithm is conceptually simple but the implementation has many footguns (term ordering, reduction strategy, performance). Trig/transcendental: pattern matching + substitution heuristics. Genuinely open-ended)
 
-## Creating a project
+Might add calculus or something later~
 
-If you're seeing this, you've probably already done this step. Congrats!
+Honestly though, this might be a bit of a pain, but it should be a nice summer project. I want it all to be client side, as buying workers from cloudflare sounds expensive. I don't want to dabble in most of sympy, as it is sloooow.
 
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.15.1 create --template minimal --types ts --install npm calcqu
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Make it so that N (newtons) gets converted to kgm/s^2 in calculations, and gets converted back afterwards
