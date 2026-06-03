@@ -95,7 +95,8 @@
           output_app = parse(workaround_approx);
         } else {
           output = parse(solve_for_this + " = \\text{idk}");
-          console.log(possible_solutions)
+          output_app = parse(solve_for_this + " = \\text{idk}")
+          // console.log(possible_solutions)
         }
         break;
       case "assign":
