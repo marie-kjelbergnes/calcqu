@@ -127,34 +127,45 @@
 </script>
 
 <div class="input">
-  <math-field 
-    bind:this={mfe}
-    oninput={handleInput}
-    class="my-mathfield"
-    aria-label="Math input"
-    tabindex="0"
-    role="textbox"
-    onkeydown={handle_enter_keydown}
-  ></math-field>
+  <div class="mathinput">
+    <math-field 
+      bind:this={mfe}
+      oninput={handleInput}
+      class="mathfield"
+      aria-label="Math input"
+      tabindex="0"
+      role="textbox"
+      onkeydown={handle_enter_keydown}
+    ></math-field>
+  </div>
+
+  <div class="extra-input">
+    <select bind:value={action}>
+      <option value="infer">Infer action</option>
+      <option value="evaluate">Evaluate</option>
+      <option value="simplify">Simplify</option>
+      <option value="expand">Expand</option>
+      <option value="solve">Solve for variable</option>
+      <option value="assign">Assign values to variables</option>
+    </select>
+    <button onclick={calculate_thing}>Calculate</button>
+  </div>
 </div>
 
-<select bind:value={action}>
-  <option value="infer">Infer action</option>
-  <option value="evaluate">Evaluate</option>
-  <option value="simplify">Simplify</option>
-  <option value="expand">Expand</option>
-  <option value="solve">Solve for variable</option>
-  <option value="assign">Assign values to variables</option>
-</select>
-
 {#if action == "solve"}
-Solve for what? <input type="text" bind:value={solve_for_this}>
-this one is kind of stupid, don't expect much
+<div class="solvefor">
+  <p>What do you wish to solve for? Type your expression first, then select the variable.</p>
+  {#each Object.keys(unknowns) as key}
+    <input type="radio" value={key} bind:group={solve_for_this}>{key}
+  {/each}
+</div>
 {:else if action == "assign"}
-asign it then:
+<div class="assign">
+  <p>Assign your values here</p>
   {#each Object.entries(unknowns) as [varname, value]}
     <p>{varname}: <input type="text" bind:value={unknowns[varname]}></p>
   {/each}
+</div>
 {/if}
 
 <!-- <p>LaTeX Output: <strong>{mathfieldValue}</strong></p> -->
@@ -163,11 +174,10 @@ asign it then:
 </div>
 <p>Result: <strong>{@html output_approx}</strong></p>
 
-<button onclick={calculate_thing}>Calculate</button>
 <button onclick={() => {paste_content(output.latex)}}>Copy result to input field</button>
 
 <style>
-  .my-mathfield {
+  .mathfield {
     display: block;
     font-size: 1.5rem;
     padding: 8px;
@@ -178,6 +188,7 @@ asign it then:
   
   .input {
     display: flex;
-    justify-content: center;
+    justify-self: center;
+    flex-direction: column;
   }
 </style>
