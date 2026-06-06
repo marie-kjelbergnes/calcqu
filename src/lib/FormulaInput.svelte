@@ -171,8 +171,8 @@
 <!-- <p>LaTeX Output: <strong>{mathfieldValue}</strong></p> -->
 <div class="result">
   <strong>{@html output_rendered}</strong>
+  <strong>{@html output_approx}</strong>
 </div>
-<p>Result: <strong>{@html output_approx}</strong></p>
 
 <button onclick={() => {paste_content(output.latex)}}>Copy result to input field</button>
 
@@ -191,4 +191,110 @@
     justify-self: center;
     flex-direction: column;
   }
+
+  .extra-input {
+    margin: 1em;
+  }
+
+  button {
+      background-color: var(--overlay);
+      color: var(--text);
+      border: 1px solid var(--highlight-high);
+      border-radius: 6px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  button:hover {
+    background-color: var(--highlight-med);
+    border-color: var(--rose);
+    color: var(--rose);
+  }
+
+  button:active {
+      background-color: var(--highlight-high);
+      border-color: var(--love);
+      color: var(--love);
+  }
+
+  button:focus-visible {
+      outline: 2px solid var(--love);
+      outline-offset: 2px;
+  }
+
+  select {
+    background-color: var(--overlay);
+    color: var(--text);
+    border: 1px solid var(--highlight-high);
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23908caa' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    padding-right: 2rem;
+    transition: border-color 0.2s ease;
+}
+
+select:hover {
+    border-color: var(--rose);
+}
+
+select:focus {
+    outline: 2px solid var(--love);
+    outline-offset: 2px;
+    border-color: var(--love);
+}
+
+select option {
+    background-color: var(--overlay);
+    color: var(--text);
+}
+
+math-field {
+    /* Layout */
+    width: 100%;
+    border-radius: 8px;
+    padding: 0.5rem 0.7rem;
+    font-size: 1.2rem;
+
+    /* Rosé Pine Moon */
+    --hue: 0; /* reset any default tinting */
+    background-color: var(--overlay);
+    border: 1px solid var(--highlight-high);
+    color: var(--text);
+
+    /* MathLive-specific variables */
+    --caret-color:                    var(--love);
+    --selection-background-color:     var(--highlight-med);
+    --selection-color:                var(--text);
+    --placeholder-color:              var(--muted);
+
+    --contains-highlight-background-color: var(--highlight-low);
+
+    transition: border-color 0.2s ease;
+}
+
+math-field:focus-within {
+    border-color: var(--love);
+    outline: 2px solid var(--love);
+    outline-offset: 2px;
+}
+
+math-field:hover {
+    border-color: var(--rose);
+}
+
+/* Popover (autocomplete suggestions) */
+math-field::part(virtual-keyboard-toggle) {
+    color: var(--subtle);
+}
+
+math-field::part(virtual-keyboard-toggle):hover {
+    color: var(--rose);
+}
 </style>

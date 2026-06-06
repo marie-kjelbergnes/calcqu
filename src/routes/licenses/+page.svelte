@@ -1,5 +1,5 @@
 <header>
-    <h1>Licenses & Acknowledgments for Calcqu</h1>
+    <h1>Licenses & Acknowledgments for <a href="../">Calcqu</a></h1>
 </header>
 
 <main>
@@ -84,5 +84,14 @@ SOFTWARE.</p>
 
 
 <style>
+    header {
+        display: flex;
+        justify-content: center;
+    }
 
+    main {
+        margin: 1em;
+        flex-grow: 1;
+        padding: 2rem;
+    }
 </style>
