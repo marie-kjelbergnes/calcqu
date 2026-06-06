@@ -100,10 +100,12 @@
         }
         break;
       case "assign":
+        // this code sucks, fix it another time
         for (const [varname, value] of Object.entries(unknowns)) {
-          assign(varname, value)
-          output = evaluate(mathfieldValue);
+          assign(varname, Number(value))
         }
+        output = evaluate(mathfieldValue);
+        output_app = output.N();
         break;
       default:
         console.log(1);
@@ -146,7 +148,7 @@
       <option value="simplify">Simplify</option>
       <option value="expand">Expand</option>
       <option value="solve">Solve for variable</option>
-      <option value="assign">Assign values to variables</option>
+      <!--<option value="assign">Assign values to variables</option>--> <!-- this one is very buggy -->
     </select>
     <button onclick={calculate_thing}>Calculate</button>
   </div>
@@ -296,5 +298,39 @@ math-field::part(virtual-keyboard-toggle) {
 
 math-field::part(virtual-keyboard-toggle):hover {
     color: var(--rose);
+}
+
+input[type="text"],
+input[type="number"],
+input:not([type]) {
+    background-color: var(--overlay);
+    color: var(--text);
+    border: 1px solid var(--highlight-high);
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+input::placeholder {
+    color: var(--muted);
+}
+
+input:hover {
+    border-color: var(--rose);
+}
+
+input:focus {
+    outline: 2px solid var(--love);
+    outline-offset: 2px;
+    border-color: var(--love);
+}
+
+input:disabled {
+    background-color: var(--surface);
+    color: var(--muted);
+    border-color: var(--highlight-med);
+    cursor: not-allowed;
 }
 </style>
