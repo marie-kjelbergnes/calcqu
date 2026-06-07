@@ -87,6 +87,7 @@ SOFTWARE.</p>
     header {
         display: flex;
         justify-content: center;
+        text-align: center;
     }
 
     main {

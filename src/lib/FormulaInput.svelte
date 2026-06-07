@@ -192,7 +192,7 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 600px;
+    width: 60vw;
   }
   
   .input {
@@ -201,7 +201,7 @@
     flex-direction: column;
   }
 
-  .extra-input {
+  .extra-input {  
     margin: 1em;
   }
 
