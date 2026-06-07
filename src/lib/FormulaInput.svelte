@@ -65,9 +65,16 @@
     switch (action) {
       case "infer":
         action = inferAction(mathfieldValue);
+        if (action == "solve") {
+          // check what variables are present, and solve for one of them
+          let variables = parse(mathfieldValue).unknowns;
+          if (variables.length !== 0) {
+            solve_for_this = variables[0]
+          }
+        }
         calculate_thing();
-        console.log(action)
-        action = "infer";
+        // console.log(action)
+        action = "infer"; // might remove this line at a later date, idk
         break;
       case "evaluate":
         output = evaluate(mathfieldValue);
