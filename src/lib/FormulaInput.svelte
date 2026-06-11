@@ -1,9 +1,9 @@
 <script lang="ts">
-  import katex, { render } from "katex";
   import { onMount } from 'svelte';
   import { simplify, evaluate, N, assign, solve, expand, parse, LatexSyntax, type MathJsonNumberObject, type BoxedExpression, type Expression } from "@cortex-js/compute-engine";
   import { inferAction } from "./infer_usage";
-    
+  import { render_expression } from "$lib/common";
+  
   let action = $state("infer");
 
   // Initialize state with the Rune
@@ -45,19 +45,6 @@
       // @ts-ignore
       mfe.setValue(content, { format: "latex" }); 
     }
-  }
-
-  function render_output(latex: string) {
-    // need to change \imaginaryI to i
-    latex = latex.replaceAll("\\imaginaryI", "i");
-    // might need to make a list of replacements or something later. KaTeX can be a bit weird sometimes.
-    return katex.renderToString(
-      latex,
-      {
-        throwOnError: false,
-        displayMode: true
-      }
-    );
   }
 
   function calculate_thing() {
@@ -118,12 +105,12 @@
         console.log(1);
     }
     // for (let i = 0; i < possible_solutions.length)
-    output_rendered = render_output(output.latex);
+    output_rendered = render_expression(output.latex);
     let approx = output.N();
     if (approx.latex !== output.latex) {
-      output_approx = render_output("\\approx " + output_app.latex);
+      output_approx = render_expression("\\approx " + output_app.latex);
     } else {
-      output_approx = render_output("\\approx " + output.latex); // don't show approx if it's the same
+      output_approx = render_expression("\\approx " + output.latex); // don't show approx if it's the same
       console.log(approx)
     }
   }

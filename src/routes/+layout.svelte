@@ -6,7 +6,7 @@
 </script>
 
 <header class="title">
-    <h1><a href="./">Calcqu</a><sup title="things might work badly">alpha</sup></h1>
+    <h1><a href="./">Calcqu</a><sup title="things might not work as intended">alpha</sup></h1>
 </header>
 
 <svelte:head>
