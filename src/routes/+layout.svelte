@@ -17,7 +17,8 @@
 
 <footer>
     <a href="./">&#169 Calcqu</a>
-    <a href="licenses">Licenses & Acknowledgments</a>
+    <a href="./licenses">Licenses & Acknowledgments</a>
+    <a href="./privacy">Privacy Policy</a>
 </footer>
 
 <style>
