@@ -1,0 +1,658 @@
+{
+	"categories": [
+		{
+			"id": "eigen",
+			"name": "Egenverdier og egenvektorer",
+			"questions": [
+				{
+					"id": "eigen-01",
+					"text": "La $A = \\begin{bmatrix} 1 & -2 \\\\ 2 & 1 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-1"
+				},
+				{
+					"id": "eigen-02",
+					"text": "Finn den største egenverdien til matrisen $A = \\begin{bmatrix} 2 & 1 \\\\ 1 & 2 \\end{bmatrix}$.",
+					"answer": "3"
+				},
+				{
+					"id": "eigen-03",
+					"text": "Matrisen $A = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$ har egenverdiene $2$ og $5$. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende egenverdien $2$ som tilfredsstiller $v_2 = 1$, og oppgi $v_1$.",
+					"answer": "-\\frac{1}{2}"
+				},
+				{
+					"id": "eigen-04",
+					"text": "La $A = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ og $\\lambda$ være egenverdien med positiv imaginær del. Finn egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ med $v_2 = 1$, og oppgi $v_1$.",
+					"answer": "i"
+				},
+				{
+					"id": "eigen-05",
+					"text": "Regn ut summen av kvadratene av egenverdiene til $A = \\begin{bmatrix} 3 & 0 & 0 \\\\ 0 & -2 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}$.",
+					"answer": "38"
+				},
+				{
+					"id": "eigen-06",
+					"text": "Regn ut produktet av egenverdiene (talt med multiplisitet) til $A = \\begin{bmatrix} 2 & 1 & 0 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\end{bmatrix}$.",
+					"answer": "12"
+				},
+				{
+					"id": "eigen-07",
+					"text": "Matrisen $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 2 \\end{bmatrix}$ har en positiv egenverdi $\\lambda$. Finn egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ med $v_1 = 1$, og oppgi $v_2$.",
+					"answer": "\\frac{3}{2}"
+				},
+				{
+					"id": "eigen-08",
+					"text": "La $A = \\begin{bmatrix} 2 & -5 \\\\ 1 & -2 \\end{bmatrix}$ og $\\lambda$ være egenverdien med positiv imaginær del. Finn egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ med $v_2 = 1$, og regn ut $|v_1|^2$.",
+					"answer": "5"
+				},
+				{
+					"id": "eigen-09",
+					"text": "La $A = \\begin{bmatrix} 3 & -2 \\\\ 4 & -1 \\end{bmatrix}$ og $\\lambda$ være egenverdien med positiv imaginær del. Finn egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ med $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "\\frac{i}{2}"
+				},
+				{
+					"id": "eigen-10",
+					"text": "Matrisen $A = \\begin{bmatrix} 5 & 4 \\\\ 1 & 2 \\end{bmatrix}$ har egenverdiene $1$ og $6$. Finn egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende egenverdien $1$ med $v_2 = 1$, og oppgi $v_1$.",
+					"answer": "-1"
+				},
+				{
+					"id": "eigen-11",
+					"text": "La $A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix}$. Hva er den største egenverdien til $A^5$?",
+					"answer": "32"
+				},
+				{
+					"id": "eigen-12",
+					"text": "For hvilken verdi av $a$ har matrisen $A = \\begin{bmatrix} 2 & a \\\\ 1 & 3 \\end{bmatrix}$ egenverdien $1$?",
+					"answer": "2"
+				},
+				{
+					"id": "eigen-13",
+					"text": "Den symmetriske matrisen $A = \\begin{bmatrix} 6 & -2 \\\\ -2 & 9 \\end{bmatrix}$ har egenverdiene $5$ og $10$. Finn egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende egenverdien $10$ med $v_1 = 1$, og oppgi $v_2$.",
+					"answer": "-2"
+				}
+			]
+		},
+		{
+			"id": "eigvec",
+			"name": "Komplekse egenvektorer",
+			"questions": [
+				{
+					"id": "eigvec-01",
+					"text": "La $A = \\begin{bmatrix} 4 & 5 \\\\ -2 & 2 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-2+\\frac{3}{2}i"
+				},
+				{
+					"id": "eigvec-02",
+					"text": "La $A = \\begin{bmatrix} -4 & 5 \\\\ -2 & 2 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "2-\\frac{3}{2}i"
+				},
+				{
+					"id": "eigvec-03",
+					"text": "La $A = \\begin{bmatrix} 0 & -1 \\\\ 2 & -2 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "\\frac{1}{2}i"
+				},
+				{
+					"id": "eigvec-04",
+					"text": "La $A = \\begin{bmatrix} -3 & 1 \\\\ -2 & -1 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-\\frac{1}{2}i"
+				},
+				{
+					"id": "eigvec-05",
+					"text": "La $A = \\begin{bmatrix} 6 & -2 \\\\ 1 & 4 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "2i"
+				},
+				{
+					"id": "eigvec-06",
+					"text": "La $A = \\begin{bmatrix} -5 & 2 \\\\ -2 & -5 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-1"
+				},
+				{
+					"id": "eigvec-07",
+					"text": "La $A = \\begin{bmatrix} 2 & -5 \\\\ 2 & 0 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-2+\\frac{3}{2}i"
+				},
+				{
+					"id": "eigvec-08",
+					"text": "La $A = \\begin{bmatrix} 4 & 5 \\\\ -2 & -2 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "2+\\frac{3}{2}i"
+				},
+				{
+					"id": "eigvec-09",
+					"text": "La $A = \\begin{bmatrix} 3 & -5 \\\\ 2 & -3 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "2+\\frac{3}{2}i"
+				},
+				{
+					"id": "eigvec-10",
+					"text": "La $A = \\begin{bmatrix} 3 & -1 \\\\ 1 & 3 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-1"
+				},
+				{
+					"id": "eigvec-11",
+					"text": "La $A = \\begin{bmatrix} -6 & -1 \\\\ 2 & -4 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-\\frac{1}{2}i"
+				},
+				{
+					"id": "eigvec-12",
+					"text": "La $A = \\begin{bmatrix} -2 & 4 \\\\ -2 & -6 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "2i"
+				},
+				{
+					"id": "eigvec-13",
+					"text": "La $A = \\begin{bmatrix} 3 & 5 \\\\ -1 & -1 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "3+4i"
+				},
+				{
+					"id": "eigvec-14",
+					"text": "La $A = \\begin{bmatrix} -1 & 5 \\\\ -1 & -5 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "3+4i"
+				},
+				{
+					"id": "eigvec-15",
+					"text": "La $A = \\begin{bmatrix} 2 & 5 \\\\ -1 & 6 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "3-4i"
+				},
+				{
+					"id": "eigvec-16",
+					"text": "La $A = \\begin{bmatrix} 2 & -5 \\\\ 2 & 4 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-2-\\frac{3}{2}i"
+				},
+				{
+					"id": "eigvec-17",
+					"text": "La $A = \\begin{bmatrix} -2 & -5 \\\\ 2 & 0 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-2-\\frac{3}{2}i"
+				},
+				{
+					"id": "eigvec-18",
+					"text": "La $A = \\begin{bmatrix} -5 & -2 \\\\ 1 & -3 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-2i"
+				},
+				{
+					"id": "eigvec-19",
+					"text": "La $A = \\begin{bmatrix} -5 & 5 \\\\ -1 & -3 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-3-4i"
+				},
+				{
+					"id": "eigvec-20",
+					"text": "La $A = \\begin{bmatrix} 1 & 4 \\\\ -1 & 1 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
+					"answer": "-4"
+				}
+			]
+		},
+		{
+			"id": "linalg",
+			"name": "Matriser, determinanter og vektorer",
+			"questions": [
+				{
+					"id": "linalg-01",
+					"text": "Regn ut $\\det A$ for $A = \\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & -1 & 4 \\\\ 1 & 2 & 0 \\end{bmatrix}$.",
+					"answer": "-9"
+				},
+				{
+					"id": "linalg-02",
+					"text": "La $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$. Regn ut $\\det(A^{-1})$.",
+					"answer": "-\\frac{1}{2}"
+				},
+				{
+					"id": "linalg-03",
+					"text": "La $A = \\begin{bmatrix} 2 & 1 \\\\ 5 & 3 \\end{bmatrix}$. Hva er elementet i rad 2, kolonne 1 i $A^{-1}$?",
+					"answer": "-5"
+				},
+				{
+					"id": "linalg-04",
+					"text": "$A$ er en $3 \\times 3$-matrise med $\\det A = 2$. Regn ut $\\det(3A)$.",
+					"answer": "54"
+				},
+				{
+					"id": "linalg-05",
+					"text": "Løs likningssystemet $$\\begin{aligned} x + y + z &= 6 \\\\ x - y + z &= 2 \\\\ 2x + y - z &= 1 \\end{aligned}$$ og oppgi $z$.",
+					"answer": "3"
+				},
+				{
+					"id": "linalg-06",
+					"text": "Hva er rangen til $A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 0 & 1 \\end{bmatrix}$?",
+					"answer": "2"
+				},
+				{
+					"id": "linalg-07",
+					"text": "For hvilken verdi av $k$ er matrisen $\\begin{bmatrix} 1 & k \\\\ 2 & 8 \\end{bmatrix}$ singulær?",
+					"answer": "4"
+				},
+				{
+					"id": "linalg-08",
+					"text": "Finn vinkelen $\\theta \\in [0, \\pi]$ mellom $\\vec u = (1, 0, 1)$ og $\\vec v = (0, 1, 1)$, i radianer.",
+					"answer": "\\frac{\\pi}{3}"
+				},
+				{
+					"id": "linalg-09",
+					"text": "Regn ut kryssproduktet $\\vec u \\times \\vec v$ for $\\vec u = (1, 2, 3)$ og $\\vec v = (4, 5, 6)$, og oppgi den andre komponenten ($y$-komponenten).",
+					"answer": "6"
+				},
+				{
+					"id": "linalg-10",
+					"text": "Finn lengden av projeksjonen av $\\vec b = (2, 3, 1)$ ned på $\\vec a = (1, 1, 1)$.",
+					"answer": "2\\sqrt{3}"
+				},
+				{
+					"id": "linalg-11",
+					"text": "La $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$. Regn ut sporet $\\operatorname{tr}(A^2)$.",
+					"answer": "29"
+				},
+				{
+					"id": "linalg-12",
+					"text": "Hva er dimensjonen til nullrommet til $A = \\begin{bmatrix} 1 & 0 & 2 & 0 & 1 \\\\ 0 & 1 & 1 & 0 & 2 \\\\ 0 & 0 & 0 & 1 & 3 \\end{bmatrix}$?",
+					"answer": "2"
+				},
+				{
+					"id": "linalg-13",
+					"text": "Regn ut volumet av parallellepipedet utspent av $\\vec u = (1, 0, 0)$, $\\vec v = (1, 2, 0)$ og $\\vec w = (1, 1, 3)$.",
+					"answer": "6"
+				}
+			]
+		},
+		{
+			"id": "complex",
+			"name": "Komplekse tall",
+			"questions": [
+				{
+					"id": "complex-01",
+					"text": "Regn ut $|3 + 4i|$.",
+					"answer": "5"
+				},
+				{
+					"id": "complex-02",
+					"text": "Regn ut $(2 + i)(3 - i)$ og skriv svaret på formen $a + bi$.",
+					"answer": "7+i"
+				},
+				{
+					"id": "complex-03",
+					"text": "Skriv $\\dfrac{1}{1 + i}$ på formen $a + bi$.",
+					"answer": "\\frac{1}{2}-\\frac{1}{2}i"
+				},
+				{
+					"id": "complex-04",
+					"text": "Finn hovedargumentet $\\operatorname{Arg}(-1 + i) \\in (-\\pi, \\pi]$.",
+					"answer": "\\frac{3\\pi}{4}"
+				},
+				{
+					"id": "complex-05",
+					"text": "Regn ut $(1 + i)^8$.",
+					"answer": "16"
+				},
+				{
+					"id": "complex-06",
+					"text": "Finn realdelen av $\\dfrac{1 + 2i}{3 - 4i}$.",
+					"answer": "-\\frac{1}{5}"
+				},
+				{
+					"id": "complex-07",
+					"text": "Likningen $z^2 + 2z + 5 = 0$ har to komplekse løsninger. Oppgi løsningen med positiv imaginærdel.",
+					"answer": "-1+2i"
+				},
+				{
+					"id": "complex-08",
+					"text": "Skriv $e^{i\\pi/3}$ på formen $a + bi$.",
+					"answer": "\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i"
+				},
+				{
+					"id": "complex-09",
+					"text": "La $z = (2 - i)^2$. Regn ut $|z|^2$.",
+					"answer": "25"
+				},
+				{
+					"id": "complex-10",
+					"text": "Likningen $z^3 = 8i$ har tre løsninger. Oppgi løsningen som ligger i første kvadrant (positiv real- og imaginærdel).",
+					"answer": "\\sqrt{3}+i"
+				},
+				{
+					"id": "complex-11",
+					"text": "Regn ut $i^{2027}$.",
+					"answer": "-i"
+				},
+				{
+					"id": "complex-12",
+					"text": "La $z = 2 + 3i$. Regn ut $z \\bar z$.",
+					"answer": "13"
+				},
+				{
+					"id": "complex-13",
+					"text": "Finn imaginærdelen av $\\dfrac{1 + i}{1 - i}$.",
+					"answer": "1"
+				}
+			]
+		},
+		{
+			"id": "limits",
+			"name": "Grenseverdier",
+			"questions": [
+				{
+					"id": "limits-01",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$.",
+					"answer": "3"
+				},
+				{
+					"id": "limits-02",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to \\infty} \\left(1 + \\frac{2}{x}\\right)^x$.",
+					"answer": "e^2"
+				},
+				{
+					"id": "limits-03",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2}$.",
+					"answer": "\\frac{1}{2}"
+				},
+				{
+					"id": "limits-04",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{e^x - 1 - x}{x^2}$.",
+					"answer": "\\frac{1}{2}"
+				},
+				{
+					"id": "limits-05",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to \\infty} \\frac{3x^2 + 1}{5x^2 - x}$.",
+					"answer": "\\frac{3}{5}"
+				},
+				{
+					"id": "limits-06",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$.",
+					"answer": "4"
+				},
+				{
+					"id": "limits-07",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{\\ln(1 + 5x)}{\\sin(2x)}$.",
+					"answer": "\\frac{5}{2}"
+				},
+				{
+					"id": "limits-08",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to \\infty} \\left(\\sqrt{x^2 + x} - x\\right)$.",
+					"answer": "\\frac{1}{2}"
+				},
+				{
+					"id": "limits-09",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0^+} x \\ln x$.",
+					"answer": "0"
+				},
+				{
+					"id": "limits-10",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{\\tan x - x}{x^3}$.",
+					"answer": "\\frac{1}{3}"
+				},
+				{
+					"id": "limits-11",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{2^x - 1}{x}$.",
+					"answer": "\\ln 2"
+				},
+				{
+					"id": "limits-12",
+					"text": "Regn ut $\\displaystyle\\lim_{x \\to 1} \\frac{x^5 - 1}{x - 1}$.",
+					"answer": "5"
+				}
+			]
+		},
+		{
+			"id": "deriv",
+			"name": "Derivasjon",
+			"questions": [
+				{
+					"id": "deriv-01",
+					"text": "La $f(x) = x^2 e^x$. Regn ut $f'(1)$.",
+					"answer": "3e"
+				},
+				{
+					"id": "deriv-02",
+					"text": "La $f(x) = \\sin x \\cos x$. Regn ut $f'\\!\\left(\\frac{\\pi}{6}\\right)$.",
+					"answer": "\\frac{1}{2}"
+				},
+				{
+					"id": "deriv-03",
+					"text": "La $f(x) = \\arctan(2x)$. Regn ut $f'(0)$.",
+					"answer": "2"
+				},
+				{
+					"id": "deriv-04",
+					"text": "La $f(x) = x^x$ for $x > 0$. Regn ut $f'(2)$.",
+					"answer": "4+4\\ln 2"
+				},
+				{
+					"id": "deriv-05",
+					"text": "Kurven $x^2 + y^2 = 25$ går gjennom punktet $(3, 4)$. Finn $\\dfrac{dy}{dx}$ i dette punktet ved implisitt derivasjon.",
+					"answer": "-\\frac{3}{4}"
+				},
+				{
+					"id": "deriv-06",
+					"text": "La $f(x) = \\sqrt{1 + 3x}$. Regn ut $f'(1)$.",
+					"answer": "\\frac{3}{4}"
+				},
+				{
+					"id": "deriv-07",
+					"text": "La $f(x) = e^{2x} \\sin x$. Regn ut $f''(0)$.",
+					"answer": "4"
+				},
+				{
+					"id": "deriv-08",
+					"text": "Finn tangentlinjen til $y = x^3 - 2x$ i punktet der $x = 1$, og oppgi skjæringspunktet med $y$-aksen (konstantleddet).",
+					"answer": "-2"
+				},
+				{
+					"id": "deriv-09",
+					"text": "Finn den største verdien til $f(x) = x e^{-x}$ for $x \\in \\mathbb{R}$.",
+					"answer": "\\frac{1}{e}"
+				},
+				{
+					"id": "deriv-10",
+					"text": "Hva er koeffisienten foran $x^3$ i Maclaurin-rekken til $\\sin(2x)$?",
+					"answer": "-\\frac{4}{3}"
+				},
+				{
+					"id": "deriv-11",
+					"text": "Hva er koeffisienten foran $x^3$ i Maclaurin-rekken til $e^x \\cos x$?",
+					"answer": "-\\frac{1}{3}"
+				},
+				{
+					"id": "deriv-12",
+					"text": "La $f(x) = x^3 + x$. Funksjonen er invertibel. Regn ut $(f^{-1})'(2)$.",
+					"answer": "\\frac{1}{4}"
+				},
+				{
+					"id": "deriv-13",
+					"text": "La $f(x, y) = x^2 y + e^{xy}$. Regn ut den partielle deriverte $\\dfrac{\\partial f}{\\partial y}$ i punktet $(1, 0)$.",
+					"answer": "2"
+				}
+			]
+		},
+		{
+			"id": "integ",
+			"name": "Integrasjon",
+			"questions": [
+				{
+					"id": "integ-01",
+					"text": "Regn ut $\\displaystyle\\int_0^1 x e^x \\, dx$.",
+					"answer": "1"
+				},
+				{
+					"id": "integ-02",
+					"text": "Regn ut $\\displaystyle\\int_0^\\pi \\sin x \\, dx$.",
+					"answer": "2"
+				},
+				{
+					"id": "integ-03",
+					"text": "Regn ut $\\displaystyle\\int_1^e x \\ln x \\, dx$.",
+					"answer": "\\frac{e^2+1}{4}"
+				},
+				{
+					"id": "integ-04",
+					"text": "Regn ut $\\displaystyle\\int_0^1 \\frac{1}{1 + x^2} \\, dx$.",
+					"answer": "\\frac{\\pi}{4}"
+				},
+				{
+					"id": "integ-05",
+					"text": "Regn ut $\\displaystyle\\int_0^{\\sqrt 8} x \\sqrt{x^2 + 1} \\, dx$.",
+					"answer": "\\frac{26}{3}"
+				},
+				{
+					"id": "integ-06",
+					"text": "Regn ut $\\displaystyle\\int_0^\\infty e^{-2x} \\, dx$.",
+					"answer": "\\frac{1}{2}"
+				},
+				{
+					"id": "integ-07",
+					"text": "Regn ut $\\displaystyle\\int_1^\\infty \\frac{1}{x^4} \\, dx$.",
+					"answer": "\\frac{1}{3}"
+				},
+				{
+					"id": "integ-08",
+					"text": "Regn ut $\\displaystyle\\int_0^{\\pi/2} \\sin^2 x \\, dx$.",
+					"answer": "\\frac{\\pi}{4}"
+				},
+				{
+					"id": "integ-09",
+					"text": "Regn ut $\\displaystyle\\int_0^1 \\frac{1}{(x + 1)(x + 2)} \\, dx$.",
+					"answer": "\\ln\\frac{4}{3}"
+				},
+				{
+					"id": "integ-10",
+					"text": "Finn arealet av området avgrenset av kurvene $y = x$ og $y = x^2$.",
+					"answer": "\\frac{1}{6}"
+				},
+				{
+					"id": "integ-11",
+					"text": "Området under $y = \\sqrt{x}$ for $0 \\le x \\le 4$ roteres om $x$-aksen. Finn volumet av omdreiningslegemet.",
+					"answer": "8\\pi"
+				},
+				{
+					"id": "integ-12",
+					"text": "Regn ut $\\displaystyle\\int_0^1 x^2 e^{x^3} \\, dx$.",
+					"answer": "\\frac{e-1}{3}"
+				},
+				{
+					"id": "integ-13",
+					"text": "Regn ut $\\displaystyle\\int_0^\\pi x \\sin x \\, dx$.",
+					"answer": "\\pi"
+				}
+			]
+		},
+		{
+			"id": "series",
+			"name": "Følger og rekker",
+			"questions": [
+				{
+					"id": "series-01",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\left(\\frac{1}{3}\\right)^n$.",
+					"answer": "\\frac{3}{2}"
+				},
+				{
+					"id": "series-02",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=1}^\\infty \\frac{1}{n(n+1)}$.",
+					"answer": "1"
+				},
+				{
+					"id": "series-03",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=1}^\\infty \\frac{1}{n^2}$.",
+					"answer": "\\frac{\\pi^2}{6}"
+				},
+				{
+					"id": "series-04",
+					"text": "Finn konvergensradien til potensrekken $\\displaystyle\\sum_{n=1}^\\infty \\frac{n x^n}{3^n}$.",
+					"answer": "3"
+				},
+				{
+					"id": "series-05",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\frac{2^n}{n!}$.",
+					"answer": "e^2"
+				},
+				{
+					"id": "series-06",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n}$.",
+					"answer": "\\ln 2"
+				},
+				{
+					"id": "series-07",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=2}^\\infty \\left(\\frac{2}{5}\\right)^n$.",
+					"answer": "\\frac{4}{15}"
+				},
+				{
+					"id": "series-08",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\frac{(-1)^n}{2n+1}$.",
+					"answer": "\\frac{\\pi}{4}"
+				},
+				{
+					"id": "series-09",
+					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\frac{n+1}{2^n}$.",
+					"answer": "4"
+				},
+				{
+					"id": "series-10",
+					"text": "Finn konvergensradien til potensrekken $\\displaystyle\\sum_{n=1}^\\infty \\frac{(x-1)^n}{n \\cdot 4^n}$.",
+					"answer": "4"
+				},
+				{
+					"id": "series-11",
+					"text": "Følgen $(a_n)$ er gitt ved $a_1 = 2$ og $a_{n+1} = \\frac{1}{2}a_n + 3$. Følgen konvergerer. Finn $\\displaystyle\\lim_{n\\to\\infty} a_n$.",
+					"answer": "6"
+				}
+			]
+		},
+		{
+			"id": "ode",
+			"name": "Differensiallikninger",
+			"questions": [
+				{
+					"id": "ode-01",
+					"text": "Løs initialverdiproblemet $y' = 2y$, $y(0) = 3$, og regn ut $y(1)$.",
+					"answer": "3e^2"
+				},
+				{
+					"id": "ode-02",
+					"text": "Løs initialverdiproblemet $y' = 1 - y$, $y(0) = 0$, og regn ut $y(\\ln 2)$.",
+					"answer": "\\frac{1}{2}"
+				},
+				{
+					"id": "ode-03",
+					"text": "Løs $y'' + y = 0$ med $y(0) = 0$ og $y'(0) = 2$, og regn ut $y\\!\\left(\\frac{\\pi}{2}\\right)$.",
+					"answer": "2"
+				},
+				{
+					"id": "ode-04",
+					"text": "Løs $y'' - 3y' + 2y = 0$ med $y(0) = 0$ og $y'(0) = 1$, og regn ut $y(\\ln 2)$.",
+					"answer": "2"
+				},
+				{
+					"id": "ode-05",
+					"text": "Løs initialverdiproblemet $y' = xy$, $y(0) = 1$, og regn ut $y(2)$.",
+					"answer": "e^2"
+				},
+				{
+					"id": "ode-06",
+					"text": "Løs $y'' + 4y' + 4y = 0$ med $y(0) = 1$ og $y'(0) = 0$, og regn ut $y(1)$.",
+					"answer": "3e^{-2}"
+				},
+				{
+					"id": "ode-07",
+					"text": "Løs initialverdiproblemet $y' = y^2$, $y(0) = 1$, og regn ut $y\\!\\left(\\frac{1}{2}\\right)$.",
+					"answer": "2"
+				},
+				{
+					"id": "ode-08",
+					"text": "Den karakteristiske likningen til $y'' + 2y' + 5y = 0$ har to komplekse røtter. Oppgi roten med positiv imaginærdel.",
+					"answer": "-1+2i"
+				},
+				{
+					"id": "ode-09",
+					"text": "Løs initialverdiproblemet $y' + 2y = 4$, $y(0) = 0$, og regn ut $y(\\ln 2)$.",
+					"answer": "\\frac{3}{2}"
+				},
+				{
+					"id": "ode-10",
+					"text": "Likningen $y'' + y = 3e^{2x}$ har en partikulærløsning på formen $y_p = A e^{2x}$. Finn $A$.",
+					"answer": "\\frac{3}{5}"
+				},
+				{
+					"id": "ode-11",
+					"text": "Løs initialverdiproblemet $y' = \\dfrac{y}{x}$, $y(1) = 3$, for $x > 0$, og regn ut $y(4)$.",
+					"answer": "12"
+				},
+				{
+					"id": "ode-12",
+					"text": "En kopp kaffe avkjøles etter Newtons avkjølingslov $T' = -k(T - 20)$. Ved $t = 0$ er $T = 90$, og ved $t = 1$ er $T = 55$. Finn $T(2)$.",
+					"answer": "\\frac{75}{2}"
+				}
+			]
+		}
+	]
+}
