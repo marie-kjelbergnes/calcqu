@@ -10,7 +10,7 @@
   let mathfieldValue = $state("");
   let solve_for_this = $state("x");
   // @ts-ignore
-  let unknowns = $state({} as Record<string, number>); // each key is a variable, and its value is its value
+  let unknowns = $state({} as Record<string, number|string>); // each key is a variable, and its value is its value
 
   let output = $state(evaluate("1"))
   let output_app = $state(evaluate("1"))
@@ -35,7 +35,8 @@
     let unknowns_for_now = parse(mathfieldValue).unknowns;
     if (Array.isArray(unknowns_for_now)) {
       for (const unknown in unknowns_for_now) {
-        unknowns[unknowns_for_now[unknown]] = 1;
+        // default everything to be itself
+        unknowns[unknowns_for_now[unknown]] = unknowns_for_now[unknown];
       }
     }
   }
@@ -142,7 +143,7 @@
       <option value="simplify">Simplify</option>
       <option value="expand">Expand</option>
       <option value="solve">Solve for variable</option>
-      <!--<option value="assign">Assign values to variables</option>--> <!-- this one is very buggy -->
+      <option value="assign">Assign values to variables</option> <!-- this one is very buggy -->
     </select>
     <button onclick={calculate_thing}>Calculate</button>
   </div>
@@ -294,9 +295,7 @@ math-field::part(virtual-keyboard-toggle):hover {
     color: var(--rose);
 }
 
-input[type="text"],
-input[type="number"],
-input:not([type]) {
+input[type="text"], input[type="number"], input:not([type]) {
     background-color: var(--overlay);
     color: var(--text);
     border: 1px solid var(--highlight-high);
