@@ -16,10 +16,21 @@ export interface MathQuestion {
 export interface MathCategory {
     id: string;
     name: string;
+    /** Heading the category is listed under */
+    group: string;
+    /** Absolute error accepted as correct, e.g. 0.005 for exams that ask for 2 decimals */
+    tolerance?: number;
     questions: MathQuestion[];
 }
 
 export const categories = data.categories as MathCategory[];
+
+/** Categories grouped by their heading, in the order the groups first appear */
+export const groups = new Map<string, MathCategory[]>();
+for (const c of categories) {
+    if (!groups.has(c.group)) groups.set(c.group, []);
+    groups.get(c.group)!.push(c);
+}
 
 // separate engine, so variables assigned elsewhere on the site don't leak into grading
 const ce = new ComputeEngine();
@@ -36,13 +47,13 @@ function to_complex(latex: string): [number, number] | null {
 export type Verdict = "correct" | "close" | "wrong" | "invalid";
 
 /** Compares the numeric values of the input and the answer, so that e.g. \frac{1}{2} and 0.5 are equal */
-export function grade(input: string, answer: string): Verdict {
+export function grade(input: string, answer: string, tolerance = 0): Verdict {
     const given = to_complex(input);
     const expected = to_complex(answer);
     if (!given || !expected) return "invalid";
     const distance = Math.hypot(given[0] - expected[0], given[1] - expected[1]);
     const scale = Math.max(1, Math.hypot(expected[0], expected[1]));
-    if (distance <= 1e-9 * scale) return "correct";
+    if (distance <= tolerance + 1e-9 * scale) return "correct";
     if (distance <= 1e-3 * scale) return "close";
     return "wrong";
 }

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount, tick } from "svelte";
     import {
-        categories, grade, render_text, loadResults, saveResults,
+        groups, grade, render_text, loadResults, saveResults,
         type MathCategory, type Results, type Verdict
     } from "$lib/math_quiz";
     import { render_expression } from "$lib/common";
@@ -54,7 +54,7 @@
 
     function check() {
         if (!question || input.trim() === "") return;
-        verdict = grade(input, question.answer);
+        verdict = grade(input, question.answer, category?.tolerance);
         if (verdict === "invalid") return;
 
         const previous = results[question.id];
@@ -99,17 +99,20 @@
     {#if !category}
         <h2>Math questions</h2>
         <p class="intro">Answer with an exact expression or a decimal number: <code>1/2</code>, <code>0.5</code> and <code>\frac{"{1}{2}"}</code> are all accepted. Use <code>i</code> for the imaginary unit and <code>e</code> for Euler's number.</p>
-        <ul class="categories">
-            {#each categories as cat (cat.id)}
-                {@const s = stats(cat)}
-                <li>
-                    <button onclick={() => open(cat)}>
-                        <span class="name">{cat.name}</span>
-                        <span class="progress">{s.correct}/{s.total} correct · {s.attempted} attempted</span>
-                    </button>
-                </li>
-            {/each}
-        </ul>
+        {#each groups as [group, cats] (group)}
+            <h3>{group}</h3>
+            <ul class="categories">
+                {#each cats as cat (cat.id)}
+                    {@const s = stats(cat)}
+                    <li>
+                        <button onclick={() => open(cat)}>
+                            <span class="name">{cat.name}</span>
+                            <span class="progress">{s.correct}/{s.total} correct · {s.attempted} attempted</span>
+                        </button>
+                    </li>
+                {/each}
+            </ul>
+        {/each}
     {:else if question}
         {@const s = stats(category)}
         <div class="bar">
@@ -131,6 +134,9 @@
 
         <section class="card">
             <p class="number">Question {index + 1} of {category.questions.length}</p>
+            {#if category.tolerance}
+                <p class="hint">Decimal answers within ±{category.tolerance} are accepted, like on the exam (at least 2 decimals, radians).</p>
+            {/if}
             <div class="question">{@html render_text(question.text)}</div>
 
             {#if question.image}
@@ -192,6 +198,17 @@
     .intro {
         color: var(--subtle);
         text-align: center;
+    }
+
+    h3 {
+        color: var(--foam);
+        margin: 2rem 0 0.5rem;
+    }
+
+    .hint {
+        margin: 0.25rem 0 0;
+        color: var(--subtle);
+        font-size: 0.85rem;
     }
 
     code {
