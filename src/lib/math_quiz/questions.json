@@ -1,8 +1,61 @@
 {
 	"categories": [
 		{
+			"id": "det",
+			"name": "Determinanter (3.1–3.2)",
+			"group": "Lineær algebra",
+			"questions": [
+				{
+					"id": "linalg-01",
+					"text": "Regn ut $\\det A$ for $A = \\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & -1 & 4 \\\\ 1 & 2 & 0 \\end{bmatrix}$.",
+					"answer": "-9"
+				},
+				{
+					"id": "linalg-04",
+					"text": "$A$ er en $3 \\times 3$-matrise med $\\det A = 2$. Regn ut $\\det(3A)$.",
+					"answer": "54"
+				},
+				{
+					"id": "linalg-02",
+					"text": "La $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$. Regn ut $\\det(A^{-1})$.",
+					"answer": "-\\frac{1}{2}"
+				},
+				{
+					"id": "linalg-07",
+					"text": "For hvilken verdi av $k$ er matrisen $\\begin{bmatrix} 1 & k \\\\ 2 & 8 \\end{bmatrix}$ singulær?",
+					"answer": "4"
+				},
+				{
+					"id": "linalg-13",
+					"text": "Regn ut volumet av parallellepipedet utspent av $\\vec u = (1, 0, 0)$, $\\vec v = (1, 2, 0)$ og $\\vec w = (1, 1, 3)$.",
+					"answer": "6"
+				},
+				{
+					"id": "det-01",
+					"text": "Regn ut $\\det A$ for $A = \\begin{bmatrix} 1 & 2 & 0 & 0 \\\\ 3 & 4 & 0 & 0 \\\\ 0 & 0 & 2 & 1 \\\\ 0 & 0 & 1 & 3 \\end{bmatrix}$.",
+					"answer": "-10"
+				},
+				{
+					"id": "det-02",
+					"text": "$A$ og $B$ er $3 \\times 3$-matriser med $\\det A = 3$ og $\\det B = -2$. Regn ut $\\det(2A^{-1}B^T)$.",
+					"answer": "- \\frac{16}{3}"
+				},
+				{
+					"id": "det-03",
+					"text": "Finn arealet av trekanten med hjørner i $(1, 1)$, $(4, 2)$ og $(2, 5)$.",
+					"answer": "\\frac{11}{2}"
+				},
+				{
+					"id": "det-04",
+					"text": "Matrisen $B$ får du ved å bytte om rad 1 og rad 3 i $A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 4 \\\\ 5 & 6 & 0 \\end{bmatrix}$ og deretter gange den nye rad 2 med $5$. Regn ut $\\det B$.",
+					"answer": "-5"
+				}
+			]
+		},
+		{
 			"id": "eigen",
-			"name": "Egenverdier og egenvektorer",
+			"name": "Egenverdier og egenvektorer (5.1–5.3)",
+			"group": "Lineær algebra",
 			"questions": [
 				{
 					"id": "eigen-01",
@@ -68,12 +121,23 @@
 					"id": "eigen-13",
 					"text": "Den symmetriske matrisen $A = \\begin{bmatrix} 6 & -2 \\\\ -2 & 9 \\end{bmatrix}$ har egenverdiene $5$ og $10$. Finn egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende egenverdien $10$ med $v_1 = 1$, og oppgi $v_2$.",
 					"answer": "-2"
+				},
+				{
+					"id": "eigen-14",
+					"text": "Matrisen $A$ kan diagonaliseres som $A = PDP^{-1}$ med $P = \\begin{bmatrix} 1 & 1 \\\\ 1 & 2 \\end{bmatrix}$ og $D = \\begin{bmatrix} 2 & 0 \\\\ 0 & 1 \\end{bmatrix}$. Regn ut elementet i rad 1, kolonne 1 i $A^4$.",
+					"answer": "31"
+				},
+				{
+					"id": "eigen-15",
+					"text": "Regn ut den minste egenverdien til $A^{-1}$ når $A = \\begin{bmatrix} 4 & -2 \\\\ 1 & 1 \\end{bmatrix}$.",
+					"answer": "\\frac{1}{3}"
 				}
 			]
 		},
 		{
 			"id": "eigvec",
-			"name": "Komplekse egenvektorer",
+			"name": "Komplekse egenverdier (5.5)",
+			"group": "Lineær algebra",
 			"questions": [
 				{
 					"id": "eigvec-01",
@@ -174,57 +238,142 @@
 					"id": "eigvec-20",
 					"text": "La $A = \\begin{bmatrix} 1 & 4 \\\\ -1 & 1 \\end{bmatrix}$ og $\\lambda$ være den egenverdien til matrisen som har positiv imaginær del. Bestem egenvektoren $\\vec v = \\begin{bmatrix} v_1 \\\\ v_2 \\end{bmatrix}$ tilhørende $\\lambda$ som tilfredsstiller kravet $v_2 = 1$, og regn ut $v_1^2$.",
 					"answer": "-4"
+				},
+				{
+					"id": "eigvec-21",
+					"text": "Matrisen $A = \\begin{bmatrix} 1 & -1 \\\\ 1 & 1 \\end{bmatrix}$ kan skrives som en rotasjon sammensatt med en skalering med faktor $r$. Finn $r$.",
+					"answer": "\\sqrt{2}"
+				},
+				{
+					"id": "eigvec-22",
+					"text": "Matrisen $A = \\begin{bmatrix} \\sqrt{3} & -1 \\\\ 1 & \\sqrt{3} \\end{bmatrix}$ er på formen $\\begin{bmatrix} a & -b \\\\ b & a \\end{bmatrix}$. Finn rotasjonsvinkelen $\\varphi \\in (-\\pi, \\pi]$ i radianer.",
+					"answer": "\\frac{\\pi}{6}"
+				},
+				{
+					"id": "eigvec-23",
+					"text": "Gitt matrisen $A = \\begin{bmatrix} -3 & 1 \\\\ -4 & -3 \\end{bmatrix}$. La $\\vec v = (-1, z)$ være egenvektoren tilhørende egenverdien med negativ imaginærdel. Finn $z$.",
+					"answer": "2 i"
 				}
 			]
 		},
 		{
-			"id": "linalg",
-			"name": "Matriser, determinanter og vektorer",
+			"id": "dds",
+			"name": "Diskrete dynamiske systemer (5.6)",
+			"group": "Lineær algebra",
 			"questions": [
 				{
-					"id": "linalg-01",
-					"text": "Regn ut $\\det A$ for $A = \\begin{bmatrix} 2 & 1 & 3 \\\\ 0 & -1 & 4 \\\\ 1 & 2 & 0 \\end{bmatrix}$.",
-					"answer": "-9"
+					"id": "dds-01",
+					"text": "Systemet $\\vec x_{k+1} = A\\vec x_k$ med $A = \\begin{bmatrix} \\frac{4}{5} & \\frac{3}{10} \\\\ \\frac{1}{5} & \\frac{7}{10} \\end{bmatrix}$ og $\\vec x_0 = (1, 0)$ beskriver en befolkning som flytter mellom to områder. Finn $\\displaystyle\\lim_{k\\to\\infty}$ av første komponent av $\\vec x_k$.",
+					"answer": "\\frac{3}{5}"
 				},
 				{
-					"id": "linalg-02",
-					"text": "La $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$. Regn ut $\\det(A^{-1})$.",
-					"answer": "-\\frac{1}{2}"
+					"id": "dds-02",
+					"text": "Matrisen $A$ har egenverdiene $\\lambda_1 = 2$ og $\\lambda_2 = 0.5$ med egenvektorer $\\vec v_1 = (1, 1)$ og $\\vec v_2 = (1, -1)$. La $\\vec x_{k+1} = A\\vec x_k$ med $\\vec x_0 = (3, 1)$. Regn ut første komponent av $\\vec x_3$.",
+					"answer": "\\frac{129}{8}"
 				},
 				{
-					"id": "linalg-03",
-					"text": "La $A = \\begin{bmatrix} 2 & 1 \\\\ 5 & 3 \\end{bmatrix}$. Hva er elementet i rad 2, kolonne 1 i $A^{-1}$?",
-					"answer": "-5"
+					"id": "dds-03",
+					"text": "Et rovdyr–byttedyr-system er gitt ved $\\vec x_{k+1} = A\\vec x_k$ med $A = \\begin{bmatrix} \\frac{1}{2} & \\frac{2}{5} \\\\ - \\frac{13}{125} & \\frac{11}{10} \\end{bmatrix}$. Finn den største egenverdien til $A$ (den langsiktige vekstfaktoren).",
+					"answer": "\\frac{51}{50}"
 				},
 				{
-					"id": "linalg-04",
-					"text": "$A$ er en $3 \\times 3$-matrise med $\\det A = 2$. Regn ut $\\det(3A)$.",
-					"answer": "54"
+					"id": "dds-04",
+					"text": "For $\\vec x_{k+1} = A\\vec x_k$ med $A = \\begin{bmatrix} 1 & \\frac{1}{2} \\\\ \\frac{1}{2} & 1 \\end{bmatrix}$ og en typisk startvektor gjelder $\\vec x_{k+1} \\approx c\\,\\vec x_k$ for store $k$. Finn $c$.",
+					"answer": "\\frac{3}{2}"
 				},
 				{
-					"id": "linalg-05",
-					"text": "Løs likningssystemet $$\\begin{aligned} x + y + z &= 6 \\\\ x - y + z &= 2 \\\\ 2x + y - z &= 1 \\end{aligned}$$ og oppgi $z$.",
-					"answer": "3"
+					"id": "dds-05",
+					"text": "$A = \\begin{bmatrix} \\frac{9}{10} & - \\frac{2}{5} \\\\ \\frac{2}{5} & \\frac{9}{10} \\end{bmatrix}$ har komplekse egenverdier, så banene til $\\vec x_{k+1} = A\\vec x_k$ spiralerer. Regn ut $|\\lambda|$ for egenverdiene til $A$.",
+					"answer": "\\frac{\\sqrt{97}}{10}"
 				},
 				{
-					"id": "linalg-06",
-					"text": "Hva er rangen til $A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 0 & 1 \\end{bmatrix}$?",
-					"answer": "2"
+					"id": "dds-06",
+					"text": "La $\\vec x_{k+1} = A\\vec x_k$ med $A = \\begin{bmatrix} \\frac{1}{2} & 0 \\\\ 0 & 2 \\end{bmatrix}$ og $\\vec x_0 = (64, 1)$. Regn ut $\\|\\vec x_6\\|$.",
+					"answer": "\\sqrt{4097}"
 				},
 				{
-					"id": "linalg-07",
-					"text": "For hvilken verdi av $k$ er matrisen $\\begin{bmatrix} 1 & k \\\\ 2 & 8 \\end{bmatrix}$ singulær?",
-					"answer": "4"
+					"id": "dds-07",
+					"text": "I systemet $\\vec x_{k+1} = A\\vec x_k$ med $A = \\begin{bmatrix} 0.4 & 0.3 \\\\ -p & 1.2 \\end{bmatrix}$ er $p > 0$ en parameter. Finn $p$ slik at $1$ er en egenverdi til $A$ (da stabiliserer bestanden seg).",
+					"answer": "\\frac{2}{5}"
+				}
+			]
+		},
+		{
+			"id": "sys",
+			"name": "Systemer av differensiallikninger og Eulers metode (5.7)",
+			"group": "Lineær algebra",
+			"questions": [
+				{
+					"id": "sys-01",
+					"text": "Løs $\\vec x'(t) = A\\vec x(t)$ med $A = \\begin{bmatrix} - \\frac{3}{2} & \\frac{1}{2} \\\\ 1 & -1 \\end{bmatrix}$ og $\\vec x(0) = (5, 4)$. Regn ut $x_1(1)$.",
+					"answer": "\\frac{2}{e^{2}} + \\frac{3}{e^{\\frac{1}{2}}}"
 				},
+				{
+					"id": "sys-02",
+					"text": "Løs $\\vec x'(t) = A\\vec x(t)$ med $A = \\begin{bmatrix} 2 & 3 \\\\ -1 & -2 \\end{bmatrix}$ og $\\vec x(0) = (1, 0)$. Regn ut $x_2(\\ln 2)$.",
+					"answer": "- \\frac{3}{4}"
+				},
+				{
+					"id": "sys-03",
+					"text": "Løs $\\vec x'(t) = A\\vec x(t)$ med $A = \\begin{bmatrix} -1 & -2 \\\\ 2 & -1 \\end{bmatrix}$ og $\\vec x(0) = (1, 0)$. Regn ut $x_1\\!\\left(\\frac{\\pi}{2}\\right)$.",
+					"answer": "- \\frac{1}{e^{\\frac{\\pi}{2}}}"
+				},
+				{
+					"id": "sys-04",
+					"text": "Origo er et sadelpunkt for $\\vec x' = A\\vec x$ med $A = \\begin{bmatrix} 4 & -5 \\\\ -2 & 1 \\end{bmatrix}$. Finn den positive egenverdien, som gir retningen med størst frastøting.",
+					"answer": "6"
+				},
+				{
+					"id": "sys-05",
+					"text": "Bruk Eulers metode med steglengde $h = 0.5$ til å estimere løsningen av $\\vec x' = A\\vec x$, $A = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}$, $\\vec x(0) = (1, 1)$, på intervallet $[0, 1]$. Oppgi estimatet for $x_1(1)$.",
+					"answer": "\\frac{17}{4}"
+				},
+				{
+					"id": "sys-06",
+					"text": "Løs samme system som i forrige oppgave analytisk: $\\vec x' = A\\vec x$, $A = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}$, $\\vec x(0) = (1, 1)$. Regn ut den eksakte verdien $x_1(1)$.",
+					"answer": "\\cosh{\\left(1 \\right)} + 3 \\sinh{\\left(1 \\right)}"
+				},
+				{
+					"id": "sys-07",
+					"text": "Bruk Eulers metode på intervallet $[0, 3]$ med steglengde $h = 1$ til å estimere løsningen av $\\vec x' = A\\vec x$, $A = \\begin{bmatrix} 0 & 1 \\\\ -2 & -3 \\end{bmatrix}$, $\\vec x(0) = (1, 0)$. Oppgi estimatet for $x_2(3)$.",
+					"answer": "-2"
+				},
+				{
+					"id": "sys-08",
+					"text": "Løs samme system som i forrige oppgave analytisk ($A = \\begin{bmatrix} 0 & 1 \\\\ -2 & -3 \\end{bmatrix}$, $\\vec x(0) = (1, 0)$) og regn ut den eksakte verdien $x_2(3)$.",
+					"answer": "\\frac{2 \\left(1 - e^{3}\\right)}{e^{6}}"
+				},
+				{
+					"id": "sys-09",
+					"text": "Bruk Eulers metode med $h = 0.5$ på $[0, 1]$ for $\\vec x' = A\\vec x + \\vec b$ med $A = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}$, $\\vec b = (0, 1)$ og $\\vec x(0) = (1, 0)$. Oppgi estimatet for $x_1(1)$.",
+					"answer": "1"
+				}
+			]
+		},
+		{
+			"id": "orto",
+			"name": "Indreprodukt, ortogonalitet og projeksjoner (6.1–6.3)",
+			"group": "Lineær algebra",
+			"questions": [
 				{
 					"id": "linalg-08",
 					"text": "Finn vinkelen $\\theta \\in [0, \\pi]$ mellom $\\vec u = (1, 0, 1)$ og $\\vec v = (0, 1, 1)$, i radianer.",
 					"answer": "\\frac{\\pi}{3}"
 				},
 				{
-					"id": "linalg-09",
-					"text": "Regn ut kryssproduktet $\\vec u \\times \\vec v$ for $\\vec u = (1, 2, 3)$ og $\\vec v = (4, 5, 6)$, og oppgi den andre komponenten ($y$-komponenten).",
-					"answer": "6"
+					"id": "orto-01",
+					"text": "Regn ut lengden $\\|\\vec u\\|$ av $\\vec u = (1, -2, 2, 4)$.",
+					"answer": "5"
+				},
+				{
+					"id": "orto-02",
+					"text": "Finn avstanden mellom $\\vec u = (7, 1)$ og $\\vec v = (3, 2)$.",
+					"answer": "\\sqrt{17}"
+				},
+				{
+					"id": "orto-03",
+					"text": "For hvilken verdi av $k$ er $(2, k, 3)$ ortogonal på $(1, 4, -2)$?",
+					"answer": "1"
 				},
 				{
 					"id": "linalg-10",
@@ -232,425 +381,1318 @@
 					"answer": "2\\sqrt{3}"
 				},
 				{
-					"id": "linalg-11",
-					"text": "La $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$. Regn ut sporet $\\operatorname{tr}(A^2)$.",
-					"answer": "29"
+					"id": "orto-04",
+					"text": "Finn avstanden fra $\\vec y = (7, 6)$ til linjen gjennom origo utspent av $\\vec u = (4, 2)$.",
+					"answer": "\\sqrt{5}"
 				},
 				{
-					"id": "linalg-12",
-					"text": "Hva er dimensjonen til nullrommet til $A = \\begin{bmatrix} 1 & 0 & 2 & 0 & 1 \\\\ 0 & 1 & 1 & 0 & 2 \\\\ 0 & 0 & 0 & 1 & 3 \\end{bmatrix}$?",
-					"answer": "2"
-				},
-				{
-					"id": "linalg-13",
-					"text": "Regn ut volumet av parallellepipedet utspent av $\\vec u = (1, 0, 0)$, $\\vec v = (1, 2, 0)$ og $\\vec w = (1, 1, 3)$.",
-					"answer": "6"
-				}
-			]
-		},
-		{
-			"id": "complex",
-			"name": "Komplekse tall",
-			"questions": [
-				{
-					"id": "complex-01",
-					"text": "Regn ut $|3 + 4i|$.",
-					"answer": "5"
-				},
-				{
-					"id": "complex-02",
-					"text": "Regn ut $(2 + i)(3 - i)$ og skriv svaret på formen $a + bi$.",
-					"answer": "7+i"
-				},
-				{
-					"id": "complex-03",
-					"text": "Skriv $\\dfrac{1}{1 + i}$ på formen $a + bi$.",
-					"answer": "\\frac{1}{2}-\\frac{1}{2}i"
-				},
-				{
-					"id": "complex-04",
-					"text": "Finn hovedargumentet $\\operatorname{Arg}(-1 + i) \\in (-\\pi, \\pi]$.",
-					"answer": "\\frac{3\\pi}{4}"
-				},
-				{
-					"id": "complex-05",
-					"text": "Regn ut $(1 + i)^8$.",
-					"answer": "16"
-				},
-				{
-					"id": "complex-06",
-					"text": "Finn realdelen av $\\dfrac{1 + 2i}{3 - 4i}$.",
-					"answer": "-\\frac{1}{5}"
-				},
-				{
-					"id": "complex-07",
-					"text": "Likningen $z^2 + 2z + 5 = 0$ har to komplekse løsninger. Oppgi løsningen med positiv imaginærdel.",
-					"answer": "-1+2i"
-				},
-				{
-					"id": "complex-08",
-					"text": "Skriv $e^{i\\pi/3}$ på formen $a + bi$.",
-					"answer": "\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i"
-				},
-				{
-					"id": "complex-09",
-					"text": "La $z = (2 - i)^2$. Regn ut $|z|^2$.",
-					"answer": "25"
-				},
-				{
-					"id": "complex-10",
-					"text": "Likningen $z^3 = 8i$ har tre løsninger. Oppgi løsningen som ligger i første kvadrant (positiv real- og imaginærdel).",
-					"answer": "\\sqrt{3}+i"
-				},
-				{
-					"id": "complex-11",
-					"text": "Regn ut $i^{2027}$.",
-					"answer": "-i"
-				},
-				{
-					"id": "complex-12",
-					"text": "La $z = 2 + 3i$. Regn ut $z \\bar z$.",
-					"answer": "13"
-				},
-				{
-					"id": "complex-13",
-					"text": "Finn imaginærdelen av $\\dfrac{1 + i}{1 - i}$.",
-					"answer": "1"
-				}
-			]
-		},
-		{
-			"id": "limits",
-			"name": "Grenseverdier",
-			"questions": [
-				{
-					"id": "limits-01",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$.",
-					"answer": "3"
-				},
-				{
-					"id": "limits-02",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to \\infty} \\left(1 + \\frac{2}{x}\\right)^x$.",
-					"answer": "e^2"
-				},
-				{
-					"id": "limits-03",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2}$.",
-					"answer": "\\frac{1}{2}"
-				},
-				{
-					"id": "limits-04",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{e^x - 1 - x}{x^2}$.",
-					"answer": "\\frac{1}{2}"
-				},
-				{
-					"id": "limits-05",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to \\infty} \\frac{3x^2 + 1}{5x^2 - x}$.",
-					"answer": "\\frac{3}{5}"
-				},
-				{
-					"id": "limits-06",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$.",
-					"answer": "4"
-				},
-				{
-					"id": "limits-07",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{\\ln(1 + 5x)}{\\sin(2x)}$.",
-					"answer": "\\frac{5}{2}"
-				},
-				{
-					"id": "limits-08",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to \\infty} \\left(\\sqrt{x^2 + x} - x\\right)$.",
-					"answer": "\\frac{1}{2}"
-				},
-				{
-					"id": "limits-09",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0^+} x \\ln x$.",
-					"answer": "0"
-				},
-				{
-					"id": "limits-10",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{\\tan x - x}{x^3}$.",
-					"answer": "\\frac{1}{3}"
-				},
-				{
-					"id": "limits-11",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 0} \\frac{2^x - 1}{x}$.",
-					"answer": "\\ln 2"
-				},
-				{
-					"id": "limits-12",
-					"text": "Regn ut $\\displaystyle\\lim_{x \\to 1} \\frac{x^5 - 1}{x - 1}$.",
-					"answer": "5"
-				}
-			]
-		},
-		{
-			"id": "deriv",
-			"name": "Derivasjon",
-			"questions": [
-				{
-					"id": "deriv-01",
-					"text": "La $f(x) = x^2 e^x$. Regn ut $f'(1)$.",
-					"answer": "3e"
-				},
-				{
-					"id": "deriv-02",
-					"text": "La $f(x) = \\sin x \\cos x$. Regn ut $f'\\!\\left(\\frac{\\pi}{6}\\right)$.",
-					"answer": "\\frac{1}{2}"
-				},
-				{
-					"id": "deriv-03",
-					"text": "La $f(x) = \\arctan(2x)$. Regn ut $f'(0)$.",
-					"answer": "2"
-				},
-				{
-					"id": "deriv-04",
-					"text": "La $f(x) = x^x$ for $x > 0$. Regn ut $f'(2)$.",
-					"answer": "4+4\\ln 2"
-				},
-				{
-					"id": "deriv-05",
-					"text": "Kurven $x^2 + y^2 = 25$ går gjennom punktet $(3, 4)$. Finn $\\dfrac{dy}{dx}$ i dette punktet ved implisitt derivasjon.",
-					"answer": "-\\frac{3}{4}"
-				},
-				{
-					"id": "deriv-06",
-					"text": "La $f(x) = \\sqrt{1 + 3x}$. Regn ut $f'(1)$.",
-					"answer": "\\frac{3}{4}"
-				},
-				{
-					"id": "deriv-07",
-					"text": "La $f(x) = e^{2x} \\sin x$. Regn ut $f''(0)$.",
-					"answer": "4"
-				},
-				{
-					"id": "deriv-08",
-					"text": "Finn tangentlinjen til $y = x^3 - 2x$ i punktet der $x = 1$, og oppgi skjæringspunktet med $y$-aksen (konstantleddet).",
+					"id": "orto-05",
+					"text": "Vektorene $\\vec u_1 = (3, 1, 1)$, $\\vec u_2 = (-1, 2, 1)$ og $\\vec u_3 = (-\\tfrac12, -2, \\tfrac72)$ danner en ortogonal basis for $\\mathbb R^3$. Skriv $\\vec x = (6, 1, -8) = c_1\\vec u_1 + c_2\\vec u_2 + c_3\\vec u_3$ og oppgi $c_3$.",
 					"answer": "-2"
 				},
 				{
-					"id": "deriv-09",
-					"text": "Finn den største verdien til $f(x) = x e^{-x}$ for $x \\in \\mathbb{R}$.",
-					"answer": "\\frac{1}{e}"
+					"id": "orto-06",
+					"text": "La $W = \\operatorname{Span}\\{\\vec u_1, \\vec u_2\\}$ med $\\vec u_1 = (2, 5, -1)$ og $\\vec u_2 = (-2, 1, 1)$. Finn den ortogonale projeksjonen $\\hat y$ av $\\vec y = (1, 2, 3)$ på $W$, og oppgi tredje komponent.",
+					"answer": "\\frac{1}{5}"
 				},
 				{
-					"id": "deriv-10",
-					"text": "Hva er koeffisienten foran $x^3$ i Maclaurin-rekken til $\\sin(2x)$?",
-					"answer": "-\\frac{4}{3}"
+					"id": "orto-07",
+					"text": "Med $W$ og $\\vec y$ som i forrige oppgave: finn avstanden fra $\\vec y$ til $W$.",
+					"answer": "\\frac{7 \\sqrt{5}}{5}"
 				},
 				{
-					"id": "deriv-11",
-					"text": "Hva er koeffisienten foran $x^3$ i Maclaurin-rekken til $e^x \\cos x$?",
-					"answer": "-\\frac{1}{3}"
+					"id": "orto-08",
+					"text": "Matrisen $U = \\begin{bmatrix} \\frac{\\sqrt{2}}{2} & \\frac{2}{3} \\\\ \\frac{\\sqrt{2}}{2} & - \\frac{2}{3} \\\\ 0 & \\frac{1}{3} \\end{bmatrix}$ har ortonormale søyler. Regn ut $\\|U\\vec x\\|$ for $\\vec x = (\\sqrt 2, 3)$.",
+					"answer": "\\sqrt{11}"
+				}
+			]
+		},
+		{
+			"id": "lsq",
+			"name": "Minste kvadraters metode (6.5–6.6)",
+			"group": "Lineær algebra",
+			"questions": [
+				{
+					"id": "lsq-01",
+					"text": "Finn minste kvadraters løsning $\\hat x$ av $A\\vec x = \\vec b$ med $A = \\begin{bmatrix} 4 & 0 \\\\ 0 & 2 \\\\ 1 & 1 \\end{bmatrix}$ og $\\vec b = (2, 0, 11)$. Oppgi andre komponent av $\\hat x$.",
+					"answer": "2"
 				},
 				{
-					"id": "deriv-12",
-					"text": "La $f(x) = x^3 + x$. Funksjonen er invertibel. Regn ut $(f^{-1})'(2)$.",
-					"answer": "\\frac{1}{4}"
+					"id": "lsq-02",
+					"text": "Regn ut minste kvadraters feil $\\|\\vec b - A\\hat x\\|$ for systemet i forrige oppgave.",
+					"answer": "2 \\sqrt{21}"
 				},
 				{
-					"id": "deriv-13",
-					"text": "La $f(x, y) = x^2 y + e^{xy}$. Regn ut den partielle deriverte $\\dfrac{\\partial f}{\\partial y}$ i punktet $(1, 0)$.",
+					"id": "lsq-03",
+					"text": "Finn minste kvadraters linje $y = \\beta_0 + \\beta_1 x$ for punktene $(2, 1)$, $(5, 2)$, $(7, 3)$ og $(8, 3)$. Oppgi stigningstallet $\\beta_1$.",
+					"answer": "\\frac{5}{14}"
+				},
+				{
+					"id": "lsq-04",
+					"text": "Med samme punkter som i forrige oppgave: oppgi konstantleddet $\\beta_0$.",
+					"answer": "\\frac{2}{7}"
+				},
+				{
+					"id": "lsq-05",
+					"text": "Finn minste kvadraters linje $y = \\beta_0 + \\beta_1 x$ for punktene $(0, 1)$, $(1, 1)$, $(2, 2)$ og $(3, 2)$, og bruk den til å estimere $y$ når $x = 5$.",
+					"answer": "\\frac{29}{10}"
+				},
+				{
+					"id": "lsq-06",
+					"text": "Tilpass parabelen $y = \\beta_0 + \\beta_1 x + \\beta_2 x^2$ til punktene $(-1, 2)$, $(0, 0)$, $(1, 1)$ og $(2, 4)$ med minste kvadraters metode. Oppgi $\\beta_2$.",
+					"answer": "\\frac{5}{4}"
+				},
+				{
+					"id": "lsq-07",
+					"text": "Tilpass modellen $y = \\beta x$ (linje gjennom origo) til punktene $(1, 2)$, $(2, 3)$ og $(3, 7)$ med minste kvadraters metode. Finn $\\beta$.",
+					"answer": "\\frac{29}{14}"
+				},
+				{
+					"id": "lsq-08",
+					"text": "Søylene i $A = \\begin{bmatrix} 1 & -6 \\\\ 1 & -2 \\\\ 1 & 1 \\\\ 1 & 7 \\end{bmatrix}$ er ortogonale. Finn minste kvadraters løsning $\\hat x$ av $A\\vec x = \\vec b$ med $\\vec b = (-1, 2, 1, 6)$, og oppgi første komponent.",
 					"answer": "2"
 				}
 			]
 		},
 		{
-			"id": "integ",
-			"name": "Integrasjon",
+			"id": "quad",
+			"name": "Symmetriske matriser og kvadratiske former (7.1–7.3)",
+			"group": "Lineær algebra",
 			"questions": [
 				{
-					"id": "integ-01",
-					"text": "Regn ut $\\displaystyle\\int_0^1 x e^x \\, dx$.",
-					"answer": "1"
+					"id": "quad-01",
+					"text": "Den symmetriske matrisen $A = \\begin{bmatrix} 6 & -2 & -1 \\\\ -2 & 6 & -1 \\\\ -1 & -1 & 5 \\end{bmatrix}$ kan ortogonalt diagonaliseres. Finn den største egenverdien.",
+					"answer": "8"
 				},
 				{
-					"id": "integ-02",
-					"text": "Regn ut $\\displaystyle\\int_0^\\pi \\sin x \\, dx$.",
+					"id": "quad-02",
+					"text": "Skriv den kvadratiske formen $Q(\\vec x) = 5x_1^2 + 3x_2^2 - 8x_1x_2$ som $\\vec x^T A \\vec x$ med $A$ symmetrisk. Oppgi elementet $a_{12}$.",
+					"answer": "-4"
+				},
+				{
+					"id": "quad-03",
+					"text": "Variabelskiftet $\\vec x = P\\vec y$ gjør $Q(\\vec x) = x_1^2 - 8x_1x_2 - 5x_2^2$ om til $Q = \\lambda_1 y_1^2 + \\lambda_2 y_2^2$ uten kryssledd. Oppgi den negative koeffisienten.",
+					"answer": "-7"
+				},
+				{
+					"id": "quad-04",
+					"text": "Finn maksimumsverdien til $Q(\\vec x) = 3x_1^2 + 2x_2^2 + x_3^2 + 4x_1x_2 + 4x_2x_3$ under bibetingelsen $\\vec x^T\\vec x = 1$.",
+					"answer": "5"
+				},
+				{
+					"id": "quad-05",
+					"text": "La $Q$ være som i forrige oppgave og $\\vec u_1$ en enhetsvektor der maksimum oppnås. Finn maksimumsverdien til $Q(\\vec x)$ under bibetingelsene $\\vec x^T\\vec x = 1$ og $\\vec x^T\\vec u_1 = 0$.",
 					"answer": "2"
 				},
 				{
-					"id": "integ-03",
-					"text": "Regn ut $\\displaystyle\\int_1^e x \\ln x \\, dx$.",
-					"answer": "\\frac{e^2+1}{4}"
+					"id": "quad-06",
+					"text": "Finn minimumsverdien til $Q(\\vec x) = 3x_1^2 + 2x_2^2 + x_3^2 + 4x_1x_2 + 4x_2x_3$ under bibetingelsen $\\|\\vec x\\| = 1$.",
+					"answer": "-1"
 				},
 				{
-					"id": "integ-04",
-					"text": "Regn ut $\\displaystyle\\int_0^1 \\frac{1}{1 + x^2} \\, dx$.",
-					"answer": "\\frac{\\pi}{4}"
+					"id": "quad-07",
+					"text": "Matrisen $A = \\begin{bmatrix} 5s & a \\\\ 12s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "- \\frac{5}{13}"
 				},
 				{
-					"id": "integ-05",
-					"text": "Regn ut $\\displaystyle\\int_0^{\\sqrt 8} x \\sqrt{x^2 + 1} \\, dx$.",
-					"answer": "\\frac{26}{3}"
+					"id": "quad-08",
+					"text": "Finn den største verdien av $k$ slik at $Q(x_1, x_2) = x_1^2 + 2k\\,x_1x_2 + 4x_2^2$ er positiv semidefinitt.",
+					"answer": "2"
 				},
 				{
-					"id": "integ-06",
-					"text": "Regn ut $\\displaystyle\\int_0^\\infty e^{-2x} \\, dx$.",
-					"answer": "\\frac{1}{2}"
+					"id": "quad-09",
+					"text": "La $A = \\begin{bmatrix} 2 & 1 & 0 \\\\ 1 & 3 & -1 \\\\ 0 & -1 & 1 \\end{bmatrix}$. Regn ut $Q(\\vec x) = \\vec x^TA\\vec x$ for $\\vec x = (1, -1, 2)$.",
+					"answer": "11"
 				},
 				{
-					"id": "integ-07",
-					"text": "Regn ut $\\displaystyle\\int_1^\\infty \\frac{1}{x^4} \\, dx$.",
-					"answer": "\\frac{1}{3}"
-				},
-				{
-					"id": "integ-08",
-					"text": "Regn ut $\\displaystyle\\int_0^{\\pi/2} \\sin^2 x \\, dx$.",
-					"answer": "\\frac{\\pi}{4}"
-				},
-				{
-					"id": "integ-09",
-					"text": "Regn ut $\\displaystyle\\int_0^1 \\frac{1}{(x + 1)(x + 2)} \\, dx$.",
-					"answer": "\\ln\\frac{4}{3}"
-				},
-				{
-					"id": "integ-10",
-					"text": "Finn arealet av området avgrenset av kurvene $y = x$ og $y = x^2$.",
-					"answer": "\\frac{1}{6}"
-				},
-				{
-					"id": "integ-11",
-					"text": "Området under $y = \\sqrt{x}$ for $0 \\le x \\le 4$ roteres om $x$-aksen. Finn volumet av omdreiningslegemet.",
-					"answer": "8\\pi"
-				},
-				{
-					"id": "integ-12",
-					"text": "Regn ut $\\displaystyle\\int_0^1 x^2 e^{x^3} \\, dx$.",
-					"answer": "\\frac{e-1}{3}"
-				},
-				{
-					"id": "integ-13",
-					"text": "Regn ut $\\displaystyle\\int_0^\\pi x \\sin x \\, dx$.",
-					"answer": "\\pi"
+					"id": "quad-10",
+					"text": "Finn maksimumsverdien av $Q(x_1, x_2) = 4x_1^2 + 4x_2^2 - 5x_1x_2$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "\\frac{13}{2}"
 				}
 			]
 		},
 		{
-			"id": "series",
-			"name": "Følger og rekker",
+			"id": "svd",
+			"name": "Singulærverdidekomposisjon (7.4)",
+			"group": "Lineær algebra",
 			"questions": [
 				{
-					"id": "series-01",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\left(\\frac{1}{3}\\right)^n$.",
-					"answer": "\\frac{3}{2}"
+					"id": "svd-01",
+					"text": "Finn den største singulærverdien til $A = \\begin{bmatrix} 1 & -1 \\\\ -2 & 2 \\\\ 2 & -2 \\end{bmatrix}$.",
+					"answer": "3 \\sqrt{2}"
 				},
 				{
-					"id": "series-02",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=1}^\\infty \\frac{1}{n(n+1)}$.",
-					"answer": "1"
+					"id": "svd-02",
+					"text": "Finn den minste ikke-null singulærverdien til $A = \\begin{bmatrix} 4 & 11 & 14 \\\\ 8 & 7 & -2 \\end{bmatrix}$.",
+					"answer": "3 \\sqrt{10}"
 				},
 				{
-					"id": "series-03",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=1}^\\infty \\frac{1}{n^2}$.",
-					"answer": "\\frac{\\pi^2}{6}"
+					"id": "svd-03",
+					"text": "Finn den største singulærverdien til $A = \\begin{bmatrix} 3 & 2 & 2 \\\\ 2 & 3 & -2 \\end{bmatrix}$.",
+					"answer": "5"
 				},
 				{
-					"id": "series-04",
-					"text": "Finn konvergensradien til potensrekken $\\displaystyle\\sum_{n=1}^\\infty \\frac{n x^n}{3^n}$.",
+					"id": "svd-04",
+					"text": "Finn maksimumsverdien av $\\|A\\vec x\\|$ over alle enhetsvektorer $\\vec x$, når $A = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}$.",
 					"answer": "3"
 				},
 				{
-					"id": "series-05",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\frac{2^n}{n!}$.",
-					"answer": "e^2"
+					"id": "svd-05",
+					"text": "Gitt singulærverdidekomposisjonen $A = U\\Sigma V^T = \\begin{bmatrix} \\frac45 & -\\frac35 \\\\ \\frac35 & \\frac45 \\end{bmatrix}\\begin{bmatrix} 5 & 0 \\\\ 0 & 2 \\end{bmatrix}\\begin{bmatrix} \\frac{1}{\\sqrt2} & -\\frac{1}{\\sqrt2} \\\\ \\frac{1}{\\sqrt2} & \\frac{1}{\\sqrt2} \\end{bmatrix}$. Regn ut $\\det A$.",
+					"answer": "10"
 				},
 				{
-					"id": "series-06",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n}$.",
-					"answer": "\\ln 2"
+					"id": "svd-06",
+					"text": "Regn ut kondisjonstallet $\\sigma_1 / \\sigma_n$ til $A = \\begin{bmatrix} 3 & 1 \\\\ 1 & 3 \\end{bmatrix}$.",
+					"answer": "2"
 				},
 				{
-					"id": "series-07",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=2}^\\infty \\left(\\frac{2}{5}\\right)^n$.",
-					"answer": "\\frac{4}{15}"
+					"id": "svd-07",
+					"text": "Finn den største singulærverdien til $A = \\begin{bmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{bmatrix}$.",
+					"answer": "\\sqrt{3}"
 				},
 				{
-					"id": "series-08",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\frac{(-1)^n}{2n+1}$.",
-					"answer": "\\frac{\\pi}{4}"
-				},
-				{
-					"id": "series-09",
-					"text": "Regn ut summen $\\displaystyle\\sum_{n=0}^\\infty \\frac{n+1}{2^n}$.",
-					"answer": "4"
-				},
-				{
-					"id": "series-10",
-					"text": "Finn konvergensradien til potensrekken $\\displaystyle\\sum_{n=1}^\\infty \\frac{(x-1)^n}{n \\cdot 4^n}$.",
-					"answer": "4"
-				},
-				{
-					"id": "series-11",
-					"text": "Følgen $(a_n)$ er gitt ved $a_1 = 2$ og $a_{n+1} = \\frac{1}{2}a_n + 3$. Følgen konvergerer. Finn $\\displaystyle\\lim_{n\\to\\infty} a_n$.",
-					"answer": "6"
+					"id": "svd-08",
+					"text": "Gitt $A = U\\Sigma V^T$ med $\\Sigma = \\begin{bmatrix} \\sqrt{10} & 0 \\\\ 0 & 1 \\end{bmatrix}$ og ortogonale $U$, $V$. Bestem den største egenverdien til $A^TA$.",
+					"answer": "10"
 				}
 			]
 		},
 		{
-			"id": "ode",
-			"name": "Differensiallikninger",
+			"id": "extr",
+			"name": "Lokale og globale ekstremalverdier (4.7)",
+			"group": "Vektoranalyse",
 			"questions": [
 				{
-					"id": "ode-01",
-					"text": "Løs initialverdiproblemet $y' = 2y$, $y(0) = 3$, og regn ut $y(1)$.",
-					"answer": "3e^2"
+					"id": "extr-01",
+					"text": "Finn minimumsverdien til $f(x, y) = x^2 + y^2 - 2x + 4y + 3$.",
+					"answer": "-2"
 				},
 				{
-					"id": "ode-02",
-					"text": "Løs initialverdiproblemet $y' = 1 - y$, $y(0) = 0$, og regn ut $y(\\ln 2)$.",
-					"answer": "\\frac{1}{2}"
+					"id": "extr-02",
+					"text": "Funksjonen $f(x, y) = x^3 - 3x + y^2 - 4y$ har ett lokalt minimum. Finn minimumsverdien.",
+					"answer": "-6"
 				},
 				{
-					"id": "ode-03",
-					"text": "Løs $y'' + y = 0$ med $y(0) = 0$ og $y'(0) = 2$, og regn ut $y\\!\\left(\\frac{\\pi}{2}\\right)$.",
+					"id": "extr-03",
+					"text": "Funksjonen $f(x, y) = xy(3 - x - y)$ har et lokalt maksimum i et punkt med $x, y > 0$. Finn maksimumsverdien.",
+					"answer": "1"
+				},
+				{
+					"id": "extr-04",
+					"text": "Regn ut diskriminanten $D = f_{xx}f_{yy} - f_{xy}^2$ for $f(x, y) = x^3 + y^3 - 3xy$ i det kritiske punktet $(1, 1)$.",
+					"answer": "27"
+				},
+				{
+					"id": "extr-05",
+					"text": "Finn den globale maksimumsverdien til $f(x, y) = x^2 + y^2 - 2x$ på disken $x^2 + y^2 \\le 4$.",
+					"answer": "8"
+				},
+				{
+					"id": "extr-06",
+					"text": "Finn den globale minimumsverdien til $f(x, y) = x^2 + 2y^2 - x$ på disken $x^2 + y^2 \\le 4$.",
+					"answer": "- \\frac{1}{4}"
+				},
+				{
+					"id": "extr-07",
+					"text": "Finn den globale maksimumsverdien til $f(x, y) = x^2 - 2xy + 4y^2 - 4x - 2y + 24$ på rektangelet $0 \\le x \\le 4$, $0 \\le y \\le 2$.",
+					"answer": "36"
+				},
+				{
+					"id": "extr-08",
+					"text": "Finn den globale minimumsverdien til $f(x, y) = x^2 - 2xy + 4y^2 - 4x - 2y + 24$ på rektangelet $0 \\le x \\le 4$, $0 \\le y \\le 2$.",
+					"answer": "17"
+				},
+				{
+					"id": "extr-09",
+					"text": "Finn minimumsverdien til $f(x, y) = x^4 + y^4 - 4xy + 1$.",
+					"answer": "-1"
+				}
+			]
+		},
+		{
+			"id": "lagr",
+			"name": "Lagrange-multiplikatorer (4.8)",
+			"group": "Vektoranalyse",
+			"questions": [
+				{
+					"id": "lagr-01",
+					"text": "Finn maksimumsverdien til $f(x, y) = xy$ under bibetingelsen $x + y = 10$.",
+					"answer": "25"
+				},
+				{
+					"id": "lagr-02",
+					"text": "Finn maksimumsverdien til $f(x, y) = x + 2y$ under bibetingelsen $x^2 + y^2 = 5$.",
+					"answer": "5"
+				},
+				{
+					"id": "lagr-03",
+					"text": "Finn minimumsverdien til $f(x, y) = x^2 + y^2$ under bibetingelsen $x + 2y = 5$.",
+					"answer": "5"
+				},
+				{
+					"id": "lagr-04",
+					"text": "Finn maksimumsverdien til $f(x, y) = x^2y$ under bibetingelsen $x^2 + y^2 = 3$.",
 					"answer": "2"
 				},
 				{
-					"id": "ode-04",
-					"text": "Løs $y'' - 3y' + 2y = 0$ med $y(0) = 0$ og $y'(0) = 1$, og regn ut $y(\\ln 2)$.",
+					"id": "lagr-05",
+					"text": "En golfballprodusent har profittfunksjonen $f(x, y) = 48x + 96y - x^2 - 2xy - 9y^2$ og budsjettbetingelsen $20x + 4y = 216$. Finn maksimal profitt.",
+					"answer": "540"
+				},
+				{
+					"id": "lagr-06",
+					"text": "Finn det største volumet $V = xyz$ til en eske med $x, y, z > 0$ og $x + y + z = 12$.",
+					"answer": "64"
+				},
+				{
+					"id": "lagr-07",
+					"text": "Finn minimumsverdien til $f(x, y, z) = x^2 + y^2 + z^2$ under bibetingelsen $x + y + z = 1$.",
+					"answer": "\\frac{1}{3}"
+				},
+				{
+					"id": "lagr-08",
+					"text": "Finn den korteste avstanden fra origo til planet $x + 2y + 2z = 9$.",
+					"answer": "3"
+				},
+				{
+					"id": "lagr-09",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurven $xy^2 = 16$ som ligger nærmest origo. Oppgi $y$-koordinaten til $P$.",
+					"answer": "2 \\sqrt{2}"
+				}
+			]
+		},
+		{
+			"id": "line",
+			"name": "Vektorfelt, kurveintegraler og konservative felt (6.1–6.3)",
+			"group": "Vektoranalyse",
+			"questions": [
+				{
+					"id": "line-01",
+					"text": "Regn ut $\\displaystyle\\int_C (x + y)\\,ds$ der $C$ er linjestykket fra $(0, 0)$ til $(3, 4)$.",
+					"answer": "\\frac{35}{2}"
+				},
+				{
+					"id": "line-02",
+					"text": "Regn ut $\\displaystyle\\int_C y\\,ds$ der $C$ er den øvre halvdelen av enhetssirkelen.",
 					"answer": "2"
 				},
 				{
-					"id": "ode-05",
-					"text": "Løs initialverdiproblemet $y' = xy$, $y(0) = 1$, og regn ut $y(2)$.",
-					"answer": "e^2"
+					"id": "line-03",
+					"text": "Regn ut arbeidet $\\displaystyle\\int_C \\vec F\\cdot d\\vec r$ for $\\vec F(x, y) = \\langle x^2, xy\\rangle$ langs parabelen $y = x^2$ fra $(0, 0)$ til $(1, 1)$.",
+					"answer": "\\frac{11}{15}"
 				},
 				{
-					"id": "ode-06",
-					"text": "Løs $y'' + 4y' + 4y = 0$ med $y(0) = 1$ og $y'(0) = 0$, og regn ut $y(1)$.",
-					"answer": "3e^{-2}"
+					"id": "line-04",
+					"text": "Regn ut arbeidet til $\\vec F(x, y) = \\langle -y, x\\rangle$ én gang rundt enhetssirkelen mot klokken.",
+					"answer": "2 \\pi"
 				},
 				{
-					"id": "ode-07",
-					"text": "Løs initialverdiproblemet $y' = y^2$, $y(0) = 1$, og regn ut $y\\!\\left(\\frac{1}{2}\\right)$.",
+					"id": "line-05",
+					"text": "Regn ut fluksen $\\displaystyle\\int_C \\vec F\\cdot\\vec n\\,ds$ av $\\vec F(x, y) = \\langle x, y\\rangle$ ut gjennom sirkelen $x^2 + y^2 = 4$.",
+					"answer": "8 \\pi"
+				},
+				{
+					"id": "line-06",
+					"text": "Bestem $k$ slik at $\\vec F(x, y) = \\langle 3x^2y + ky^2,\\ x^3 + 4xy\\rangle$ blir konservativt.",
 					"answer": "2"
 				},
 				{
-					"id": "ode-08",
-					"text": "Den karakteristiske likningen til $y'' + 2y' + 5y = 0$ har to komplekse røtter. Oppgi roten med positiv imaginærdel.",
-					"answer": "-1+2i"
+					"id": "line-07",
+					"text": "Regn ut arbeidet til $\\vec F(x, y) = \\langle y, x\\rangle$ langs en vilkårlig glatt kurve fra $(0, 0)$ til $(2, 3)$.",
+					"answer": "6"
 				},
 				{
-					"id": "ode-09",
-					"text": "Løs initialverdiproblemet $y' + 2y = 4$, $y(0) = 0$, og regn ut $y(\\ln 2)$.",
+					"id": "line-08",
+					"text": "Funksjonen $f$ tilfredsstiller $f(0, 0) = 0$ og $\\nabla f = \\vec F$, der $\\vec F = \\langle e^y,\\ xe^y + 2y\\rangle$. Regn ut $f(1, \\ln 2)$.",
+					"answer": "2 + (\\ln 2)^2"
+				},
+				{
+					"id": "line-09",
+					"text": "Regn ut $\\displaystyle\\int_C \\nabla f\\cdot d\\vec r$ for $f(x, y, z) = x^2y + z$, der $C$ er en kurve fra $(1, 0, 0)$ til $(2, 1, 3)$.",
+					"answer": "7"
+				},
+				{
+					"id": "line-10",
+					"text": "Regn ut $\\displaystyle\\int_C (x^2 + y^2 + z^2)\\,ds$ der $C$ er spiralen $\\vec r(t) = \\langle \\cos t, \\sin t, t\\rangle$, $0 \\le t \\le 2\\pi$.",
+					"answer": "\\frac{2 \\sqrt{2} \\pi \\left(3 + 4 \\pi^{2}\\right)}{3}"
+				}
+			]
+		},
+		{
+			"id": "green",
+			"name": "Greens teorem (6.4)",
+			"group": "Vektoranalyse",
+			"questions": [
+				{
+					"id": "green-01",
+					"text": "Bruk Greens teorem til å regne ut $\\displaystyle\\oint_C y^2\\,dx + 3xy\\,dy$, der $C$ er randen av den øvre halvdelen av enhetsdisken, orientert mot klokken.",
+					"answer": "\\frac{2}{3}"
+				},
+				{
+					"id": "green-02",
+					"text": "Bruk Greens teorem til å finne arealet innenfor ellipsen $\\dfrac{x^2}{9} + \\dfrac{y^2}{4} = 1$.",
+					"answer": "6 \\pi"
+				},
+				{
+					"id": "green-03",
+					"text": "Regn ut $\\displaystyle\\oint_C (3y - e^{\\sin x})\\,dx + (7x + \\sqrt{y^4 + 1})\\,dy$, der $C$ er sirkelen $x^2 + y^2 = 9$ mot klokken.",
+					"answer": "36 \\pi"
+				},
+				{
+					"id": "green-04",
+					"text": "Regn ut $\\displaystyle\\oint_C x^4\\,dx + xy\\,dy$, der $C$ er trekanten med hjørner $(0, 0)$, $(1, 0)$ og $(0, 1)$, orientert mot klokken.",
+					"answer": "\\frac{1}{6}"
+				},
+				{
+					"id": "green-05",
+					"text": "Regn ut fluksen av $\\vec F = \\langle x^3, y^3\\rangle$ ut gjennom enhetssirkelen.",
+					"answer": "\\frac{3 \\pi}{2}"
+				},
+				{
+					"id": "green-06",
+					"text": "Regn ut $\\displaystyle\\oint_C xy\\,dx + x^2\\,dy$, der $C$ er randen av rektangelet $[0, 2] \\times [0, 3]$ mot klokken.",
+					"answer": "6"
+				},
+				{
+					"id": "green-07",
+					"text": "Regn ut $\\displaystyle\\oint_C \\vec F\\cdot d\\vec r$ for $\\vec F = \\langle y^2 - x^2,\\ x^2 + y^2\\rangle$, der $C$ er randen av trekanten avgrenset av $y = 0$, $x = 3$ og $y = x$, mot klokken.",
+					"answer": "9"
+				}
+			]
+		},
+		{
+			"id": "divcurl",
+			"name": "Divergens og curl (6.5)",
+			"group": "Vektoranalyse",
+			"questions": [
+				{
+					"id": "divcurl-01",
+					"text": "Regn ut $\\operatorname{div}\\vec F$ i punktet $(1, 2, 1)$ for $\\vec F = \\langle x^2y,\\ yz,\\ xz^2\\rangle$.",
+					"answer": "7"
+				},
+				{
+					"id": "divcurl-02",
+					"text": "Regn ut $z$-komponenten av $\\operatorname{curl}\\vec F$ i punktet $(1, 2, 3)$ for $\\vec F = \\langle x^2z,\\ xy^2,\\ y + 2z\\rangle$.",
+					"answer": "4"
+				},
+				{
+					"id": "divcurl-03",
+					"text": "Regn ut $x$-komponenten av $\\operatorname{curl}\\vec F$ i punktet $(1, 2, 3)$ for $\\vec F = \\langle x^2z,\\ xy^2,\\ y + 2z\\rangle$.",
+					"answer": "1"
+				},
+				{
+					"id": "divcurl-04",
+					"text": "Regn ut den skalare curlen $Q_x - P_y$ for planfeltet $\\vec F = \\langle -y, x\\rangle$.",
+					"answer": "2"
+				},
+				{
+					"id": "divcurl-05",
+					"text": "Regn ut $\\operatorname{div}(\\nabla f)$ (laplaceoperatoren) for $f(x, y, z) = x^2 + y^2 + z^2$.",
+					"answer": "6"
+				},
+				{
+					"id": "divcurl-06",
+					"text": "Bestem $k$ slik at $\\operatorname{curl}\\vec F = \\vec 0$ for $\\vec F = \\langle yz,\\ kxz,\\ xy\\rangle$.",
+					"answer": "1"
+				},
+				{
+					"id": "divcurl-07",
+					"text": "Regn ut $\\operatorname{div}\\vec F$ for $\\vec F = \\langle e^x\\sin y,\\ e^x\\cos y,\\ z\\rangle$.",
+					"answer": "1"
+				}
+			]
+		},
+		{
+			"id": "surf",
+			"name": "Flateintegraler (6.6)",
+			"group": "Vektoranalyse",
+			"questions": [
+				{
+					"id": "surf-01",
+					"text": "Finn arealet av den delen av planet $z = 2 - x - y$ som ligger i første oktant.",
+					"answer": "2 \\sqrt{3}"
+				},
+				{
+					"id": "surf-02",
+					"text": "Regn ut $\\displaystyle\\iint_S z\\,dS$, der $S$ er den øvre halvkulen $x^2 + y^2 + z^2 = 1$, $z \\ge 0$.",
+					"answer": "\\pi"
+				},
+				{
+					"id": "surf-03",
+					"text": "Regn ut fluksen av $\\vec F = \\langle x, y, z\\rangle$ ut gjennom kuleflaten $x^2 + y^2 + z^2 = 4$.",
+					"answer": "32 \\pi"
+				},
+				{
+					"id": "surf-04",
+					"text": "Regn ut fluksen av $\\vec F = \\langle 0, 0, z\\rangle$ gjennom paraboloiden $z = 4 - x^2 - y^2$, $z \\ge 0$, orientert oppover.",
+					"answer": "8 \\pi"
+				},
+				{
+					"id": "surf-05",
+					"text": "Regn ut $\\displaystyle\\iint_S (x^2 + y^2)\\,dS$, der $S$ er sylinderflaten $x^2 + y^2 = 1$, $0 \\le z \\le 3$ (uten topp og bunn).",
+					"answer": "6 \\pi"
+				},
+				{
+					"id": "surf-06",
+					"text": "Finn arealet av den delen av paraboloiden $z = x^2 + y^2$ som ligger under planet $z = 1$.",
+					"answer": "\\frac{\\pi \\left(-1 + 5 \\sqrt{5}\\right)}{6}"
+				},
+				{
+					"id": "surf-07",
+					"text": "Flaten $S$ er parametrisert ved $\\vec r(u, v) = \\langle u + v,\\ u - v,\\ 2u\\rangle$, $0 \\le u \\le 1$, $0 \\le v \\le 2$. Finn arealet av $S$.",
+					"answer": "4 \\sqrt{3}"
+				}
+			]
+		},
+		{
+			"id": "divthm",
+			"name": "Divergensteoremet (6.8)",
+			"group": "Vektoranalyse",
+			"questions": [
+				{
+					"id": "divthm-01",
+					"text": "Bruk divergensteoremet til å regne ut fluksen av $\\vec F = \\langle x, y, z\\rangle$ ut av enhetskuben $[0, 1]^3$.",
+					"answer": "3"
+				},
+				{
+					"id": "divthm-02",
+					"text": "Regn ut fluksen av $\\vec F = \\langle x^3, y^3, z^3\\rangle$ ut av enhetskulen.",
+					"answer": "\\frac{12 \\pi}{5}"
+				},
+				{
+					"id": "divthm-03",
+					"text": "Regn ut fluksen av $\\vec F = \\langle 2x, -y, z\\rangle$ ut av sylinderen $x^2 + y^2 \\le 4$, $0 \\le z \\le 5$ (med topp og bunn).",
+					"answer": "40 \\pi"
+				},
+				{
+					"id": "divthm-04",
+					"text": "Regn ut fluksen av $\\vec F = \\langle x^2, y^2, z^2\\rangle$ ut av boksen $[0, 1] \\times [0, 2] \\times [0, 3]$.",
+					"answer": "36"
+				},
+				{
+					"id": "divthm-05",
+					"text": "Regn ut fluksen av $\\vec F = \\langle y, x, z\\rangle$ ut av tetraederet avgrenset av koordinatplanene og planet $x + y + z = 1$.",
+					"answer": "\\frac{1}{6}"
+				},
+				{
+					"id": "divthm-06",
+					"text": "Regn ut fluksen av $\\vec F = \\langle xy^2,\\ yz^2,\\ zx^2\\rangle$ ut av kulen $x^2 + y^2 + z^2 \\le 4$.",
+					"answer": "\\frac{128 \\pi}{5}"
+				}
+			]
+		},
+		{
+			"id": "exam01",
+			"name": "Øveeksamen 1",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam01-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -3 & 1 \\\\ -4 & -3 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "2"
+				},
+				{
+					"id": "exam01-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 4x_1^2 + 4x_2^2 - 5x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
 					"answer": "\\frac{3}{2}"
 				},
 				{
-					"id": "ode-10",
-					"text": "Likningen $y'' + y = 3e^{2x}$ har en partikulærløsning på formen $y_p = A e^{2x}$. Finn $A$.",
+					"id": "exam01-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -3s & a \\\\ 4s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
 					"answer": "\\frac{3}{5}"
 				},
 				{
-					"id": "ode-11",
-					"text": "Løs initialverdiproblemet $y' = \\dfrac{y}{x}$, $y(1) = 3$, for $x > 0$, og regn ut $y(4)$.",
-					"answer": "12"
+					"id": "exam01-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 1),$$ der $A = \\begin{bmatrix} 0 & 2 \\\\ -2 & 1 \\end{bmatrix}$ og $\\vec b = (1, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "8"
 				},
 				{
-					"id": "ode-12",
-					"text": "En kopp kaffe avkjøles etter Newtons avkjølingslov $T' = -k(T - 20)$. Ved $t = 0$ er $T = 90$, og ved $t = 1$ er $T = 55$. Finn $T(2)$.",
-					"answer": "\\frac{75}{2}"
+					"id": "exam01-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 1),$$ der $A = \\begin{bmatrix} 0 & 2 \\\\ -2 & 1 \\end{bmatrix}$ og $\\vec b = (1, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "-2"
+				},
+				{
+					"id": "exam01-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam01-6",
+					"text": "La $f(x, y) = x^3 + 3xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "1"
+				},
+				{
+					"id": "exam01-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 2$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt{2}"
+				},
+				{
+					"id": "exam01-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle x,\\ -x + y\\rangle$ langs linjestykket som går frå $(1, 1)$ til $(2, 3)$.",
+					"answer": "\\frac{5}{2}"
+				},
+				{
+					"id": "exam01-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (2xy - 3)\\,\\vec i + (x^2 + 4y^3 + 5)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam01-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - x^2)\\,\\vec i + (x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 3$ og $y = x$.",
+					"answer": "-9"
+				}
+			]
+		},
+		{
+			"id": "exam02",
+			"name": "Øveeksamen 2",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam02-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -2 & 1 \\\\ -9 & -2 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "3"
+				},
+				{
+					"id": "exam02-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 5x_1^2 + 3x_2^2 - 4x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "4 - \\sqrt{5}"
+				},
+				{
+					"id": "exam02-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -4s & a \\\\ 3s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{4}{5}"
+				},
+				{
+					"id": "exam02-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 0),$$ der $A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix}$ og $\\vec b = (0, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "5"
+				},
+				{
+					"id": "exam02-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 0),$$ der $A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix}$ og $\\vec b = (0, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam02-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5} \\end{bmatrix}\\begin{bmatrix} 3 & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{3}{5} & -\\frac{4}{5} \\\\ \\frac{4}{5} & \\frac{3}{5} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "9"
+				},
+				{
+					"id": "exam02-6",
+					"text": "La $f(x, y) = x^3 + 5xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "\\frac{125}{27}"
+				},
+				{
+					"id": "exam02-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 1$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt[6]{2}"
+				},
+				{
+					"id": "exam02-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle 2x + y,\\ -y + 1\\rangle$ langs linjestykket som går frå $(0, 0)$ til $(1, 2)$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam02-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (4xy + 1)\\,\\vec i + (2x^2 + 3y^2 - 2)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam02-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - x^2)\\,\\vec i + (2x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 2$ og $y = x$.",
+					"answer": "- \\frac{8}{3}"
+				}
+			]
+		},
+		{
+			"id": "exam03",
+			"name": "Øveeksamen 3",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam03-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -4 & 2 \\\\ -2 & -4 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "1"
+				},
+				{
+					"id": "exam03-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 6x_1^2 + 2x_2^2 - 4x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "4 - 2 \\sqrt{2}"
+				},
+				{
+					"id": "exam03-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -5s & a \\\\ 12s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{5}{13}"
+				},
+				{
+					"id": "exam03-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 0),$$ der $A = \\begin{bmatrix} 2 & 0 \\\\ 1 & -1 \\end{bmatrix}$ og $\\vec b = (1, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam03-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 0),$$ der $A = \\begin{bmatrix} 2 & 0 \\\\ 1 & -1 \\end{bmatrix}$ og $\\vec b = (1, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam03-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\end{bmatrix}\\begin{bmatrix} \\sqrt{5} & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "5"
+				},
+				{
+					"id": "exam03-6",
+					"text": "La $f(x, y) = x^3 + 6xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "8"
+				},
+				{
+					"id": "exam03-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 3$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt[6]{2} \\sqrt[3]{3}"
+				},
+				{
+					"id": "exam03-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle y - 1,\\ x\\rangle$ langs linjestykket som går frå $(1, 0)$ til $(3, 2)$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam03-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (2xy + 4)\\,\\vec i + (x^2 + 6y^2 + 1)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "8"
+				},
+				{
+					"id": "exam03-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - 2x^2)\\,\\vec i + (x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 4$ og $y = x$.",
+					"answer": "-64"
+				}
+			]
+		},
+		{
+			"id": "exam04",
+			"name": "Øveeksamen 4",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam04-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -1 & 1 \\\\ -16 & -1 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "4"
+				},
+				{
+					"id": "exam04-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 3x_1^2 + 3x_2^2 - 2x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam04-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -12s & a \\\\ 5s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{12}{13}"
+				},
+				{
+					"id": "exam04-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 1),$$ der $A = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ og $\\vec b = (2, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam04-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 1),$$ der $A = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ og $\\vec b = (2, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam04-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5} \\end{bmatrix}\\begin{bmatrix} 4 & 0 \\\\ 0 & 2 \\end{bmatrix}\\begin{bmatrix} \\frac{3}{5} & -\\frac{4}{5} \\\\ \\frac{4}{5} & \\frac{3}{5} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "16"
+				},
+				{
+					"id": "exam04-6",
+					"text": "La $f(x, y) = x^3 + 9xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "27"
+				},
+				{
+					"id": "exam04-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 4$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "2^{\\frac{5}{6}}"
+				},
+				{
+					"id": "exam04-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle x - y,\\ 2x + y\\rangle$ langs linjestykket som går frå $(2, 1)$ til $(4, 3)$.",
+					"answer": "18"
+				},
+				{
+					"id": "exam04-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (6xy - 1)\\,\\vec i + (3x^2 + 4y^3 + 2)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "5"
+				},
+				{
+					"id": "exam04-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - 3x^2)\\,\\vec i + (x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 2$ og $y = x$.",
+					"answer": "- \\frac{40}{3}"
+				}
+			]
+		},
+		{
+			"id": "exam05",
+			"name": "Øveeksamen 5",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam05-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -5 & 3 \\\\ -3 & -5 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "1"
+				},
+				{
+					"id": "exam05-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 7x_1^2 + 5x_2^2 - 6x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "6 - \\sqrt{10}"
+				},
+				{
+					"id": "exam05-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -8s & a \\\\ 15s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{8}{17}"
+				},
+				{
+					"id": "exam05-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (2, -1),$$ der $A = \\begin{bmatrix} -1 & 2 \\\\ 0 & 1 \\end{bmatrix}$ og $\\vec b = (0, 2)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "0"
+				},
+				{
+					"id": "exam05-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (2, -1),$$ der $A = \\begin{bmatrix} -1 & 2 \\\\ 0 & 1 \\end{bmatrix}$ og $\\vec b = (0, 2)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam05-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\end{bmatrix}\\begin{bmatrix} \\frac{5}{2} & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "\\frac{25}{4}"
+				},
+				{
+					"id": "exam05-6",
+					"text": "La $f(x, y) = x^3 + 12xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "64"
+				},
+				{
+					"id": "exam05-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 5$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt[6]{2} \\sqrt[3]{5}"
+				},
+				{
+					"id": "exam05-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle 2y + 1,\\ -x + y\\rangle$ langs linjestykket som går frå $(1, 1)$ til $(2, 4)$.",
+					"answer": "9"
+				},
+				{
+					"id": "exam05-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (2xy + 2)\\,\\vec i + (x^2 + 6y - 3)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "3"
+				},
+				{
+					"id": "exam05-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - 2x^2)\\,\\vec i + (3x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 3$ og $y = x$.",
+					"answer": "-27"
+				}
+			]
+		},
+		{
+			"id": "exam06",
+			"name": "Øveeksamen 6",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam06-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -2 & 2 \\\\ -8 & -2 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "2"
+				},
+				{
+					"id": "exam06-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 2x_1^2 + 6x_2^2 - 4x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "4 - 2 \\sqrt{2}"
+				},
+				{
+					"id": "exam06-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -15s & a \\\\ 8s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{15}{17}"
+				},
+				{
+					"id": "exam06-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 3),$$ der $A = \\begin{bmatrix} 1 & 0 \\\\ 2 & -2 \\end{bmatrix}$ og $\\vec b = (1, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "3"
+				},
+				{
+					"id": "exam06-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 3),$$ der $A = \\begin{bmatrix} 1 & 0 \\\\ 2 & -2 \\end{bmatrix}$ og $\\vec b = (1, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "5"
+				},
+				{
+					"id": "exam06-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5} \\end{bmatrix}\\begin{bmatrix} 3 & 0 \\\\ 0 & 2 \\end{bmatrix}\\begin{bmatrix} \\frac{3}{5} & -\\frac{4}{5} \\\\ \\frac{4}{5} & \\frac{3}{5} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "9"
+				},
+				{
+					"id": "exam06-6",
+					"text": "La $f(x, y) = x^3 + 4xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "\\frac{64}{27}"
+				},
+				{
+					"id": "exam06-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 6$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt{2} \\sqrt[3]{3}"
+				},
+				{
+					"id": "exam06-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle 3x - 2,\\ y + 1\\rangle$ langs linjestykket som går frå $(0, 1)$ til $(2, 2)$.",
+					"answer": "\\frac{9}{2}"
+				},
+				{
+					"id": "exam06-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (4xy - 2)\\,\\vec i + (2x^2 + 5y^4 + 4)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "5"
+				},
+				{
+					"id": "exam06-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - x^2)\\,\\vec i + (-x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 2$ og $y = x$.",
+					"answer": "- \\frac{8}{3}"
+				}
+			]
+		},
+		{
+			"id": "exam07",
+			"name": "Øveeksamen 7",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam07-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -3 & 4 \\\\ -4 & -3 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "1"
+				},
+				{
+					"id": "exam07-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 8x_1^2 + 4x_2^2 - 6x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "6 - \\sqrt{13}"
+				},
+				{
+					"id": "exam07-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -7s & a \\\\ 24s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{7}{25}"
+				},
+				{
+					"id": "exam07-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 0),$$ der $A = \\begin{bmatrix} 0 & 3 \\\\ -1 & 1 \\end{bmatrix}$ og $\\vec b = (1, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "3"
+				},
+				{
+					"id": "exam07-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 0),$$ der $A = \\begin{bmatrix} 0 & 3 \\\\ -1 & 1 \\end{bmatrix}$ og $\\vec b = (1, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "-1"
+				},
+				{
+					"id": "exam07-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\end{bmatrix}\\begin{bmatrix} \\sqrt{7} & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "7"
+				},
+				{
+					"id": "exam07-6",
+					"text": "La $f(x, y) = x^3 + 7xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "\\frac{343}{27}"
+				},
+				{
+					"id": "exam07-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 7$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt[6]{2} \\sqrt[3]{7}"
+				},
+				{
+					"id": "exam07-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle x + y,\\ -2x + 1\\rangle$ langs linjestykket som går frå $(1, 2)$ til $(3, 1)$.",
+					"answer": "10"
+				},
+				{
+					"id": "exam07-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (2xy)\\,\\vec i + (x^2 + 6y^2 + 3)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "6"
+				},
+				{
+					"id": "exam07-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - 4x^2)\\,\\vec i + (x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 2$ og $y = x$.",
+					"answer": "- \\frac{56}{3}"
+				}
+			]
+		},
+		{
+			"id": "exam08",
+			"name": "Øveeksamen 8",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam08-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -6 & 1 \\\\ -25 & -6 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "5"
+				},
+				{
+					"id": "exam08-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 5x_1^2 + 5x_2^2 - 8x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "1"
+				},
+				{
+					"id": "exam08-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -24s & a \\\\ 7s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{24}{25}"
+				},
+				{
+					"id": "exam08-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 2),$$ der $A = \\begin{bmatrix} 2 & 1 \\\\ -1 & 0 \\end{bmatrix}$ og $\\vec b = (0, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "16"
+				},
+				{
+					"id": "exam08-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 2),$$ der $A = \\begin{bmatrix} 2 & 1 \\\\ -1 & 0 \\end{bmatrix}$ og $\\vec b = (0, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "-4"
+				},
+				{
+					"id": "exam08-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5} \\end{bmatrix}\\begin{bmatrix} 5 & 0 \\\\ 0 & 3 \\end{bmatrix}\\begin{bmatrix} \\frac{3}{5} & -\\frac{4}{5} \\\\ \\frac{4}{5} & \\frac{3}{5} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "25"
+				},
+				{
+					"id": "exam08-6",
+					"text": "La $f(x, y) = x^3 + 8xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "\\frac{512}{27}"
+				},
+				{
+					"id": "exam08-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 8$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "2 \\sqrt[6]{2}"
+				},
+				{
+					"id": "exam08-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle -y + 2,\\ x + y\\rangle$ langs linjestykket som går frå $(2, 0)$ til $(3, 3)$.",
+					"answer": "\\frac{25}{2}"
+				},
+				{
+					"id": "exam08-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (8xy + 1)\\,\\vec i + (4x^2 + 2y - 1)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "5"
+				},
+				{
+					"id": "exam08-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - x^2)\\,\\vec i + (2x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 5$ og $y = x$.",
+					"answer": "- \\frac{125}{3}"
+				}
+			]
+		},
+		{
+			"id": "exam09",
+			"name": "Øveeksamen 9",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam09-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -4 & 5 \\\\ -5 & -4 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "1"
+				},
+				{
+					"id": "exam09-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 4x_1^2 + 2x_2^2 - 2x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "3 - \\sqrt{2}"
+				},
+				{
+					"id": "exam09-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -20s & a \\\\ 21s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{20}{29}"
+				},
+				{
+					"id": "exam09-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 1),$$ der $A = \\begin{bmatrix} -2 & 1 \\\\ 1 & -2 \\end{bmatrix}$ og $\\vec b = (1, -1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "-1"
+				},
+				{
+					"id": "exam09-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 1),$$ der $A = \\begin{bmatrix} -2 & 1 \\\\ 1 & -2 \\end{bmatrix}$ og $\\vec b = (1, -1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "1"
+				},
+				{
+					"id": "exam09-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\end{bmatrix}\\begin{bmatrix} \\frac{7}{2} & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "\\frac{49}{4}"
+				},
+				{
+					"id": "exam09-6",
+					"text": "La $f(x, y) = x^3 + 10xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "\\frac{1000}{27}"
+				},
+				{
+					"id": "exam09-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 9$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt[6]{2} \\cdot 3^{\\frac{2}{3}}"
+				},
+				{
+					"id": "exam09-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle 2x + 1,\\ x - y\\rangle$ langs linjestykket som går frå $(1, 1)$ til $(3, 4)$.",
+					"answer": "\\frac{17}{2}"
+				},
+				{
+					"id": "exam09-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (2xy - 4)\\,\\vec i + (x^2 + 4y^3 + 6)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam09-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - 3x^2)\\,\\vec i + (2x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 3$ og $y = x$.",
+					"answer": "-45"
+				}
+			]
+		},
+		{
+			"id": "exam10",
+			"name": "Øveeksamen 10",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam10-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -1 & 2 \\\\ -18 & -1 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "3"
+				},
+				{
+					"id": "exam10-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 9x_1^2 + 3x_2^2 - 6x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "6 - 3 \\sqrt{2}"
+				},
+				{
+					"id": "exam10-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -9s & a \\\\ 40s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{9}{41}"
+				},
+				{
+					"id": "exam10-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 1),$$ der $A = \\begin{bmatrix} 0 & 1 \\\\ -3 & 0 \\end{bmatrix}$ og $\\vec b = (2, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "7"
+				},
+				{
+					"id": "exam10-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (0, 1),$$ der $A = \\begin{bmatrix} 0 & 1 \\\\ -3 & 0 \\end{bmatrix}$ og $\\vec b = (2, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "-6"
+				},
+				{
+					"id": "exam10-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5} \\end{bmatrix}\\begin{bmatrix} 6 & 0 \\\\ 0 & 2 \\end{bmatrix}\\begin{bmatrix} \\frac{3}{5} & -\\frac{4}{5} \\\\ \\frac{4}{5} & \\frac{3}{5} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "36"
+				},
+				{
+					"id": "exam10-6",
+					"text": "La $f(x, y) = x^3 + 11xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "\\frac{1331}{27}"
+				},
+				{
+					"id": "exam10-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 10$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt{2} \\sqrt[3]{5}"
+				},
+				{
+					"id": "exam10-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle x + 2y,\\ y - 1\\rangle$ langs linjestykket som går frå $(0, 2)$ til $(2, 3)$.",
+					"answer": "\\frac{27}{2}"
+				},
+				{
+					"id": "exam10-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (4xy + 3)\\,\\vec i + (2x^2 + 6y^2 - 2)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "5"
+				},
+				{
+					"id": "exam10-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - 2x^2)\\,\\vec i + (2x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 2$ og $y = x$.",
+					"answer": "-8"
+				}
+			]
+		},
+		{
+			"id": "exam11",
+			"name": "Øveeksamen 11",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam11-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -2 & 3 \\\\ -12 & -2 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "2"
+				},
+				{
+					"id": "exam11-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 6x_1^2 + 6x_2^2 - 10x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "1"
+				},
+				{
+					"id": "exam11-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -12s & a \\\\ 35s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{12}{37}"
+				},
+				{
+					"id": "exam11-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 0),$$ der $A = \\begin{bmatrix} 1 & -1 \\\\ 1 & 1 \\end{bmatrix}$ og $\\vec b = (0, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam11-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (1, 0),$$ der $A = \\begin{bmatrix} 1 & -1 \\\\ 1 & 1 \\end{bmatrix}$ og $\\vec b = (0, 1)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "7"
+				},
+				{
+					"id": "exam11-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\end{bmatrix}\\begin{bmatrix} \\sqrt{10} & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{\\sqrt{3}}{2} & -\\frac{1}{2} \\\\ \\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "10"
+				},
+				{
+					"id": "exam11-6",
+					"text": "La $f(x, y) = x^3 + 15xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "125"
+				},
+				{
+					"id": "exam11-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 12$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "2^{\\frac{5}{6}} \\sqrt[3]{3}"
+				},
+				{
+					"id": "exam11-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle -x + y,\\ x + y + 1\\rangle$ langs linjestykket som går frå $(1, 1)$ til $(2, 2)$.",
+					"answer": "4"
+				},
+				{
+					"id": "exam11-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (2xy + 5)\\,\\vec i + (x^2 + 5y^4 + 1)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "8"
+				},
+				{
+					"id": "exam11-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - x^2)\\,\\vec i + (3x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 4$ og $y = x$.",
+					"answer": "- \\frac{64}{3}"
+				}
+			]
+		},
+		{
+			"id": "exam12",
+			"name": "Øveeksamen 12",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "exam12-1",
+					"text": "Gitt matrisa $A = \\begin{bmatrix} -5 & 1 \\\\ -36 & -5 \\end{bmatrix}$. La $\\vec v = (-1, z)$ vera eigenvektoren tilhøyrande eigenverdien med negativ imaginærdel. Finn imaginærdelen til $z$ (hugs at imaginærdelen til $p + qi$ er lik $q$, og ikkje $qi$).",
+					"answer": "6"
+				},
+				{
+					"id": "exam12-2",
+					"text": "Finn minimumsverdien av den kvadratiske forma $$Q(x_1, x_2) = 3x_1^2 + 7x_2^2 - 4x_1x_2$$ under bibetingelsen $x_1^2 + x_2^2 = 1$.",
+					"answer": "5 - 2 \\sqrt{2}"
+				},
+				{
+					"id": "exam12-3",
+					"text": "Matrisa $A = \\begin{bmatrix} -11s & a \\\\ 60s & b \\end{bmatrix}$ er ortogonal, og $a > 0$. Bestem $b$.",
+					"answer": "\\frac{11}{61}"
+				},
+				{
+					"id": "exam12-4a",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (-1, 1),$$ der $A = \\begin{bmatrix} 3 & 0 \\\\ 1 & 1 \\end{bmatrix}$ og $\\vec b = (1, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_1(2)$.",
+					"answer": "-11"
+				},
+				{
+					"id": "exam12-4b",
+					"text": "Bruk Eulers numeriske metode til å estimera løysinga $\\vec x(t)$ av startverdiproblemet $$\\vec x'(t) = A\\vec x(t) + \\vec b, \\quad \\vec x(0) = (-1, 1),$$ der $A = \\begin{bmatrix} 3 & 0 \\\\ 1 & 1 \\end{bmatrix}$ og $\\vec b = (1, 0)$, på intervallet $[0, 2]$ med steglengda $h = 1$. Tast inn approksimasjonen til $x_2(2)$.",
+					"answer": "-1"
+				},
+				{
+					"id": "exam12-5",
+					"text": "Gitt singulærverdidekomposisjonen til matrisa $A$: $$A = U\\Sigma V^T = \\begin{bmatrix} \\frac{4}{5} & -\\frac{3}{5} \\\\ \\frac{3}{5} & \\frac{4}{5} \\end{bmatrix}\\begin{bmatrix} 4 & 0 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\frac{3}{5} & -\\frac{4}{5} \\\\ \\frac{4}{5} & \\frac{3}{5} \\end{bmatrix}.$$ Bestem den største eigenverdien til matrisa $A^TA$.",
+					"answer": "16"
+				},
+				{
+					"id": "exam12-6",
+					"text": "La $f(x, y) = x^3 + 18xy + y^3$, $x, y \\in (-\\infty, \\infty)$. Finn den lokale maksimumsverdien av funksjonen.",
+					"answer": "216"
+				},
+				{
+					"id": "exam12-7",
+					"text": "Bestem punktet $P(x, y)$, $x, y > 0$, på kurva $x^2y = 15$ som ligg nærast origo. Tast inn koordinaten $x$ til $P$.",
+					"answer": "\\sqrt[3]{15} \\sqrt[6]{2}"
+				},
+				{
+					"id": "exam12-8",
+					"text": "Berekn arbeidet i vektorfeltet $\\vec F(x, y) = \\langle y + 1,\\ 2x - 1\\rangle$ langs linjestykket som går frå $(1, 0)$ til $(2, 1)$.",
+					"answer": "\\frac{7}{2}"
+				},
+				{
+					"id": "exam12-9",
+					"text": "Funksjonen $f(x, y)$ tilfredsstiller 2 krav: $f(0, 0) = 0$ og $\\nabla f(x, y) = \\vec F(x, y)$, der $$\\vec F = (6xy + 2)\\,\\vec i + (3x^2 + 2y - 4)\\,\\vec j$$ er eit konservativt vektorfelt. Rekn ut $f(1, 1)$.",
+					"answer": "2"
+				},
+				{
+					"id": "exam12-10",
+					"text": "Rekn ut fluksen til vektorfeltet $$\\vec F = (y^2 - 3x^2)\\,\\vec i + (3x^2 + y^2)\\,\\vec j$$ ut av trekanten avgrensa av linjene $y = 0$, $x = 2$ og $y = x$.",
+					"answer": "- \\frac{40}{3}"
+				}
+			]
+		},
+		{
+			"id": "examnew",
+			"name": "Øveeksamen 13 (ny, hele pensum)",
+			"group": "Øveeksamener",
+			"tolerance": 0.005,
+			"questions": [
+				{
+					"id": "examnew-1",
+					"text": "Finn den største egenverdien til $A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 0 \\end{bmatrix}$.",
+					"answer": "3"
+				},
+				{
+					"id": "examnew-2",
+					"text": "La $\\vec x_{k+1} = A\\vec x_k$ med $A = \\begin{bmatrix} \\frac{7}{10} & \\frac{1}{5} \\\\ \\frac{3}{10} & \\frac{4}{5} \\end{bmatrix}$ og $\\vec x_0 = (0, 1)$. Finn grenseverdien til andre komponent av $\\vec x_k$ når $k \\to \\infty$.",
+					"answer": "\\frac{3}{5}"
+				},
+				{
+					"id": "examnew-3",
+					"text": "Løs $\\vec x' = A\\vec x$ med $A = \\begin{bmatrix} -2 & 1 \\\\ 1 & -2 \\end{bmatrix}$ og $\\vec x(0) = (2, 0)$. Regn ut $x_1(1)$.",
+					"answer": "\\frac{1 + e^{2}}{e^{3}}"
+				},
+				{
+					"id": "examnew-4",
+					"text": "Finn minste kvadraters linje $y = \\beta_0 + \\beta_1 x$ for punkta $(0, 3)$, $(1, 2)$, $(2, 2)$ og $(3, 0)$. Tast inn $\\beta_1$.",
+					"answer": "- \\frac{9}{10}"
+				},
+				{
+					"id": "examnew-5",
+					"text": "Finn avstanden frå $\\vec y = (3, 1, 2)$ til planet $W = \\operatorname{Span}\\{(1, 1, 0), (1, -1, 1)\\}$.",
+					"answer": "\\frac{\\sqrt{6}}{3}"
+				},
+				{
+					"id": "examnew-6",
+					"text": "Finn den største singulærverdien til $A = \\begin{bmatrix} 2 & 2 \\\\ -1 & 1 \\end{bmatrix}$.",
+					"answer": "2 \\sqrt{2}"
+				},
+				{
+					"id": "examnew-7",
+					"text": "Finn maksimumsverdien av $f(x, y, z) = x + 2y + 2z$ under bibetingelsen $x^2 + y^2 + z^2 = 4$.",
+					"answer": "6"
+				},
+				{
+					"id": "examnew-8",
+					"text": "Bruk Greens teorem til å rekna ut $\\displaystyle\\oint_C (x - y)\\,dx + (x + y)\\,dy$, der $C$ er sirkelen $x^2 + y^2 = 4$ mot klokka.",
+					"answer": "8 \\pi"
+				},
+				{
+					"id": "examnew-9",
+					"text": "Rekn ut fluksen av $\\vec F = \\langle x + y,\\ y - z,\\ z + x\\rangle$ ut av kula $x^2 + y^2 + z^2 \\le 1$.",
+					"answer": "4 \\pi"
+				},
+				{
+					"id": "examnew-10",
+					"text": "Rekn ut fluksen av $\\vec F = \\langle 0, 0, z^2\\rangle$ oppover gjennom halvkula $x^2 + y^2 + z^2 = 1$, $z \\ge 0$.",
+					"answer": "\\frac{\\pi}{2}"
 				}
 			]
 		}
