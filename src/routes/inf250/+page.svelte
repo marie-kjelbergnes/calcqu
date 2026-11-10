@@ -57,7 +57,7 @@
 
 <main>
     {#if !category}
-        <h2>Multiple choice questions</h2>
+        <h2>INF250</h2>
         <ul class="categories">
             {#each categories as cat (cat.id)}
                 {@const s = stats(cat)}

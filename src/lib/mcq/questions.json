@@ -12,12 +12,16 @@
 				{
 					"question": "In the histogram shown, what do the horizontal and vertical axes represent?",
 					"options": ["Pixel count and image width", "Spatial position and intensity", "Contrast and brightness", "Intensity and pixel count"],
-					"answer": "D"
+					"answer": "D",
+					"image": "/mcq/histogram-axes.png",
+					"imageAlt": "Bar chart of a histogram h(i) for intensities i = 0 to 15, with the histogram vector below"
 				},
 				{
 					"question": "For the small image example, which intensity occurs three times?",
 					"options": ["20", "10", "50", "100"],
-					"answer": "A"
+					"answer": "A",
+					"image": "/mcq/histogram-small-image.png",
+					"imageAlt": "3×3 image: 10 10 20 / 20 20 50 / 50 100 100"
 				},
 				{
 					"question": "Which information cannot be obtained from an image histogram alone?",
@@ -52,12 +56,16 @@
 				{
 					"question": "Based on the examples, which scene has higher contrast?",
 					"options": ["A white rabbit on snow", "A black dog on snow", "Both have equal contrast", "Contrast cannot be judged visually"],
-					"answer": "B"
+					"answer": "B",
+					"image": "/mcq/contrast-examples.png",
+					"imageAlt": "Left: a white rabbit in snow. Right: a black dog standing in snow"
 				},
 				{
 					"question": "In the brightness sequence, what changes most directly from left to right?",
 					"options": ["Spatial resolution", "Number of objects", "Colour model", "Overall pixel intensity level"],
-					"answer": "D"
+					"answer": "D",
+					"image": "/mcq/brightness-sequence.png",
+					"imageAlt": "The same landscape drawing shown six times, from dark to very bright"
 				},
 				{
 					"question": "A histogram concentrated within a small intensity range usually indicates what?",
@@ -112,12 +120,16 @@
 				{
 					"question": "How many pixels are present in the 4×4 example image?",
 					"options": ["16", "8", "12", "32"],
-					"answer": "A"
+					"answer": "A",
+					"image": "/mcq/equalization-4x4.png",
+					"imageAlt": "4×4 matrix I = [0 0 1 1; 0 2 2 3; 3 3 4 4; 4 5 6 7]"
 				},
 				{
 					"question": "Which histogram matches the 4×4 example in the slides?",
 					"options": ["[1,1,1,1,3,3,3,3]", "[3,2,2,3,3,1,1,1]", "[3,3,2,2,1,1,3,1]", "[2,2,2,2,2,2,2,2]"],
-					"answer": "B"
+					"answer": "B",
+					"image": "/mcq/equalization-4x4.png",
+					"imageAlt": "4×4 matrix I = [0 0 1 1; 0 2 2 3; 3 3 4 4; 4 5 6 7]"
 				},
 				{
 					"question": "How is a normalized histogram value p(rₖ) calculated?",
@@ -152,7 +164,9 @@
 				{
 					"question": "Why does histogram equalization have little effect on the fourth example?",
 					"options": ["Its intensities already span almost the full scale", "It contains no pixels", "It is an RGB image", "Its histogram has only one bin"],
-					"answer": "A"
+					"answer": "A",
+					"image": "/mcq/equalization-examples.png",
+					"imageAlt": "Four images (dark, light, low-contrast, high-contrast) with their histograms before and after histogram equalization"
 				}
 			]
 		},
@@ -294,7 +308,9 @@
 				{
 					"question": "For the shown 3×3 neighbourhood, what output does the maximum filter produce?",
 					"options": ["16", "25", "41", "210"],
-					"answer": "D"
+					"answer": "D",
+					"image": "/mcq/filter-neighbourhood.png",
+					"imageAlt": "3×3 neighbourhood: 20 32 41 / 18 25 210 / 16 29 38"
 				},
 				{
 					"question": "Which effect is expected from a maximum filter?",
@@ -304,7 +320,9 @@
 				{
 					"question": "For the shown 3×3 neighbourhood, what output does the minimum filter produce?",
 					"options": ["210", "20", "16", "25"],
-					"answer": "C"
+					"answer": "C",
+					"image": "/mcq/filter-neighbourhood.png",
+					"imageAlt": "3×3 neighbourhood: 20 32 41 / 18 25 210 / 16 29 38"
 				},
 				{
 					"question": "Which classification of the filters is correct?",

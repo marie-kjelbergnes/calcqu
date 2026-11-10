@@ -1,12 +1,14 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.png';
 	import "../app.css"
+	import NavMenu from '$lib/NavMenu.svelte';
 
 	let { children } = $props();
 </script>
 
 <header class="title">
     <h1><a href="./">Calcqu</a><sup title="things might not work as intended">alpha</sup></h1>
+    <NavMenu />
 </header>
 
 <svelte:head>
@@ -25,6 +27,7 @@
 	
 
 	.title {
+        position: relative;
         display: flex;
         justify-content: center;
         padding: 1.5rem 0 1rem;

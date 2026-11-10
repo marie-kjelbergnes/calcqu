@@ -5,6 +5,7 @@
         type MathCategory, type Results, type Verdict
     } from "$lib/math_quiz";
     import { render_expression } from "$lib/common";
+    import FormulaSheet from "$lib/math_quiz/FormulaSheet.svelte";
 
     let results = $state<Results>({});
     let category = $state<MathCategory | null>(null);
@@ -12,6 +13,7 @@
     let input = $state("");
     let verdict = $state<Verdict | null>(null);
     let mfe: any = $state();
+    let sheet_open = $state(false);
 
     onMount(async () => {
         await import("mathlive");
@@ -95,9 +97,9 @@
     };
 </script>
 
-<main>
+<main class:with-sheet={sheet_open && category}>
     {#if !category}
-        <h2>Math questions</h2>
+        <h2>MATH123</h2>
         <p class="intro">Answer with an exact expression or a decimal number: <code>1/2</code>, <code>0.5</code> and <code>\frac{"{1}{2}"}</code> are all accepted. Use <code>i</code> for the imaginary unit and <code>e</code> for Euler's number.</p>
         {#each groups as [group, cats] (group)}
             <h3>{group}</h3>
@@ -119,6 +121,7 @@
             <button class="link" onclick={() => (category = null)}>&larr; Categories</button>
             <span>{category.name}</span>
             <span>{s.correct}/{s.total} correct</span>
+            <button class="link" onclick={() => (sheet_open = !sheet_open)} aria-expanded={sheet_open}>Formelsamling</button>
         </div>
 
         <nav class="dots">
@@ -180,6 +183,10 @@
     {/if}
 </main>
 
+{#if category}
+    <FormulaSheet bind:open={sheet_open} />
+{/if}
+
 <style>
     main {
         flex-grow: 1;
@@ -188,6 +195,13 @@
         width: 100%;
         margin: 0 auto;
         box-sizing: border-box;
+    }
+
+    /* make room for the formula sheet when the screen is wide enough to show both */
+    @media (min-width: 70rem) {
+        main.with-sheet {
+            margin-right: 28rem;
+        }
     }
 
     h2 {
