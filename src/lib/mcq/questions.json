@@ -3,6 +3,7 @@
 		{
 			"id": "histograms",
 			"name": "Histograms and histogram equalization",
+			"group": "Lecture quizzes",
 			"questions": [
 				{
 					"question": "What does an image histogram primarily show?",
@@ -173,6 +174,7 @@
 		{
 			"id": "filters",
 			"name": "Spatial image filters",
+			"group": "Lecture quizzes",
 			"questions": [
 				{
 					"question": "What is the main purpose of spatial filtering in image analysis?",

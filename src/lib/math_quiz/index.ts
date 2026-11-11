@@ -1,4 +1,3 @@
-import katex from "katex";
 import { ComputeEngine } from "@cortex-js/compute-engine";
 import data from "./questions.json";
 
@@ -58,25 +57,7 @@ export function grade(input: string, answer: string, tolerance = 0): Verdict {
     return "wrong";
 }
 
-function escape_html(text: string) {
-    return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-}
-
-/** Renders text containing $inline$ and $$display$$ math to html */
-export function render_text(text: string) {
-    return text
-        .split(/(\$\$[\s\S]+?\$\$|\$[^$]+?\$)/g)
-        .map((part) => {
-            if (part.startsWith("$$")) {
-                return katex.renderToString(part.slice(2, -2), { throwOnError: false, displayMode: true });
-            }
-            if (part.startsWith("$") && part.length > 1) {
-                return katex.renderToString(part.slice(1, -1), { throwOnError: false });
-            }
-            return escape_html(part);
-        })
-        .join("");
-}
+export { render_text } from "$lib/common";
 
 export type Status = "correct" | "wrong" | "revealed";
 

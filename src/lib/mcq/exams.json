@@ -1,0 +1,1205 @@
+{
+	"categories": [
+		{
+			"id": "exam-2024",
+			"name": "Exam 2024 (visible questions)",
+			"group": "Exams",
+			"description": "The questions from the 2024 exam that are readable in the Studocu sample. The answers are not official.",
+			"questions": [
+				{
+					"question": "How many grey levels are there in an 8-bit image?",
+					"options": [
+						"8",
+						"256",
+						"255",
+						"124"
+					],
+					"answer": "B",
+					"points": 2
+				},
+				{
+					"question": "Which of these is a technique to increase the contrast in the image?",
+					"options": [
+						"Laplace filter",
+						"Sobel filter",
+						"Unsharpening mask",
+						"Histogram equalisation"
+					],
+					"answer": "D",
+					"points": 2
+				},
+				{
+					"question": "What is a gradient based filter and what is it used for?",
+					"options": [
+						"A filter based on derivatives used to smooth the image",
+						"A filter based on the derivatives to enhance edges in an image",
+						"A filter based on derivatives to remove unwanted noise",
+						"A filter based on derivatives to increase the contrast"
+					],
+					"answer": "B",
+					"points": 2
+				},
+				{
+					"question": "What is a high pass filter?",
+					"options": [
+						"Blurring filter",
+						"Median filter",
+						"Removes high spatial frequency noise",
+						"Sharpening filter"
+					],
+					"answer": "D",
+					"points": 2
+				},
+				{
+					"question": "What is described by the loading matrix from a principal component analysis?",
+					"options": [
+						"Which variables have the largest effect on each component",
+						"The maximum variance of the data",
+						"The standard deviation of each component",
+						"The eigenvalues and eigenvectors"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"type": "written",
+					"points": 4,
+					"question": "Name two morphological operations and explain shortly how they work.",
+					"answer": "Erosion: the structuring element is moved over the image, and a pixel stays foreground (1) only if the whole structuring element fits inside the object (all pixels under it are 1). Objects shrink, small objects and thin parts disappear.\nDilation: a pixel becomes foreground if at least one pixel under the structuring element is 1. Objects grow, small holes and gaps are filled.\n(Also accepted: opening = erosion followed by dilation, removes small objects/noise; closing = dilation followed by erosion, fills small holes and gaps.)"
+				},
+				{
+					"type": "written",
+					"points": 6,
+					"question": "Describe how you can get from image $I_1$ to $I_2$ by applying one or several morphological operations. Describe the techniques you use, including the form of the filter/structuring element, and which of the pixels change after each operation.\n$$I_1 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,0 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,0 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,0 & {}^{\\color{gray}\\scriptscriptstyle h}\\,0 & {}^{\\color{gray}\\scriptscriptstyle i}\\,0 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,1 & {}^{\\color{gray}\\scriptscriptstyle l}\\,1 & {}^{\\color{gray}\\scriptscriptstyle m}\\,0 & {}^{\\color{gray}\\scriptscriptstyle n}\\,1 & {}^{\\color{gray}\\scriptscriptstyle o}\\,1 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,0 & {}^{\\color{gray}\\scriptscriptstyle r}\\,0 & {}^{\\color{gray}\\scriptscriptstyle s}\\,0 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,0 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array} \\qquad I_2 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,0 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,0 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,0 & {}^{\\color{gray}\\scriptscriptstyle h}\\,0 & {}^{\\color{gray}\\scriptscriptstyle i}\\,0 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,1 & {}^{\\color{gray}\\scriptscriptstyle l}\\,1 & {}^{\\color{gray}\\scriptscriptstyle m}\\,1 & {}^{\\color{gray}\\scriptscriptstyle n}\\,1 & {}^{\\color{gray}\\scriptscriptstyle o}\\,1 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,0 & {}^{\\color{gray}\\scriptscriptstyle r}\\,0 & {}^{\\color{gray}\\scriptscriptstyle s}\\,0 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,0 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array}$$",
+					"answer": "Dilation with a horizontal 1×3 structuring element [1 1 1] (centre in the middle). A pixel becomes 1 if it or its left or right neighbour is 1. In row k–o, m gets 1 from l and n, so m changes from 0 to 1. No other pixel changes: the rows above and below only contain 0, and a horizontal element does not spread the line vertically.\nAlternatively closing with the same 1×3 element: the dilation changes m (0 → 1), and the following erosion leaves the full row unchanged if pixels outside the image are treated as 1 (with zero padding k and o would be eroded).\nA 3×3 or vertical structuring element would not work, since it would also set f–j and p–t to 1."
+				},
+				{
+					"type": "truefalse",
+					"points": 20,
+					"question": "Choose true or false for the following statements.",
+					"statements": [
+						"Associativity is a property of all filters",
+						"Kurtosis is a measure of the symmetry of a histogram",
+						"The 0th moment of an object is the area of the object",
+						"The chroma is a measure of how an object reflects light",
+						"Cyan, magenta and yellow are the main components of the CIE LAB colour space",
+						"Principal component analysis is a non supervised technique",
+						"Prewitt is a gradient based filter",
+						"The human eye is more sensitive to light than colours",
+						"The visible spectrum goes from 380nm to 1250nm",
+						"Principal component analysis can be looked upon as a compression technique"
+					],
+					"answer": [
+						false,
+						false,
+						true,
+						false,
+						false,
+						true,
+						true,
+						true,
+						false,
+						true
+					]
+				},
+				{
+					"type": "match",
+					"points": 8,
+					"question": "Connect the right image to the right letter.",
+					"items": [
+						{
+							"text": "$$\\frac{1}{9} \\begin{bmatrix}1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$H_x^P = \\begin{bmatrix}-1 & 0 & 1 \\\\ -1 & 0 & 1 \\\\ -1 & 0 & 1\\end{bmatrix} \\quad H_y^P = \\begin{bmatrix}-1 & -1 & -1 \\\\ 0 & 0 & 0 \\\\ 1 & 1 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$h = \\frac{1}{9} \\begin{bmatrix}-1 & -1 & -1 \\\\ -1 & 8 & -1 \\\\ -1 & -1 & -1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$H_x^S = \\begin{bmatrix}-1 & 0 & 1 \\\\ -2 & 0 & 2 \\\\ -1 & 0 & 1\\end{bmatrix} \\quad H_y^S = \\begin{bmatrix}-1 & -2 & -1 \\\\ 0 & 0 & 0 \\\\ 1 & 2 & 1\\end{bmatrix}$$"
+						}
+					],
+					"choices": [
+						{
+							"text": "Mean filter"
+						},
+						{
+							"text": "Sobel filter"
+						},
+						{
+							"text": "Prewitt filter"
+						},
+						{
+							"text": "High pass filter"
+						}
+					],
+					"answer": [
+						0,
+						2,
+						3,
+						1
+					]
+				},
+				{
+					"type": "match",
+					"points": 2,
+					"question": "Connect image to correct histogram. (The histograms here are computed from the pictures.)",
+					"items": [
+						{
+							"image": "/mcq/exams/2024-11a-image-1.png",
+							"imageAlt": "Dark image of a window grid"
+						},
+						{
+							"image": "/mcq/exams/2024-11a-image-2.png",
+							"imageAlt": "Brighter image of the same window grid"
+						}
+					],
+					"choices": [
+						{
+							"image": "/mcq/exams/2024-11a-hist-1.png",
+							"imageAlt": "Histogram"
+						},
+						{
+							"image": "/mcq/exams/2024-11a-hist-2.png",
+							"imageAlt": "Histogram"
+						}
+					],
+					"answer": [
+						1,
+						0
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Principal component scores tell something about (select all that apply)",
+					"options": [
+						"Variables",
+						"Samples",
+						"Wavelengths"
+					],
+					"answer": [
+						"B"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Principal component loadings tell something about (select all that apply)",
+					"options": [
+						"Variables",
+						"Residuals",
+						"Pixels"
+					],
+					"answer": [
+						"A"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "A hyperspectral image is (select all that apply)",
+					"options": [
+						"An image with 10 discrete wavelength bands",
+						"A monochromatic image",
+						"An image with 100 or more continuous wavelength bands",
+						"An image with bands in red, green, blue, magenta, cyan and yellow"
+					],
+					"answer": [
+						"C"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "The Gaussian Maximum Likelihood algorithm is (select all that apply)",
+					"options": [
+						"A non-supervised classification algorithm",
+						"A supervised classification algorithm",
+						"A clustering algorithm",
+						"A compression technique"
+					],
+					"answer": [
+						"B"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "A CIE LAB colour space consists of (select all that apply)",
+					"options": [
+						"Lightness, a (green – red), b (yellow – blue)",
+						"Lightness, chroma, hue",
+						"Hue, a (green – red), b (yellow – blue)"
+					],
+					"answer": [
+						"A"
+					]
+				}
+			]
+		},
+		{
+			"id": "practice-1",
+			"name": "Practice exam 1",
+			"group": "Exams",
+			"description": "Practice exam in the style of the 2024 exam.",
+			"questions": [
+				{
+					"question": "What mainly determines the spatial resolution of a digital image?",
+					"options": [
+						"The number of pixels used to sample the scene",
+						"The number of grey levels",
+						"The number of colour channels",
+						"The file format"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"question": "Which of these is a point operation (each output pixel depends only on the corresponding input pixel)?",
+					"options": [
+						"Median filter",
+						"Gamma correction",
+						"Sobel filter",
+						"Dilation"
+					],
+					"answer": "B",
+					"points": 2
+				},
+				{
+					"question": "Which filter is best suited to remove salt-and-pepper noise while preserving edges?",
+					"options": [
+						"Mean filter",
+						"Gaussian filter",
+						"Median filter",
+						"Laplace filter"
+					],
+					"answer": "C",
+					"points": 2
+				},
+				{
+					"question": "What does a low pass filter do?",
+					"options": [
+						"Enhances edges",
+						"Removes high spatial frequencies and smooths the image",
+						"Increases the contrast",
+						"Detects corners"
+					],
+					"answer": "B",
+					"points": 2
+				},
+				{
+					"question": "In a principal component analysis, the first principal component is the direction that",
+					"options": [
+						"explains the largest variance in the data",
+						"is orthogonal to all the original variables",
+						"has the smallest eigenvalue",
+						"separates the classes best"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"type": "written",
+					"points": 4,
+					"question": "Explain the difference between opening and closing, and give an example of what each can be used for.",
+					"answer": "Opening is erosion followed by dilation with the same structuring element. The erosion removes objects (and parts of objects) that are smaller than the structuring element, and the dilation restores the size of the remaining objects. It is used to remove small bright objects/noise, break thin connections and smooth object contours from the inside.\nClosing is dilation followed by erosion. The dilation fills holes and gaps smaller than the structuring element, and the erosion restores the size. It is used to fill small holes in objects, close small gaps in contours and connect objects that are close together.\nBoth are idempotent: applying them a second time does not change the result."
+				},
+				{
+					"type": "fill",
+					"points": 4,
+					"question": "The image $I$ is filtered with the Laplace kernel $h$. Compute the output value at the pixel in row 2, column 2 (A) and at the pixel in row 3, column 3 (B).\n$$I = \\begin{array}{|c|c|c|c|}\\hline 10 & 10 & 10 & 10 \\\\ \\hline 10 & 50 & 50 & 10 \\\\ \\hline 10 & 50 & 90 & 10 \\\\ \\hline 10 & 10 & 10 & 10 \\\\ \\hline\\end{array} \\qquad h = \\begin{bmatrix}0 & 1 & 0 \\\\ 1 & -4 & 1 \\\\ 0 & 1 & 0\\end{bmatrix}$$",
+					"blanks": [
+						"A",
+						"B"
+					],
+					"answer": [
+						-80,
+						-240
+					]
+				},
+				{
+					"type": "written",
+					"points": 6,
+					"question": "Describe how you can get from image $I_1$ to $I_2$ by applying one or several morphological operations. Describe the techniques you use, including the form of the filter/structuring element, and which of the pixels change after each operation.\n$$I_1 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,1 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,0 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,1 & {}^{\\color{gray}\\scriptscriptstyle h}\\,1 & {}^{\\color{gray}\\scriptscriptstyle i}\\,1 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,0 & {}^{\\color{gray}\\scriptscriptstyle l}\\,1 & {}^{\\color{gray}\\scriptscriptstyle m}\\,1 & {}^{\\color{gray}\\scriptscriptstyle n}\\,1 & {}^{\\color{gray}\\scriptscriptstyle o}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,1 & {}^{\\color{gray}\\scriptscriptstyle r}\\,1 & {}^{\\color{gray}\\scriptscriptstyle s}\\,1 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,0 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array} \\qquad I_2 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,0 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,0 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,1 & {}^{\\color{gray}\\scriptscriptstyle h}\\,1 & {}^{\\color{gray}\\scriptscriptstyle i}\\,1 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,0 & {}^{\\color{gray}\\scriptscriptstyle l}\\,1 & {}^{\\color{gray}\\scriptscriptstyle m}\\,1 & {}^{\\color{gray}\\scriptscriptstyle n}\\,1 & {}^{\\color{gray}\\scriptscriptstyle o}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,1 & {}^{\\color{gray}\\scriptscriptstyle r}\\,1 & {}^{\\color{gray}\\scriptscriptstyle s}\\,1 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,0 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array}$$",
+					"answer": "Opening with a 3×3 square structuring element (erosion followed by dilation), with pixels outside the image treated as 0.\nErosion: a pixel stays 1 only if its whole 3×3 neighbourhood is 1. Only m fulfils this, so a, g, h, i, l, n, q, r and s change from 1 to 0.\nDilation: every pixel with m in its 3×3 neighbourhood becomes 1, so g, h, i, l, n, q, r and s change back to 1.\nThe result is that the isolated pixel a (noise) is removed, while the 3×3 object keeps its shape."
+				},
+				{
+					"type": "truefalse",
+					"points": 20,
+					"question": "Choose true or false for the following statements.",
+					"statements": [
+						"The median filter is a linear filter",
+						"Opening is idempotent: applying it twice gives the same result as applying it once",
+						"An RGB image with 8 bits per channel can represent $2^{24}$ different colours",
+						"Histogram equalisation does not change where objects are in the image",
+						"The Laplace filter approximates the first derivative of the image",
+						"Otsu's method chooses the threshold that minimises the within-class variance",
+						"In the HSV colour space, the V component describes the type of colour, e.g. red or green",
+						"Filtering with a 2D Gaussian kernel can be done as a horizontal and a vertical 1D filter",
+						"The skewness of a symmetric histogram is zero",
+						"K-means clustering is a supervised classification method"
+					],
+					"answer": [
+						false,
+						true,
+						true,
+						true,
+						false,
+						true,
+						false,
+						true,
+						true,
+						false
+					]
+				},
+				{
+					"type": "fill",
+					"points": 8,
+					"question": "The image below has 4 grey levels (0–3). Compute the grey-level co-occurrence matrix (GLCM) for the offset \"one pixel to the right\": cell $(i, j)$ counts how many times a pixel with value $i$ has a neighbour with value $j$ at that offset. Do not make the matrix symmetric or normalise it. Fill in the cells A–P.\n$$\\begin{array}{|c|c|c|c|c|c|}\\hline 1 & 3 & 2 & 1 & 0 & 3 \\\\ \\hline 1 & 2 & 2 & 1 & 1 & 3 \\\\ \\hline 3 & 3 & 0 & 1 & 0 & 3 \\\\ \\hline 2 & 0 & 3 & 3 & 1 & 2 \\\\ \\hline 0 & 1 & 2 & 0 & 3 & 3 \\\\ \\hline 2 & 2 & 3 & 1 & 1 & 1 \\\\ \\hline\\end{array}$$ $$\\begin{array}{c|cccc} i \\backslash j & 0 & 1 & 2 & 3 \\\\ \\hline 0 & A & B & C & D \\\\ 1 & E & F & G & H \\\\ 2 & I & J & K & L \\\\ 3 & M & N & O & P\\end{array}$$",
+					"blanks": [
+						"A",
+						"B",
+						"C",
+						"D",
+						"E",
+						"F",
+						"G",
+						"H",
+						"I",
+						"J",
+						"K",
+						"L",
+						"M",
+						"N",
+						"O",
+						"P"
+					],
+					"answer": [
+						0,
+						2,
+						0,
+						4,
+						2,
+						3,
+						3,
+						2,
+						2,
+						2,
+						2,
+						1,
+						1,
+						2,
+						1,
+						3
+					]
+				},
+				{
+					"type": "match",
+					"points": 8,
+					"question": "Connect each filter kernel to the right filter.",
+					"items": [
+						{
+							"text": "$$\\frac{1}{16} \\begin{bmatrix}1 & 2 & 1 \\\\ 2 & 4 & 2 \\\\ 1 & 2 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\begin{bmatrix}0 & 1 & 0 \\\\ 1 & -4 & 1 \\\\ 0 & 1 & 0\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\begin{bmatrix}-1 & 0 & 1 \\\\ -2 & 0 & 2 \\\\ -1 & 0 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\begin{bmatrix}0 & -1 & 0 \\\\ -1 & 5 & -1 \\\\ 0 & -1 & 0\\end{bmatrix}$$"
+						}
+					],
+					"choices": [
+						{
+							"text": "Sobel filter"
+						},
+						{
+							"text": "Gaussian filter"
+						},
+						{
+							"text": "Laplace filter"
+						},
+						{
+							"text": "Sharpening filter"
+						}
+					],
+					"answer": [
+						1,
+						2,
+						0,
+						3
+					]
+				},
+				{
+					"type": "match",
+					"points": 2,
+					"question": "Connect each image to the correct histogram.",
+					"items": [
+						{
+							"image": "/mcq/exams/practice-1-image-1.png",
+							"imageAlt": "Dark image"
+						},
+						{
+							"image": "/mcq/exams/practice-1-image-2.png",
+							"imageAlt": "Bright image"
+						}
+					],
+					"choices": [
+						{
+							"image": "/mcq/exams/practice-1-hist-1.png",
+							"imageAlt": "Histogram"
+						},
+						{
+							"image": "/mcq/exams/practice-1-hist-2.png",
+							"imageAlt": "Histogram"
+						}
+					],
+					"answer": [
+						1,
+						0
+					]
+				},
+				{
+					"question": "A histogram has a long tail towards the high intensities. What is the skewness of the histogram?",
+					"options": [
+						"Positive",
+						"Negative",
+						"Zero",
+						"It cannot be computed"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"type": "written",
+					"points": 4,
+					"question": "Describe the steps in a simple segmentation using global thresholding, and name one weakness of global thresholding.",
+					"answer": "1. Optionally pre-process the image, e.g. smooth it with a Gaussian or median filter to reduce noise.\n2. Look at the histogram and choose a threshold T, manually or automatically (e.g. Otsu's method, which minimises the within-class variance).\n3. Pixels above T become foreground (1) and the rest background (0), or the opposite for dark objects.\n4. Clean up the binary image with morphology (opening/closing) and label the connected components to get the objects.\nWeakness: one threshold for the whole image fails with uneven illumination or when the intensities of object and background overlap. Local/adaptive thresholding handles uneven illumination better."
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which of these are morphological operations? (select all that apply)",
+					"options": [
+						"Erosion",
+						"Dilation",
+						"Histogram equalisation",
+						"Opening"
+					],
+					"answer": [
+						"A",
+						"B",
+						"D"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which statements about a hyperspectral image are correct? (select all that apply)",
+					"options": [
+						"Each pixel contains a spectrum",
+						"It has only three bands",
+						"It can be seen as a 3D data cube (x, y, λ)",
+						"It is always binary"
+					],
+					"answer": [
+						"A",
+						"C"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which colour spaces separate the lightness/intensity from the colour information? (select all that apply)",
+					"options": [
+						"RGB",
+						"HSV",
+						"CIE LAB",
+						"CMY"
+					],
+					"answer": [
+						"B",
+						"C"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which filters are non-linear? (select all that apply)",
+					"options": [
+						"Median filter",
+						"Maximum filter",
+						"Gaussian filter",
+						"Sobel filter"
+					],
+					"answer": [
+						"A",
+						"B"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which methods are unsupervised? (select all that apply)",
+					"options": [
+						"K-means clustering",
+						"Principal component analysis",
+						"Gaussian maximum likelihood classification",
+						"Linear discriminant analysis"
+					],
+					"answer": [
+						"A",
+						"B"
+					]
+				}
+			]
+		},
+		{
+			"id": "practice-2",
+			"name": "Practice exam 2",
+			"group": "Exams",
+			"description": "Practice exam in the style of the 2024 exam.",
+			"questions": [
+				{
+					"question": "How many bits are needed to store 64 grey levels?",
+					"options": [
+						"4",
+						"6",
+						"8",
+						"64"
+					],
+					"answer": "B",
+					"points": 2
+				},
+				{
+					"question": "Which filter would you use to detect edges in an image?",
+					"options": [
+						"Mean filter",
+						"Median filter",
+						"Sobel filter",
+						"Gaussian filter"
+					],
+					"answer": "C",
+					"points": 2
+				},
+				{
+					"question": "An image with intensities normalised to [0, 1] is gamma corrected with $s = r^{\\gamma}$ and $\\gamma = 0.5$. What happens?",
+					"options": [
+						"The image becomes brighter",
+						"The image becomes darker",
+						"The image becomes binary",
+						"The image becomes blurred"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"question": "What is the main purpose of the Fourier transform in image analysis?",
+					"options": [
+						"To represent the image by its spatial frequencies",
+						"To find a threshold",
+						"To compute the moments of an object",
+						"To convert the image to HSV"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"question": "In a principal component analysis, what does the eigenvalue of a component tell you?",
+					"options": [
+						"How much of the variance the component explains",
+						"The number of samples",
+						"Which variables are most important",
+						"The classification accuracy"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"type": "written",
+					"points": 4,
+					"question": "Explain what the histogram of an image is, and give two examples of what it can be used for.",
+					"answer": "The histogram shows how many pixels there are of each grey level, i.e. the distribution of the intensities. (Normalised by the number of pixels it is the probability of each grey level.) It contains no information about where in the image the pixels are.\nUses, for example: judging exposure and contrast (dark, bright, low contrast, saturated/clipped pixels); choosing a threshold for segmentation (e.g. between the two peaks of a bimodal histogram, Otsu's method); contrast enhancement with histogram equalisation or contrast stretching; computing statistics such as mean, standard deviation, skewness and kurtosis."
+				},
+				{
+					"type": "fill",
+					"points": 4,
+					"question": "The image $I$ is filtered with the Gaussian kernel $h$. Compute the output value at the pixel in row 2, column 2 (A) and at the pixel in row 3, column 3 (B).\n$$I = \\begin{array}{|c|c|c|c|}\\hline 16 & 16 & 16 & 16 \\\\ \\hline 16 & 32 & 64 & 16 \\\\ \\hline 16 & 64 & 96 & 16 \\\\ \\hline 16 & 16 & 16 & 16 \\\\ \\hline\\end{array} \\qquad h = \\frac{1}{16} \\begin{bmatrix}1 & 2 & 1 \\\\ 2 & 4 & 2 \\\\ 1 & 2 & 1\\end{bmatrix}$$",
+					"blanks": [
+						"A",
+						"B"
+					],
+					"answer": [
+						37,
+						49
+					]
+				},
+				{
+					"type": "written",
+					"points": 6,
+					"question": "Describe how you can get from image $I_1$ to $I_2$ by applying one or several morphological operations. Describe the techniques you use, including the form of the filter/structuring element, and which of the pixels change after each operation.\n$$I_1 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,0 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,0 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,1 & {}^{\\color{gray}\\scriptscriptstyle h}\\,1 & {}^{\\color{gray}\\scriptscriptstyle i}\\,1 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,0 & {}^{\\color{gray}\\scriptscriptstyle l}\\,1 & {}^{\\color{gray}\\scriptscriptstyle m}\\,0 & {}^{\\color{gray}\\scriptscriptstyle n}\\,1 & {}^{\\color{gray}\\scriptscriptstyle o}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,1 & {}^{\\color{gray}\\scriptscriptstyle r}\\,1 & {}^{\\color{gray}\\scriptscriptstyle s}\\,1 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,0 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array} \\qquad I_2 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,0 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,0 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,1 & {}^{\\color{gray}\\scriptscriptstyle h}\\,1 & {}^{\\color{gray}\\scriptscriptstyle i}\\,1 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,0 & {}^{\\color{gray}\\scriptscriptstyle l}\\,1 & {}^{\\color{gray}\\scriptscriptstyle m}\\,1 & {}^{\\color{gray}\\scriptscriptstyle n}\\,1 & {}^{\\color{gray}\\scriptscriptstyle o}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,1 & {}^{\\color{gray}\\scriptscriptstyle r}\\,1 & {}^{\\color{gray}\\scriptscriptstyle s}\\,1 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,0 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array}$$",
+					"answer": "Closing with a 3×3 square structuring element (dilation followed by erosion), with pixels outside the image treated as 0.\nDilation: a pixel becomes 1 if there is at least one 1 in its 3×3 neighbourhood. That is true for every pixel, so the whole image becomes 1 (a–f, j, k, m, o, p, t and u–y change from 0 to 1).\nErosion: a pixel stays 1 only if its whole 3×3 neighbourhood is 1. The border pixels a–f, j, k, o, p, t and u–y have neighbours outside the image and change back to 0, while the inner pixels g, h, i, l, m, n, q, r and s stay 1.\nNet result: only m changes, the hole in the object is filled."
+				},
+				{
+					"type": "truefalse",
+					"points": 20,
+					"question": "Choose true or false for the following statements.",
+					"statements": [
+						"Erosion with a 3×3 square structuring element can make small objects disappear completely",
+						"The histogram tells where in the image the dark pixels are",
+						"The Sobel filter combines differentiation in one direction with smoothing in the other direction",
+						"Unsharp masking adds a high-pass filtered version of the image to the original image",
+						"The CIE LAB colour space is designed to be approximately perceptually uniform",
+						"Green light has a longer wavelength than red light",
+						"Thresholding a greyscale image gives a binary image",
+						"The first principal component always explains less variance than the second",
+						"A Gaussian filter with a larger σ gives more smoothing",
+						"The circularity $4\\pi A / P^2$ is largest for a long, thin object"
+					],
+					"answer": [
+						true,
+						false,
+						true,
+						true,
+						true,
+						false,
+						true,
+						false,
+						true,
+						false
+					]
+				},
+				{
+					"type": "fill",
+					"points": 8,
+					"question": "The image below has 4 grey levels (0–3). Compute the grey-level co-occurrence matrix (GLCM) for the offset \"one pixel down (the pixel directly below)\": cell $(i, j)$ counts how many times a pixel with value $i$ has a neighbour with value $j$ at that offset. Do not make the matrix symmetric or normalise it. Fill in the cells A–P.\n$$\\begin{array}{|c|c|c|c|c|c|}\\hline 0 & 1 & 1 & 1 & 1 & 3 \\\\ \\hline 0 & 2 & 0 & 1 & 1 & 1 \\\\ \\hline 1 & 2 & 1 & 3 & 3 & 0 \\\\ \\hline 3 & 3 & 3 & 1 & 1 & 3 \\\\ \\hline 2 & 2 & 3 & 1 & 1 & 2 \\\\ \\hline 1 & 1 & 2 & 0 & 0 & 1 \\\\ \\hline\\end{array}$$ $$\\begin{array}{c|cccc} i \\backslash j & 0 & 1 & 2 & 3 \\\\ \\hline 0 & A & B & C & D \\\\ 1 & E & F & G & H \\\\ 2 & I & J & K & L \\\\ 3 & M & N & O & P\\end{array}$$",
+					"blanks": [
+						"A",
+						"B",
+						"C",
+						"D",
+						"E",
+						"F",
+						"G",
+						"H",
+						"I",
+						"J",
+						"K",
+						"L",
+						"M",
+						"N",
+						"O",
+						"P"
+					],
+					"answer": [
+						1,
+						2,
+						0,
+						1,
+						4,
+						4,
+						1,
+						4,
+						0,
+						3,
+						1,
+						1,
+						0,
+						3,
+						4,
+						1
+					]
+				},
+				{
+					"type": "match",
+					"points": 8,
+					"question": "Connect each filter kernel to the right filter.",
+					"items": [
+						{
+							"text": "$$\\begin{bmatrix}-1 & -1 & -1 \\\\ 0 & 0 & 0 \\\\ 1 & 1 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\frac{1}{9} \\begin{bmatrix}1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\begin{bmatrix}1 & 1 & 1 \\\\ 1 & -8 & 1 \\\\ 1 & 1 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\begin{bmatrix}-1 & -2 & -1 \\\\ 0 & 0 & 0 \\\\ 1 & 2 & 1\\end{bmatrix}$$"
+						}
+					],
+					"choices": [
+						{
+							"text": "Mean filter"
+						},
+						{
+							"text": "Sobel filter"
+						},
+						{
+							"text": "Laplace filter"
+						},
+						{
+							"text": "Prewitt filter"
+						}
+					],
+					"answer": [
+						3,
+						0,
+						2,
+						1
+					]
+				},
+				{
+					"type": "match",
+					"points": 2,
+					"question": "Connect each image to the correct histogram.",
+					"items": [
+						{
+							"image": "/mcq/exams/practice-2-image-1.png",
+							"imageAlt": "Low-contrast image"
+						},
+						{
+							"image": "/mcq/exams/practice-2-image-2.png",
+							"imageAlt": "High-contrast image"
+						}
+					],
+					"choices": [
+						{
+							"image": "/mcq/exams/practice-2-hist-1.png",
+							"imageAlt": "Histogram"
+						},
+						{
+							"image": "/mcq/exams/practice-2-hist-2.png",
+							"imageAlt": "Histogram"
+						}
+					],
+					"answer": [
+						1,
+						0
+					]
+				},
+				{
+					"question": "Which statistic describes the spread of the histogram around its mean?",
+					"options": [
+						"Skewness",
+						"Kurtosis",
+						"Standard deviation",
+						"Mode"
+					],
+					"answer": "C",
+					"points": 2
+				},
+				{
+					"type": "written",
+					"points": 4,
+					"question": "What is the difference between supervised and unsupervised classification? Give one example of each.",
+					"answer": "Supervised: the classifier is trained on samples with known class labels (a training set) and then used to classify new samples. Examples: Gaussian maximum likelihood, linear discriminant analysis (LDA), k-nearest neighbours.\nUnsupervised: no class labels are used; the method finds groups/structure in the data by itself, and the groups have to be interpreted afterwards. Examples: k-means clustering, hierarchical clustering (PCA is also unsupervised, for exploring the data)."
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which filters can be used to reduce noise in an image? (select all that apply)",
+					"options": [
+						"Median filter",
+						"Gaussian filter",
+						"Laplace filter",
+						"Mean filter"
+					],
+					"answer": [
+						"A",
+						"B",
+						"D"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which of these are gradient based edge detectors? (select all that apply)",
+					"options": [
+						"Sobel",
+						"Prewitt",
+						"Median",
+						"Roberts"
+					],
+					"answer": [
+						"A",
+						"B",
+						"D"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which features describe the shape of an object? (select all that apply)",
+					"options": [
+						"Circularity",
+						"Mean intensity",
+						"Elongation (ratio of the axes)",
+						"Hue"
+					],
+					"answer": [
+						"A",
+						"C"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which components does the HSV colour space consist of? (select all that apply)",
+					"options": [
+						"Hue",
+						"Saturation",
+						"Value",
+						"Luminance a*"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Principal component loadings tell something about (select all that apply)",
+					"options": [
+						"Variables",
+						"Samples",
+						"Pixels"
+					],
+					"answer": [
+						"A"
+					]
+				}
+			]
+		},
+		{
+			"id": "practice-3",
+			"name": "Practice exam 3",
+			"group": "Exams",
+			"description": "Practice exam in the style of the 2024 exam.",
+			"questions": [
+				{
+					"question": "An RGB image with 8 bits per channel uses how many bits per pixel?",
+					"options": [
+						"8",
+						"16",
+						"24",
+						"32"
+					],
+					"answer": "C",
+					"points": 2
+				},
+				{
+					"question": "What is the effect of a maximum filter on a greyscale image?",
+					"options": [
+						"Bright regions expand (a dilation-like effect)",
+						"Dark regions expand",
+						"Edges are detected",
+						"The histogram becomes uniform"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"question": "Which method automatically finds a global threshold from the histogram?",
+					"options": [
+						"Otsu's method",
+						"The Sobel filter",
+						"Unsharp masking",
+						"Histogram equalisation"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"question": "What does the Laplace filter respond to?",
+					"options": [
+						"The second derivative of the intensity",
+						"The mean intensity of the neighbourhood",
+						"The direction of the gradient",
+						"The colour of the pixels"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"question": "What is a structuring element?",
+					"options": [
+						"A small shape that defines the neighbourhood used in a morphological operation",
+						"A colour model",
+						"A frequency in the Fourier transform",
+						"A bin in the histogram"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"type": "written",
+					"points": 4,
+					"question": "Explain how histogram equalisation works, and why the resulting histogram is usually not perfectly flat for a digital image.",
+					"answer": "Compute the histogram and normalise it, $p(r_k) = n_k / N$. Compute the cumulative distribution function $CDF(r_k) = \\sum_{j \\le k} p(r_j)$. Map each grey level with $s_k = \\text{round}((L-1) \\cdot CDF(r_k))$. Grey levels with many pixels are spread over a wider range, which increases the contrast.\nThe result is not perfectly flat because the grey levels are discrete: all pixels with the same input value get the same output value, so a large bin cannot be split, and rounding can merge several input levels into one output level so some output levels are never used."
+				},
+				{
+					"type": "fill",
+					"points": 4,
+					"question": "The image $I$ is filtered with a 3×3 mean filter and with a 3×3 median filter. Give the mean filter output at row 2, column 2 (A), the mean filter output at row 3, column 3 (B), and the median filter output at row 3, column 3 (C).\n$$I = \\begin{array}{|c|c|c|c|}\\hline 10 & 20 & 30 & 40 \\\\ \\hline 20 & 30 & 40 & 50 \\\\ \\hline 30 & 40 & 140 & 60 \\\\ \\hline 40 & 50 & 60 & 70 \\\\ \\hline\\end{array}$$",
+					"blanks": [
+						"A",
+						"B",
+						"C"
+					],
+					"answer": [
+						40,
+						60,
+						50
+					]
+				},
+				{
+					"type": "written",
+					"points": 6,
+					"question": "Describe how you can get from image $I_1$ to $I_2$ by applying one or several morphological operations. Describe the techniques you use, including the form of the filter/structuring element, and which of the pixels change after each operation.\n$$I_1 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,0 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,1 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,0 & {}^{\\color{gray}\\scriptscriptstyle h}\\,1 & {}^{\\color{gray}\\scriptscriptstyle i}\\,0 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,1 & {}^{\\color{gray}\\scriptscriptstyle l}\\,1 & {}^{\\color{gray}\\scriptscriptstyle m}\\,1 & {}^{\\color{gray}\\scriptscriptstyle n}\\,1 & {}^{\\color{gray}\\scriptscriptstyle o}\\,1 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,0 & {}^{\\color{gray}\\scriptscriptstyle r}\\,1 & {}^{\\color{gray}\\scriptscriptstyle s}\\,0 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,1 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array} \\qquad I_2 = \\begin{array}{|c|c|c|c|c|}\\hline {}^{\\color{gray}\\scriptscriptstyle a}\\,0 & {}^{\\color{gray}\\scriptscriptstyle b}\\,0 & {}^{\\color{gray}\\scriptscriptstyle c}\\,1 & {}^{\\color{gray}\\scriptscriptstyle d}\\,0 & {}^{\\color{gray}\\scriptscriptstyle e}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle f}\\,0 & {}^{\\color{gray}\\scriptscriptstyle g}\\,0 & {}^{\\color{gray}\\scriptscriptstyle h}\\,1 & {}^{\\color{gray}\\scriptscriptstyle i}\\,0 & {}^{\\color{gray}\\scriptscriptstyle j}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle k}\\,0 & {}^{\\color{gray}\\scriptscriptstyle l}\\,0 & {}^{\\color{gray}\\scriptscriptstyle m}\\,1 & {}^{\\color{gray}\\scriptscriptstyle n}\\,0 & {}^{\\color{gray}\\scriptscriptstyle o}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle p}\\,0 & {}^{\\color{gray}\\scriptscriptstyle q}\\,0 & {}^{\\color{gray}\\scriptscriptstyle r}\\,1 & {}^{\\color{gray}\\scriptscriptstyle s}\\,0 & {}^{\\color{gray}\\scriptscriptstyle t}\\,0 \\\\ \\hline {}^{\\color{gray}\\scriptscriptstyle u}\\,0 & {}^{\\color{gray}\\scriptscriptstyle v}\\,0 & {}^{\\color{gray}\\scriptscriptstyle w}\\,1 & {}^{\\color{gray}\\scriptscriptstyle x}\\,0 & {}^{\\color{gray}\\scriptscriptstyle y}\\,0 \\\\ \\hline\\end{array}$$",
+					"answer": "Opening with a vertical 3×1 structuring element (erosion followed by dilation), with pixels outside the image treated as 0.\nErosion: a pixel stays 1 only if it and the pixels directly above and below are 1. In the horizontal line k, l, n and o have 0 above and below and change to 0; c and w have a neighbour outside the image and also change to 0. Only h, m and r remain.\nDilation: every pixel directly above or below a 1 becomes 1, so c and w change back to 1.\nResult: the horizontal line is removed and the vertical line is kept. A vertical element keeps vertical structures that are at least 3 pixels long."
+				},
+				{
+					"type": "truefalse",
+					"points": 20,
+					"question": "Choose true or false for the following statements.",
+					"statements": [
+						"A colour image can be converted to greyscale with a weighted sum of R, G and B",
+						"The median filter can create new grey values that did not exist in the neighbourhood",
+						"Dilation followed by erosion with the same structuring element is called closing",
+						"The Fourier transform describes the frequency content of an image",
+						"Region growing starts from seed points and adds neighbouring pixels that fulfil a similarity criterion",
+						"Kurtosis describes how peaked or heavy-tailed a distribution is",
+						"Near-infrared light has a shorter wavelength than blue light",
+						"Linear discriminant analysis (LDA) is an unsupervised method",
+						"The zeroth order moment of a binary object equals its perimeter",
+						"Applying a 3×3 mean filter twice gives the same result as applying it once"
+					],
+					"answer": [
+						true,
+						false,
+						true,
+						true,
+						true,
+						true,
+						false,
+						false,
+						false,
+						false
+					]
+				},
+				{
+					"type": "fill",
+					"points": 8,
+					"question": "The image below has 4 grey levels (0–3). Compute the grey-level co-occurrence matrix (GLCM) for the offset \"one pixel down and one pixel to the right (diagonal)\": cell $(i, j)$ counts how many times a pixel with value $i$ has a neighbour with value $j$ at that offset. Do not make the matrix symmetric or normalise it. Fill in the cells A–P.\n$$\\begin{array}{|c|c|c|c|c|c|}\\hline 1 & 0 & 3 & 1 & 1 & 3 \\\\ \\hline 1 & 1 & 3 & 3 & 3 & 0 \\\\ \\hline 2 & 1 & 3 & 3 & 1 & 0 \\\\ \\hline 2 & 1 & 0 & 1 & 2 & 0 \\\\ \\hline 2 & 3 & 1 & 2 & 3 & 3 \\\\ \\hline 1 & 2 & 3 & 0 & 0 & 1 \\\\ \\hline\\end{array}$$ $$\\begin{array}{c|cccc} i \\backslash j & 0 & 1 & 2 & 3 \\\\ \\hline 0 & A & B & C & D \\\\ 1 & E & F & G & H \\\\ 2 & I & J & K & L \\\\ 3 & M & N & O & P\\end{array}$$",
+					"blanks": [
+						"A",
+						"B",
+						"C",
+						"D",
+						"E",
+						"F",
+						"G",
+						"H",
+						"I",
+						"J",
+						"K",
+						"L",
+						"M",
+						"N",
+						"O",
+						"P"
+					],
+					"answer": [
+						0,
+						0,
+						1,
+						1,
+						4,
+						3,
+						0,
+						3,
+						1,
+						1,
+						1,
+						2,
+						1,
+						3,
+						1,
+						3
+					]
+				},
+				{
+					"type": "match",
+					"points": 8,
+					"question": "Connect each filter kernel to the right filter.",
+					"items": [
+						{
+							"text": "$$\\begin{bmatrix}0 & -1 & 0 \\\\ -1 & 5 & -1 \\\\ 0 & -1 & 0\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\frac{1}{16} \\begin{bmatrix}1 & 2 & 1 \\\\ 2 & 4 & 2 \\\\ 1 & 2 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\begin{bmatrix}-1 & 0 & 1 \\\\ -1 & 0 & 1 \\\\ -1 & 0 & 1\\end{bmatrix}$$"
+						},
+						{
+							"text": "$$\\begin{bmatrix}0 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 0\\end{bmatrix}$$"
+						}
+					],
+					"choices": [
+						{
+							"text": "Prewitt filter"
+						},
+						{
+							"text": "Identity filter (no change)"
+						},
+						{
+							"text": "Sharpening filter"
+						},
+						{
+							"text": "Gaussian filter"
+						}
+					],
+					"answer": [
+						2,
+						3,
+						0,
+						1
+					]
+				},
+				{
+					"type": "match",
+					"points": 2,
+					"question": "Connect each image to the correct histogram.",
+					"items": [
+						{
+							"image": "/mcq/exams/practice-3-image-1.png",
+							"imageAlt": "Dark objects on a bright background"
+						},
+						{
+							"image": "/mcq/exams/practice-3-image-2.png",
+							"imageAlt": "Image with mostly medium grey values"
+						}
+					],
+					"choices": [
+						{
+							"image": "/mcq/exams/practice-3-hist-1.png",
+							"imageAlt": "Histogram"
+						},
+						{
+							"image": "/mcq/exams/practice-3-hist-2.png",
+							"imageAlt": "Histogram"
+						}
+					],
+					"answer": [
+						1,
+						0
+					]
+				},
+				{
+					"question": "A histogram with two clear peaks (bimodal) suggests that",
+					"options": [
+						"the image has two dominant intensity classes, e.g. object and background",
+						"the image is blurred",
+						"the image is a colour image",
+						"the image has no noise"
+					],
+					"answer": "A",
+					"points": 2
+				},
+				{
+					"type": "written",
+					"points": 4,
+					"question": "Explain what a hyperspectral image is and how principal component analysis can be used to analyse it.",
+					"answer": "A hyperspectral image is a 3D data cube (x, y, λ) where every pixel holds a full spectrum, typically 100 or more narrow, continuous wavelength bands.\nFor PCA the cube is unfolded to a matrix with one row per pixel (sample) and one column per wavelength (variable), usually mean centred. PCA finds orthogonal components that explain as much of the variance as possible. The scores (one value per pixel) are folded back to score images that show where in the image there are pixels with similar spectra, which is useful for finding structure and for segmentation. The loadings (one value per wavelength) show which wavelengths are important for each component. A few components often explain most of the variance, so PCA also compresses the data."
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which of these are point operations? (select all that apply)",
+					"options": [
+						"Histogram equalisation",
+						"Gamma correction",
+						"Median filter",
+						"Thresholding"
+					],
+					"answer": [
+						"A",
+						"B",
+						"D"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which methods can be used to segment an image? (select all that apply)",
+					"options": [
+						"Thresholding",
+						"Watershed",
+						"Region growing",
+						"Histogram equalisation"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which statements about principal component analysis are correct? (select all that apply)",
+					"options": [
+						"The components are orthogonal",
+						"The first component explains the most variance",
+						"It requires class labels",
+						"It can be used to reduce the number of variables"
+					],
+					"answer": [
+						"A",
+						"B",
+						"D"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which operations are idempotent (applying them twice gives the same result as once)? (select all that apply)",
+					"options": [
+						"Opening",
+						"Closing",
+						"Erosion",
+						"Mean filter"
+					],
+					"answer": [
+						"A",
+						"B"
+					]
+				},
+				{
+					"type": "multi",
+					"points": 2,
+					"question": "Which of these are texture measures that can be computed from the GLCM? (select all that apply)",
+					"options": [
+						"Contrast",
+						"Homogeneity",
+						"Energy",
+						"Hue"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				}
+			]
+		}
+	]
+}
