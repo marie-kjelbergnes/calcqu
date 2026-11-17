@@ -1,0 +1,1710 @@
+{
+	"categories": [
+		{
+			"id": "dat200-svm",
+			"name": "Support vector machines (linear)",
+			"group": "Lecture quizzes",
+			"description": "Maximum margin, support vectors, soft margin and the C parameter.",
+			"questions": [
+				{
+					"question": "What is the objective of a support vector classifier?",
+					"options": [
+						"Minimize the number of misclassified training samples",
+						"Maximize the margin between the decision boundary and the closest training samples",
+						"Maximize the conditional likelihood of the training data",
+						"Minimize the squared error between net input and labels"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What are the support vectors?",
+					"options": [
+						"All training samples of the minority class",
+						"The weight vector $\\mathbf{w}$ and the bias $b$",
+						"The training samples closest to the separating hyperplane",
+						"The samples furthest away from the decision boundary"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "What is the distance between the positive and the negative hyperplane in a (hard margin) SVM?",
+					"options": [
+						"$1/\\lVert\\mathbf{w}\\rVert_2$",
+						"$2/\\lVert\\mathbf{w}\\rVert_2$",
+						"$\\lVert\\mathbf{w}\\rVert_2/2$",
+						"$\\lVert\\mathbf{w}\\rVert_2^2$"
+					],
+					"answer": "B",
+					"note": "The margin itself (boundary to one hyperplane) is $\\gamma = 1/\\lVert\\mathbf{w}\\rVert_2$, so the gap between the two hyperplanes is $2\\gamma$."
+				},
+				{
+					"question": "Why is maximizing the margin equivalent to minimizing $\\mathbf{w}^T\\mathbf{w}$?",
+					"options": [
+						"Because $\\mathbf{w}^T\\mathbf{w}$ is always equal to the margin",
+						"Because the margin is $1/\\lVert\\mathbf{w}\\rVert_2$ and squaring a non-negative number is monotonically increasing",
+						"Because the bias $b$ is fixed to zero",
+						"Because the hinge loss is differentiable"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "For a support vector $\\mathbf{x}^{(i)}$ (a sample lying on one of the margin hyperplanes), which equation holds?",
+					"options": [
+						"$y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b) = 0$",
+						"$y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b) = 1$",
+						"$y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b) > 1$",
+						"$\\mathbf{x}^{(i)}\\mathbf{w}+b = 2$"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which class labels are used in the SVM formulation from the lecture?",
+					"options": [
+						"$\\{0, 1\\}$",
+						"$\\{-1, 1\\}$",
+						"$\\{1, 2\\}$",
+						"Any real number"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What do the slack variables $\\xi^{(i)}$ in the soft margin SVM allow?",
+					"options": [
+						"Samples inside the margin or even on the wrong side of the boundary",
+						"Nonlinear decision boundaries",
+						"More than two classes",
+						"Faster training with stochastic gradient descent"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "In the soft margin SVM, what happens when C is set to a very large value?",
+					"options": [
+						"Violations of the margin are hardly penalized, giving a wide margin",
+						"Violations of the margin are penalized strongly, giving a narrow margin and a risk of overfitting",
+						"The model becomes a decision tree",
+						"The number of support vectors always increases"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Decreasing C in a soft margin SVM ...",
+					"options": [
+						"increases variance and decreases bias",
+						"increases bias and decreases variance",
+						"has no effect on the bias–variance trade-off",
+						"removes all support vectors"
+					],
+					"answer": "B",
+					"note": "Small C → wide margin, more samples allowed inside it → risk of underfitting (high bias)."
+				},
+				{
+					"question": "The soft margin optimization problem can be written as a loss function. Which loss appears next to the $\\ell_2$ regularization term?",
+					"options": [
+						"Log-loss",
+						"Squared loss",
+						"Hinge loss $\\max\\{1 - y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b), 0\\}$",
+						"Zero-one loss"
+					],
+					"answer": "C"
+				},
+				{
+					"type": "truefalse",
+					"question": "Logistic regression versus linear SVM. Mark each statement true or false.",
+					"statements": [
+						"Logistic regression and linear SVM often yield very similar results.",
+						"Logistic regression is more prone to outliers than SVM, since it tries to maximize the conditional likelihood of all training data.",
+						"The SVM decision boundary depends mostly on the samples closest to it.",
+						"SVMs are simpler to implement than logistic regression."
+					],
+					"answer": [
+						true,
+						true,
+						true,
+						false
+					]
+				},
+				{
+					"question": "In the code example with blobs (C = 0.002 … 1000), how does the number of support vectors change as C increases?",
+					"options": [
+						"It increases",
+						"It decreases",
+						"It stays the same",
+						"It is always exactly 2"
+					],
+					"answer": "B",
+					"note": "With small C the margin is wide and many samples lie inside it, so they all become support vectors."
+				},
+				{
+					"type": "multi",
+					"question": "Which scikit-learn classes use the LIBLINEAR library according to the lecture?",
+					"options": [
+						"Perceptron",
+						"LogisticRegression",
+						"LinearSVC",
+						"SVC"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					],
+					"note": "SVC uses LIBSVM."
+				},
+				{
+					"question": "Which scikit-learn class lets you train an SVM with online learning (partial_fit) on a dataset that does not fit in memory?",
+					"options": [
+						"SVC(kernel='linear')",
+						"SGDClassifier(loss='hinge')",
+						"SGDClassifier(loss='log')",
+						"LinearSVC(dual=False)"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "For high-dimensional data (many features), linear classifiers ...",
+					"options": [
+						"always underfit",
+						"may act as a guard against overfitting",
+						"cannot be trained",
+						"are equivalent to k-NN"
+					],
+					"answer": "B"
+				}
+			]
+		},
+		{
+			"id": "dat200-kernels",
+			"name": "Kernel methods and kernel SVM",
+			"group": "Lecture quizzes",
+			"description": "Feature mappings, the kernel trick, typical kernels, kernel perceptron.",
+			"questions": [
+				{
+					"question": "What is the main idea behind kernel methods?",
+					"options": [
+						"Remove features until the data is linearly separable",
+						"Data that is not linearly separable may become linearly separable in a higher-dimensional feature space",
+						"Replace the loss function with a kernel",
+						"Average many decision trees"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "The feature mapping $\\phi(x_1, x_2) = (x_1, x_2, x_1^2 + x_2^2)$ makes which dataset linearly separable?",
+					"options": [
+						"Two concentric circles (one class inside the other)",
+						"Two parallel lines",
+						"Two blobs that are already linearly separable",
+						"Points on a straight line"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "What does the kernel trick allow us to do?",
+					"options": [
+						"Compute $\\phi(\\mathbf{x}^{(i)})\\phi(\\mathbf{x}^{(j)})^T$ directly in the original space without computing $\\phi$",
+						"Skip the hyperparameter tuning",
+						"Train an SVM without any support vectors",
+						"Compute gradients without a loss function"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "A kernel can be interpreted as a measure of ...",
+					"options": [
+						"the loss of a sample",
+						"the similarity between two samples",
+						"the margin of the classifier",
+						"the number of features"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "When is a kernel a valid (Mercer) kernel?",
+					"options": [
+						"When it is differentiable",
+						"When the kernel matrix is positive semi-definite",
+						"When the kernel matrix is diagonal",
+						"When it maps to a finite dimensional space"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "multi",
+					"question": "Which of these are kernels from the lecture?",
+					"options": [
+						"Linear: $\\mathbf{x}^{(i)}\\mathbf{x}^{(j)T}$",
+						"Polynomial: $(\\mathbf{x}^{(i)}\\mathbf{x}^{(j)T}+1)^p$",
+						"RBF: $\\exp(-\\gamma\\lVert\\mathbf{x}^{(i)}-\\mathbf{x}^{(j)}\\rVert_2^2)$",
+						"Sigmoid of the hinge loss"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"question": "For the quadratic kernel $(\\mathbf{x}^{(i)T}\\mathbf{x}^{(j)})^2$ with $m = 3$ features, how many features does the corresponding explicit mapping $\\phi$ have?",
+					"options": [
+						"3",
+						"6",
+						"9",
+						"27"
+					],
+					"answer": "C",
+					"note": "All products $x_k x_l$ for $k, l = 1..3$, i.e. $3^2 = 9$."
+				},
+				{
+					"type": "fill",
+					"question": "Compute the RBF kernel $\\kappa(\\mathbf{x}, \\mathbf{x}') = \\exp(-\\gamma\\lVert\\mathbf{x}-\\mathbf{x}'\\rVert_2^2)$ for $\\mathbf{x} = (1, 2)$, $\\mathbf{x}' = (2, 4)$ and $\\gamma = 0.1$ (3 decimals).",
+					"blanks": [
+						"$\\kappa =$"
+					],
+					"answer": [
+						0.607
+					],
+					"tolerance": 0.002,
+					"note": "$\\lVert\\mathbf{x}-\\mathbf{x}'\\rVert^2 = 1 + 4 = 5$, so $\\kappa = e^{-0.5} \\approx 0.607$."
+				},
+				{
+					"type": "fill",
+					"question": "Compute the polynomial kernel $(\\mathbf{x}\\mathbf{x}'^T + 1)^p$ for $\\mathbf{x} = (1, 2)$, $\\mathbf{x}' = (3, -1)$ and $p = 2$.",
+					"blanks": [
+						"$\\kappa =$"
+					],
+					"answer": [
+						4
+					],
+					"tolerance": 1e-06,
+					"note": "$\\mathbf{x}\\mathbf{x}'^T = 3 - 2 = 1$, so $(1+1)^2 = 4$."
+				},
+				{
+					"question": "In an RBF kernel SVM, what typically happens if $\\gamma$ is made very large (e.g. 50 in the XOR example)?",
+					"options": [
+						"The decision boundary becomes almost linear",
+						"The decision boundary forms tight 'islands' around the training samples, and the model overfits",
+						"All samples are classified as the same class",
+						"The number of support vectors becomes zero"
+					],
+					"answer": "B",
+					"note": "Large $\\gamma$ means the kernel is very local, so each sample only influences its close neighbourhood."
+				},
+				{
+					"question": "Which hyperparameters typically need to be tuned for an RBF kernel SVM?",
+					"options": [
+						"Only C",
+						"Only $\\gamma$",
+						"Both C and $\\gamma$",
+						"max_depth and n_estimators"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Why can the SVM be kernelized?",
+					"options": [
+						"Because its loss is the hinge loss",
+						"Because the data only occurs as inner products in the (dual) prediction and optimization",
+						"Because it uses gradient descent",
+						"Because it has only two classes"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "In the dual (kernel) perceptron, what does $\\alpha^{(j)}$ represent?",
+					"options": [
+						"The learning rate for sample $j$",
+						"The number of times sample $j$ was misclassified during training",
+						"The distance of sample $j$ to the boundary",
+						"The class label of sample $j$"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "In the kernel perceptron, how is a prediction made?",
+					"options": [
+						"$\\hat y = \\operatorname{sign}\\{\\mathbf{x}^{(i)}\\boldsymbol\\theta\\}$ with an explicit $\\boldsymbol\\theta$",
+						"$\\hat y = \\operatorname{sign}\\{\\sum_j \\alpha^{(j)} y^{(j)} \\kappa(\\mathbf{x}^{(i)}, \\mathbf{x}^{(j)})\\}$",
+						"By majority vote of the k nearest neighbours",
+						"$\\hat y = \\sigma(\\mathbf{x}^{(i)}\\mathbf{w}+b)$"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "truefalse",
+					"question": "Kernel SVM versus kernel logistic regression.",
+					"statements": [
+						"Kernel SVMs yield sparse kernel machines (only support vectors are needed).",
+						"Plain kernelized logistic regression uses all data points and is a dense kernel machine.",
+						"L1 regularization can make kernel logistic regression sparse.",
+						"Sparse kernel machines are slower at prediction than dense ones."
+					],
+					"answer": [
+						true,
+						true,
+						true,
+						false
+					]
+				},
+				{
+					"type": "multi",
+					"question": "Which algorithms can be kernelized according to the lecture?",
+					"options": [
+						"Perceptron",
+						"Logistic regression",
+						"Ridge regression",
+						"k-nearest neighbours"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C",
+						"D"
+					]
+				}
+			]
+		},
+		{
+			"id": "dat200-trees",
+			"name": "Decision trees",
+			"group": "Lecture quizzes",
+			"description": "Splits, impurity measures, information gain and pruning.",
+			"questions": [
+				{
+					"question": "What kind of hyperplanes does a decision tree use to partition the feature space?",
+					"options": [
+						"Arbitrarily oriented hyperplanes",
+						"Axis-oriented (axis-parallel) hyperplanes",
+						"Circles around the samples",
+						"Hyperplanes defined by support vectors"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What determines the model complexity of a decision tree?",
+					"options": [
+						"The number of classes",
+						"The tree depth (number of questions/splits)",
+						"The learning rate",
+						"The number of features after scaling"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "How does a decision tree choose the split at a node?",
+					"options": [
+						"Randomly",
+						"The split with the largest information gain",
+						"The split with the largest impurity",
+						"The split that produces equally sized children"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What is a pure node?",
+					"options": [
+						"A node with exactly one sample",
+						"A node where all samples belong to the same class",
+						"The root node",
+						"A node with impurity 1"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Why are trees with only pure leaf nodes usually a problem?",
+					"options": [
+						"They underfit",
+						"They are usually too deep and overfit",
+						"They cannot be visualized",
+						"They require feature scaling"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What does pruning a tree mean?",
+					"options": [
+						"Adding more splits",
+						"Removing branches or setting a limit on the maximum depth",
+						"Scaling the features",
+						"Training several trees on bootstrap samples"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which formula is the Gini impurity?",
+					"options": [
+						"$1 - \\max_c p(c\\mid D_n)$",
+						"$-\\sum_c p(c\\mid D_n)\\log_2 p(c\\mid D_n)$",
+						"$1 - \\sum_c p(c\\mid D_n)^2$",
+						"$\\sum_c p(c\\mid D_n)^2$"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Which formula is the entropy?",
+					"options": [
+						"$1 - \\max_c p(c\\mid D_n)$",
+						"$-\\sum_c p(c\\mid D_n)\\log_2 p(c\\mid D_n)$",
+						"$1 - \\sum_c p(c\\mid D_n)^2$",
+						"$\\sum_c p(c\\mid D_n)$"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "fill",
+					"question": "A node in a binary problem has 5 samples of class A and 5 of class B. Compute the impurities.",
+					"blanks": [
+						"Classification error",
+						"Gini impurity",
+						"Entropy"
+					],
+					"answer": [
+						0.5,
+						0.5,
+						1.0
+					],
+					"tolerance": 0.005
+				},
+				{
+					"type": "fill",
+					"question": "A parent node has 5 circles and 6 squares. It is split into $D_1$ (4 circles, 1 square) and $D_2$ (1 circle, 5 squares). Using classification error, compute $I_E(D_p)$ and the information gain (3 decimals).",
+					"blanks": [
+						"$I_E(D_p)$",
+						"IG"
+					],
+					"answer": [
+						0.455,
+						0.273
+					],
+					"tolerance": 0.006,
+					"note": "$I_E(D_p) = 1 - 6/11 \\approx 0.455$, $I_E(D_1) = 0.2$, $I_E(D_2) = 1/6$. IG $= 5/11 - (5/11)(0.2) - (6/11)(1/6) = 3/11 \\approx 0.273$ (the slide rounds $I_E(D_p)$ to 0.45 and gets 0.268)."
+				},
+				{
+					"type": "fill",
+					"question": "The root of the Iris tree has class counts [40, 41, 39]. Compute its Gini impurity (3 decimals).",
+					"blanks": [
+						"Gini"
+					],
+					"answer": [
+						0.667
+					],
+					"tolerance": 0.003,
+					"note": "$1 - (40^2 + 41^2 + 39^2)/120^2 = 1 - 4802/14400 \\approx 0.667$."
+				},
+				{
+					"question": "Which impurity measure is crossed out in practice, and why?",
+					"options": [
+						"Entropy, because it uses a logarithm",
+						"Gini, because it is too slow",
+						"Classification error, because it is not differentiable and less sensitive to changes in class probabilities",
+						"None of them, all are used equally"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "At which class probability $p$ is the impurity of a binary node largest?",
+					"options": [
+						"$p = 0$",
+						"$p = 0.25$",
+						"$p = 0.5$",
+						"$p = 1$"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Is feature scaling required for decision trees?",
+					"options": [
+						"Yes, always standardize first",
+						"No, and splits are easier to interpret on the original scale",
+						"Only for the entropy criterion",
+						"Only for trees deeper than 3"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Decision tree learning is an example of what kind of search algorithm?",
+					"options": [
+						"Exhaustive search",
+						"Greedy search (the best split is chosen locally)",
+						"Gradient descent",
+						"Newton's method"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "multi",
+					"question": "Which of these are hyperparameters of DecisionTreeClassifier?",
+					"options": [
+						"max_depth",
+						"min_samples_leaf",
+						"criterion",
+						"n_neighbors"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				}
+			]
+		},
+		{
+			"id": "dat200-forest",
+			"name": "Random forests",
+			"group": "Lecture quizzes",
+			"description": "Bagging, bootstrap samples, random feature subsets and voting.",
+			"questions": [
+				{
+					"question": "What is a random forest?",
+					"options": [
+						"A single very deep decision tree",
+						"An ensemble of decision trees combined by majority vote",
+						"A kernel SVM with a tree-shaped kernel",
+						"A k-NN classifier with random k"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What does bagging stand for?",
+					"options": [
+						"Batch gradient descent",
+						"Bootstrap aggregating",
+						"Binary aggregated gain",
+						"Balanced bagging of trees"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "How is a bootstrap sample drawn?",
+					"options": [
+						"n samples drawn without replacement",
+						"n samples drawn with replacement",
+						"n/2 samples drawn without replacement",
+						"All samples, shuffled"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "truefalse",
+					"question": "Bootstrap samples. Mark each statement true or false.",
+					"statements": [
+						"A sample from the original data can occur several times in a bootstrap sample.",
+						"Some samples of the original data may not occur in a bootstrap sample at all.",
+						"Every tree in the forest is trained on exactly the same data.",
+						"The bootstrap sample size is usually equal to the training set size."
+					],
+					"answer": [
+						true,
+						true,
+						false,
+						true
+					]
+				},
+				{
+					"question": "At each node of a tree in a random forest, how are the candidate features chosen?",
+					"options": [
+						"All features are always used",
+						"d features are randomly selected without replacement",
+						"d features are randomly selected with replacement",
+						"Only the feature with the highest correlation to the target"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What is the usual number of features randomly selected at each split, for m features?",
+					"options": [
+						"$m$",
+						"$m/2$",
+						"$\\sqrt{m}$",
+						"$\\log_2 m$"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Why does averaging many trees help?",
+					"options": [
+						"It decreases the variance without increasing the bias",
+						"It decreases the bias but increases the variance",
+						"It makes each tree deeper",
+						"It makes the model easier to interpret"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "How does a random forest make its final prediction for classification?",
+					"options": [
+						"Uses the deepest tree",
+						"Majority vote over the predictions of the trees",
+						"Uses the first tree only",
+						"Average of the feature importances"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "multi",
+					"question": "Which statements about random forests are true according to the lecture?",
+					"options": [
+						"They are less interpretable than a single decision tree",
+						"Typically, more trees are better",
+						"They have many hyperparameters that must be tuned carefully",
+						"Trees can be computed in parallel (n_jobs)"
+					],
+					"answer": [
+						"A",
+						"B",
+						"D"
+					]
+				},
+				{
+					"question": "Which hyperparameter sets the number of trees in RandomForestClassifier?",
+					"options": [
+						"max_depth",
+						"n_estimators",
+						"n_jobs",
+						"max_features"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Compared to a single decision tree, the decision boundary of a random forest is usually ...",
+					"options": [
+						"more jagged and overfitted",
+						"smoother, with better generalization",
+						"always linear",
+						"identical"
+					],
+					"answer": "B"
+				}
+			]
+		},
+		{
+			"id": "dat200-knn",
+			"name": "k-nearest neighbours",
+			"group": "Lecture quizzes",
+			"description": "The algorithm, distance metrics, choice of k and parametric vs non-parametric models.",
+			"questions": [
+				{
+					"question": "Why is k-NN called a lazy learner?",
+					"options": [
+						"It uses a small learning rate",
+						"It does not learn a discriminative function, but memorizes the training data",
+						"It only uses one neighbour",
+						"It stops training early"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "In the 5-NN example, the 5 nearest neighbours are 1 plus, 1 circle and 3 triangles. What is predicted?",
+					"options": [
+						"Plus",
+						"Circle",
+						"Triangle",
+						"It is a tie"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "How are ties broken in the k-NN algorithm from the lecture?",
+					"options": [
+						"Randomly",
+						"Take the class of the closest neighbour, and if still tied use the lowest label",
+						"Increase k by one",
+						"Choose the most frequent class in the whole training set"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "The Minkowski distance with p = 1 is the ...",
+					"options": [
+						"Euclidean distance",
+						"Manhattan distance",
+						"Cosine distance",
+						"Chebyshev distance"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "The Minkowski distance with p = 2 is the ...",
+					"options": [
+						"Euclidean distance",
+						"Manhattan distance",
+						"Hamming distance",
+						"Correlation distance"
+					],
+					"answer": "A"
+				},
+				{
+					"type": "fill",
+					"question": "Compute the distances between $(1, 2)$ and $(4, 6)$.",
+					"blanks": [
+						"Manhattan",
+						"Euclidean"
+					],
+					"answer": [
+						7,
+						5
+					],
+					"tolerance": 1e-06
+				},
+				{
+					"question": "What happens when k is lowered (e.g. k = 1)?",
+					"options": [
+						"The model becomes simpler with higher bias",
+						"The model becomes more complex with higher variance",
+						"Prediction becomes more expensive",
+						"The decision boundary becomes linear"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "truefalse",
+					"question": "Choosing k. Mark each statement true or false.",
+					"statements": [
+						"Higher k gives less variance.",
+						"Higher k may increase the bias because far away neighbours are consulted.",
+						"Higher k makes prediction cheaper.",
+						"Tuning k and the distance metric balances over- and underfitting."
+					],
+					"answer": [
+						true,
+						true,
+						false,
+						true
+					]
+				},
+				{
+					"question": "What is the curse of dimensionality for k-NN?",
+					"options": [
+						"Training takes exponential time",
+						"With many features the feature space is sparsely populated, so neighbours are far away and not informative, causing overfitting",
+						"Distances cannot be computed in more than 3 dimensions",
+						"k must be larger than the number of features"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "multi",
+					"question": "Which of these are non-parametric models?",
+					"options": [
+						"k-NN",
+						"Kernel SVM",
+						"Kernel perceptron",
+						"Logistic regression"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"type": "multi",
+					"question": "Which of these are parametric models?",
+					"options": [
+						"Perceptron",
+						"Adaline",
+						"Linear SVM",
+						"k-NN"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"question": "What characterizes a non-parametric model?",
+					"options": [
+						"It has no hyperparameters",
+						"The number of parameters grows with the amount of training data, and (some of) the training data is needed for prediction",
+						"It cannot be used for classification",
+						"It always overfits"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which data structure can lower the prediction cost of k-NN?",
+					"options": [
+						"Hash table",
+						"k-d tree",
+						"Linked list",
+						"Stack"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which scikit-learn class implements k-NN?",
+					"options": [
+						"sklearn.neighbors.KNeighborsClassifier",
+						"sklearn.svm.KNN",
+						"sklearn.tree.NeighborsTree",
+						"sklearn.cluster.KMeans"
+					],
+					"answer": "A",
+					"note": "KMeans is a clustering algorithm (unsupervised), not k-NN."
+				}
+			]
+		},
+		{
+			"id": "dat200-preprocessing",
+			"name": "Preprocessing: missing values, encoding, scaling",
+			"group": "Lecture quizzes",
+			"description": "Building good training sets (Ch. 4).",
+			"questions": [
+				{
+					"question": "What is a drawback of simply removing samples or features with NaN values?",
+					"options": [
+						"It is slow",
+						"For small datasets or bad data quality, too much data may be removed",
+						"It changes the class labels",
+						"It makes the data non-numeric"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What does df.dropna(axis=1) do?",
+					"options": [
+						"Removes rows that contain NaN",
+						"Removes columns that contain NaN",
+						"Replaces NaN with 0",
+						"Removes duplicate rows"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "fill",
+					"question": "Column C has the values 3, NaN, 12. What does SimpleImputer(strategy='mean') put in place of NaN?",
+					"blanks": [
+						"Imputed value"
+					],
+					"answer": [
+						7.5
+					],
+					"tolerance": 1e-06
+				},
+				{
+					"type": "multi",
+					"question": "Which strategies does SimpleImputer offer according to the lecture?",
+					"options": [
+						"mean",
+						"median",
+						"most frequent value",
+						"k-NN of the sample"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"question": "When is it reasonable to remove outliers using a Z-score threshold (e.g. $|z| > 3$)?",
+					"options": [
+						"Always",
+						"When we are sure we are not interested in performing well on outliers, and the data is roughly normally distributed",
+						"Only for categorical features",
+						"Only for the test set"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "fill",
+					"question": "A feature has mean 10 and standard deviation 2. What is the Z-score of the value 16?",
+					"blanks": [
+						"z"
+					],
+					"answer": [
+						3
+					],
+					"tolerance": 1e-06
+				},
+				{
+					"question": "T-shirt size {S, M, L, XL} is an example of a ...",
+					"options": [
+						"nominal feature",
+						"ordinal feature",
+						"continuous feature",
+						"class label"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "T-shirt colour {Red, Blue, Green} is an example of a ...",
+					"options": [
+						"nominal feature",
+						"ordinal feature",
+						"numeric feature",
+						"binary feature"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "How should a nominal feature typically be encoded?",
+					"options": [
+						"Map to integers 1, 2, 3, ...",
+						"One-hot encoding",
+						"Standardize it",
+						"Leave it as text"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "How many new features does one-hot encoding with drop='first' create for a categorical feature with k categories?",
+					"options": [
+						"k",
+						"k − 1",
+						"k + 1",
+						"$\\log_2 k$"
+					],
+					"answer": "B",
+					"note": "The dropped category is implicitly encoded by all bits being 0."
+				},
+				{
+					"question": "What is threshold encoding of an ordinal feature, e.g. size {M, L, XL}?",
+					"options": [
+						"Mapping to 1, 2, 3",
+						"New binary features such as 'x > M' and 'x > L'",
+						"One-hot encoding",
+						"Using the Z-score"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Why are class labels usually encoded as integers without caring about the order?",
+					"options": [
+						"The classifiers in the course do not consider any ordering of the class labels",
+						"Integers are faster to sort",
+						"Class labels are always ordinal",
+						"LabelEncoder requires it"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "Which formula does MinMaxScaler use?",
+					"options": [
+						"$(X - \\mu)/\\sigma$",
+						"$(X - \\min X)/(\\max X - \\min X)$",
+						"$X/\\max X$",
+						"$\\log X$"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "fill",
+					"question": "Scale the value 15 with min–max scaling, when the column ranges from 10 to 30. Then standardize 15 when the column mean is 20 and standard deviation is 5.",
+					"blanks": [
+						"Min–max",
+						"Standardized"
+					],
+					"answer": [
+						0.25,
+						-1
+					],
+					"tolerance": 1e-06
+				},
+				{
+					"question": "Which scaling method is sensitive to outliers?",
+					"options": [
+						"Standardization",
+						"Min–max scaling",
+						"Neither",
+						"One-hot encoding"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "For image data such as 8×8 handwritten digits, why can feature-wise standardization be harmful?",
+					"options": [
+						"Pixels use different units",
+						"Pixel values are comparable and spatially correlated; independent scaling loses this information, so a global mean/std should be used",
+						"Images cannot be standardized",
+						"It turns the images into binary images"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What is the correct way to use a scaler with a training and test set?",
+					"options": [
+						"fit on the test set and transform both",
+						"fit on the training set, then transform both training and test set",
+						"fit_transform on the combined data",
+						"fit_transform separately on each set"
+					],
+					"answer": "B",
+					"note": "Fitting on test data leaks information from the test set."
+				}
+			]
+		},
+		{
+			"id": "dat200-feature-selection",
+			"name": "Feature selection",
+			"group": "Lecture quizzes",
+			"description": "Filter, wrapper and embedded methods.",
+			"questions": [
+				{
+					"question": "A model performs much better on the training set than on the test set. This indicates ...",
+					"options": [
+						"underfitting",
+						"overfitting",
+						"a perfect model",
+						"too much regularization"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "multi",
+					"question": "Which are remedies for overfitting mentioned in the lecture?",
+					"options": [
+						"Collect more training data",
+						"Regularization (L1, L2, ElasticNet)",
+						"Choose a simpler model",
+						"Reduce the dimensionality of the data"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C",
+						"D"
+					]
+				},
+				{
+					"question": "What is the difference between feature selection and feature extraction?",
+					"options": [
+						"There is none",
+						"Selection keeps a subset of the original features; extraction constructs new features (e.g. PCA)",
+						"Selection creates new features; extraction removes features",
+						"Extraction is only for categorical data"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What is the worst mistake in feature selection?",
+					"options": [
+						"Keeping a redundant feature",
+						"Removing relevant features",
+						"Keeping an irrelevant feature",
+						"Using too few iterations"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What is a redundant feature?",
+					"options": [
+						"A feature that is irrelevant on its own",
+						"A feature that becomes irrelevant in the presence of others",
+						"A feature with missing values",
+						"A categorical feature"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which type of feature selection scores each feature separately, independent of the learning algorithm?",
+					"options": [
+						"Filter methods",
+						"Wrapper methods",
+						"Embedded methods",
+						"Ensemble methods"
+					],
+					"answer": "A"
+				},
+				{
+					"type": "multi",
+					"question": "Which are disadvantages of filter methods?",
+					"options": [
+						"They tend to select redundant variables",
+						"Interactions between variables are usually not taken into account",
+						"They require a threshold",
+						"They are computationally very demanding"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"question": "Why is using the correlation matrix for feature selection a crude tool?",
+					"options": [
+						"It only detects linear relationships",
+						"It only works for two features",
+						"It is too slow",
+						"It requires labels to be one-hot encoded"
+					],
+					"answer": "A",
+					"note": "E.g. points on a circle have correlation 0 although the variables are strongly related."
+				},
+				{
+					"type": "multi",
+					"question": "Which are characteristics of wrapper methods?",
+					"options": [
+						"They search through several feature subsets and evaluate the model",
+						"They can detect interactions between variables",
+						"They are computationally demanding when there are many features",
+						"They risk overfitting when there are few observations"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C",
+						"D"
+					]
+				},
+				{
+					"question": "How does Sequential Backward Selection (SBS) work?",
+					"options": [
+						"Starts with no features and adds the best one each step",
+						"Starts with all features and removes the feature whose removal causes the least performance loss",
+						"Removes features at random",
+						"Trains a random forest and keeps the top half"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What is the default direction of scikit-learn's SequentialFeatureSelector?",
+					"options": [
+						"backward",
+						"forward",
+						"stepwise",
+						"random"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What does stepwise selection do differently from SFS/SBS?",
+					"options": [
+						"It reconsiders all dropped/added variables for re-introduction/drop-out in each step",
+						"It never removes a feature",
+						"It uses only one feature",
+						"It is a filter method"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "Compared to exhaustive search, greedy algorithms are ...",
+					"options": [
+						"slower but always optimal",
+						"faster but generally suboptimal",
+						"equally fast and optimal",
+						"only used for decision trees"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which of these is an embedded feature selection method?",
+					"options": [
+						"Correlation matrix threshold",
+						"Sequential forward selection",
+						"L1 (LASSO) regularization",
+						"Removing features by hand"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Why does L1 regularization perform feature selection while L2 typically does not?",
+					"options": [
+						"L1 promotes sparsity: some weights become exactly zero",
+						"L2 increases the number of features",
+						"L1 is differentiable everywhere",
+						"L2 only works for regression"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "How is impurity-based feature importance in a random forest computed?",
+					"options": [
+						"The correlation between a feature and the target",
+						"The impurity decrease from splits using the feature, weighted by the samples at the split, averaged over all trees and normalized to sum to 1",
+						"The number of times a feature has a missing value",
+						"The weight of the feature in a logistic regression"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which attribute gives the feature importances after fitting a RandomForestClassifier?",
+					"options": [
+						"coef_",
+						"feature_importances_",
+						"support_vectors_",
+						"importances"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Two features are highly correlated. What can happen to their random forest feature importances?",
+					"options": [
+						"Both get importance 1",
+						"The importance is split among them, so each may appear unimportant",
+						"Both get importance 0",
+						"Nothing, importances are independent of correlation"
+					],
+					"answer": "B"
+				}
+			]
+		},
+		{
+			"id": "dat200-model-selection",
+			"name": "Holdout method and pipelines",
+			"group": "Lecture quizzes",
+			"description": "Train/validation/test splits, the CA3 workflow, and scikit-learn pipelines.",
+			"questions": [
+				{
+					"question": "What is the problem with using only a training and a test set when comparing many models?",
+					"options": [
+						"The training set becomes too small",
+						"The test set becomes part of the model selection (information leakage), so the performance is overestimated",
+						"The test set cannot be scaled",
+						"It is impossible to compute accuracy"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "In the better holdout method, what is the validation set used for?",
+					"options": [
+						"Final performance evaluation",
+						"Model evaluation during model selection / hyperparameter tuning",
+						"Fitting the scaler",
+						"Nothing, it is optional"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "After selecting the best model with the holdout method, what is typically done?",
+					"options": [
+						"Retrain on the training set combined with the validation set",
+						"Retrain on the test set",
+						"Use the model trained on the training set only",
+						"Discard the validation set"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "How does the CA3 workflow reduce the sensitivity of the holdout method to the particular split?",
+					"options": [
+						"Uses a single fixed split",
+						"Averages over many train/validation splits with different random_state",
+						"Uses the Kaggle leaderboard to tune parameters",
+						"Uses only the test set"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "In the CA3 workflow, what is the final classifier trained on?",
+					"options": [
+						"One training split",
+						"The entire training set {X, y} with the best parameters",
+						"The test data",
+						"The validation splits only"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What more robust method for model selection will be introduced later in the course?",
+					"options": [
+						"Bootstrap aggregation",
+						"k-fold cross-validation",
+						"Greedy search",
+						"Newton's method"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What is a scikit-learn pipeline?",
+					"options": [
+						"A way to chain preprocessing steps and a model into one estimator",
+						"A parallel computing framework",
+						"A neural network architecture",
+						"A file format for datasets"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "How do pipelines help prevent data leakage?",
+					"options": [
+						"They delete the test data",
+						"Preprocessing steps are fit only on the training data and then applied to the test data",
+						"They shuffle the labels",
+						"They always use cross-validation"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "When pipeline.predict(X_test) is called, what happens in the preprocessing steps?",
+					"options": [
+						"fit and transform",
+						"Only transform",
+						"Only fit",
+						"Nothing, they are skipped"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Given a pipeline with a step named 'classifier', how do you refer to its C parameter in GridSearchCV's param_grid?",
+					"options": [
+						"'C'",
+						"'classifier.C'",
+						"'classifier__C'",
+						"'classifier_C'"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Which class applies different preprocessing to different columns (e.g. scaling to numeric, one-hot encoding to categorical)?",
+					"options": [
+						"Pipeline",
+						"ColumnTransformer",
+						"SimpleImputer",
+						"LabelEncoder"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "multi",
+					"question": "Which are advantages of pipelines mentioned in the lecture?",
+					"options": [
+						"Consistency and reproducibility",
+						"Easy to swap or add components",
+						"Convenient hyperparameter tuning",
+						"They always improve accuracy"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"question": "What does est.fit_transform(X_train) do for a transformer?",
+					"options": [
+						"Fits on X_train and transforms X_train in one call",
+						"Transforms X_train without fitting",
+						"Fits on X_train and transforms the test set",
+						"Fits and predicts"
+					],
+					"answer": "A"
+				}
+			]
+		},
+		{
+			"id": "dat200-recap",
+			"name": "Recap: linear models, optimization, regularization",
+			"group": "Lecture quizzes",
+			"description": "Types of ML, perceptron/Adaline/logistic regression, GD vs Newton, bias–variance, L1/L2.",
+			"questions": [
+				{
+					"question": "Clustering and PCA are examples of ...",
+					"options": [
+						"supervised learning",
+						"unsupervised learning",
+						"reinforcement learning",
+						"semi-supervised learning"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Learning a series of actions with delayed reward is ...",
+					"options": [
+						"supervised learning",
+						"unsupervised learning",
+						"reinforcement learning",
+						"regression"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Which activation function does logistic regression use?",
+					"options": [
+						"Step function",
+						"Identity",
+						"Sigmoid",
+						"ReLU"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "Which activation function does Adaline use?",
+					"options": [
+						"Step function",
+						"Identity (linear)",
+						"Sigmoid",
+						"Tanh"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which loss function does logistic regression minimize?",
+					"options": [
+						"Squared loss",
+						"Hinge loss",
+						"Log-loss",
+						"Zero-one loss"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "What are the output labels of logistic regression in the recap table?",
+					"options": [
+						"$\\{-1, 1\\}$",
+						"$\\{0, 1\\}$",
+						"$\\mathbb{R}$",
+						"$(0,1)$ only"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "fill",
+					"question": "Compute $\\sigma(0)$ and $\\operatorname{logit}(0.5)$.",
+					"blanks": [
+						"$\\sigma(0)$",
+						"logit(0.5)"
+					],
+					"answer": [
+						0.5,
+						0
+					],
+					"tolerance": 1e-06
+				},
+				{
+					"question": "How does scikit-learn handle multi-class problems for binary classifiers like logistic regression by default (in the lecture)?",
+					"options": [
+						"It cannot",
+						"One-vs-Rest (OvR / OvA)",
+						"It removes all but two classes",
+						"It uses k-NN"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "What does Newton's method find?",
+					"options": [
+						"The minimum of a function directly",
+						"The root (zero) of a function; applied to the derivative it finds a minimum",
+						"The maximum margin",
+						"The best split in a tree"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "fill",
+					"question": "One Newton step $\\theta^{n+1} = \\theta^n - f(\\theta^n)/f'(\\theta^n)$ for $f(\\theta) = \\theta^2 - 4$ starting at $\\theta^0 = 3$.",
+					"blanks": [
+						"$\\theta^1$"
+					],
+					"answer": [
+						2.1667
+					],
+					"tolerance": 0.001,
+					"note": "$3 - 5/6 \\approx 2.1667$."
+				},
+				{
+					"question": "Which update rule is gradient descent?",
+					"options": [
+						"$\\boldsymbol\\theta^{n+1} = \\boldsymbol\\theta - \\eta\\,\\partial L/\\partial\\boldsymbol\\theta$",
+						"$\\boldsymbol\\theta^{n+1} = \\boldsymbol\\theta + \\eta\\,\\partial L/\\partial\\boldsymbol\\theta$",
+						"$\\boldsymbol\\theta^{n+1} = \\boldsymbol\\theta - L/L'$",
+						"$\\boldsymbol\\theta^{n+1} = \\eta\\boldsymbol\\theta$"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "A model with high variance ...",
+					"options": [
+						"gives very different predictions for a sample when retrained on different subsets of the data",
+						"is systematically wrong regardless of the training data",
+						"has too few parameters",
+						"always has low training error and low test error"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "In the bias–variance trade-off figure, increasing model complexity ...",
+					"options": [
+						"decreases the training error but the test error eventually increases",
+						"increases both training and test error",
+						"decreases both errors forever",
+						"has no effect on the training error"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "Increasing $\\lambda$ in $\\ell_2$-regularized logistic regression ...",
+					"options": [
+						"puts more emphasis on small weights than on fitting the data",
+						"makes weights larger",
+						"removes the bias term",
+						"makes the model more complex"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "Is the bias $b$ ($\\theta_0$) included in the regularization term $\\lVert\\mathbf{w}\\rVert$?",
+					"options": [
+						"Yes",
+						"No, $\\mathbf{w} = (\\theta_1, \\dots, \\theta_m)$ excludes the bias",
+						"Only for L1",
+						"Only for L2"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "fill",
+					"question": "For $\\mathbf{w} = (3, -4)$, compute the regularization norms.",
+					"blanks": [
+						"$\\lVert\\mathbf{w}\\rVert_1$",
+						"$\\lVert\\mathbf{w}\\rVert_2^2$"
+					],
+					"answer": [
+						7,
+						25
+					],
+					"tolerance": 1e-06
+				}
+			]
+		},
+		{
+			"id": "dat200-mixed",
+			"name": "Mixed: tour of classifiers",
+			"group": "Review",
+			"description": "Questions across all classifiers, for revision before the exam.",
+			"questions": [
+				{
+					"question": "Which classifier allows predicting the probability of a particular event?",
+					"options": [
+						"Perceptron",
+						"Logistic regression",
+						"Decision tree with max_depth=1",
+						"k-NN with k=1"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which classifier is easy to interpret and implicitly selects features?",
+					"options": [
+						"Kernel SVM",
+						"Decision tree",
+						"k-NN",
+						"Perceptron"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "Which classifier needs little parameter tuning and doesn't overfit as easily as decision trees?",
+					"options": [
+						"Random forest",
+						"RBF kernel SVM",
+						"1-NN",
+						"Perceptron"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "Which classifier is good in low dimensions but susceptible to overfitting in high dimensions, with expensive predictions?",
+					"options": [
+						"Logistic regression",
+						"Random forest",
+						"k-NN",
+						"Linear SVM"
+					],
+					"answer": "C"
+				},
+				{
+					"question": "What does the no-free-lunch theorem imply?",
+					"options": [
+						"Random forests are always best",
+						"No classifier is superior in all situations for all types of data",
+						"Simple models always generalize better",
+						"Machine learning requires paid software"
+					],
+					"answer": "B"
+				},
+				{
+					"question": "In the wine exercise (alcohol and hue), which classifiers were trained on the original scale instead of standardized data?",
+					"options": [
+						"Perceptron and logistic regression",
+						"SVC and k-NN",
+						"Decision tree and random forest",
+						"All of them"
+					],
+					"answer": "C"
+				},
+				{
+					"type": "multi",
+					"question": "Which classifiers in the course benefit from (or need) feature scaling?",
+					"options": [
+						"k-NN",
+						"SVM",
+						"Logistic regression trained with gradient descent",
+						"Decision tree"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"question": "Which import gives you the support vector classifier?",
+					"options": [
+						"from sklearn.svm import SVC",
+						"from sklearn.linear_model import SVC",
+						"from sklearn.neighbors import SVC",
+						"from sklearn.ensemble import SVC"
+					],
+					"answer": "A"
+				},
+				{
+					"question": "Which import gives you the random forest classifier?",
+					"options": [
+						"from sklearn.tree import RandomForestClassifier",
+						"from sklearn.ensemble import RandomForestClassifier",
+						"from sklearn.forest import RandomForestClassifier",
+						"from sklearn.linear_model import RandomForestClassifier"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "multi",
+					"question": "Which models produce nonlinear decision boundaries?",
+					"options": [
+						"RBF kernel SVM",
+						"Decision tree",
+						"k-NN",
+						"Linear SVM"
+					],
+					"answer": [
+						"A",
+						"B",
+						"C"
+					]
+				},
+				{
+					"question": "Which model's prediction depends only on a subset of the training samples (sparse)?",
+					"options": [
+						"k-NN",
+						"Kernel SVM",
+						"Plain kernel logistic regression",
+						"Linear regression"
+					],
+					"answer": "B"
+				},
+				{
+					"type": "truefalse",
+					"question": "True or false?",
+					"statements": [
+						"Linear SVM is a parametric model.",
+						"k-NN needs the training data at prediction time.",
+						"Random forests offer the same interpretability as a single tree.",
+						"Gini impurity and entropy are preferred over classification error in practice.",
+						"MinMaxScaler is robust to outliers."
+					],
+					"answer": [
+						true,
+						true,
+						false,
+						true,
+						false
+					]
+				}
+			]
+		}
+	]
+}

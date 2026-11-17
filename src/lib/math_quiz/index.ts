@@ -1,5 +1,7 @@
 import { ComputeEngine } from "@cortex-js/compute-engine";
 import data from "./questions.json";
+import lessons from "./lessons.json";
+import type { LessonStep } from "$lib/lesson";
 
 export interface MathQuestion {
     id: string;
@@ -20,9 +22,13 @@ export interface MathCategory {
     /** Absolute error accepted as correct, e.g. 0.005 for exams that ask for 2 decimals */
     tolerance?: number;
     questions: MathQuestion[];
+    /** Optional walkthrough shown before the questions */
+    lesson?: LessonStep[];
 }
 
-export const categories = data.categories as MathCategory[];
+const lesson_by_id = lessons as Record<string, LessonStep[]>;
+
+export const categories = (data.categories as MathCategory[]).map((c) => ({ ...c, lesson: lesson_by_id[c.id] }));
 
 /** Categories grouped by their heading, in the order the groups first appear */
 export const groups = new Map<string, MathCategory[]>();

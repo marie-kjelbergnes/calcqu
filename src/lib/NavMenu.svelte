@@ -5,6 +5,7 @@
         { href: "./", path: "/", name: "Calculator" },
         { href: "./math123", path: "/math123", name: "MATH123" },
         { href: "./inf250", path: "inf250", name: "INF250" },
+        { href: "./dat200", path: "/dat200", name: "DAT200" },
         { href: "./licenses", path: "/licenses", name: "Licenses & Acknowledgments" },
         { href: "./privacy", path: "/privacy", name: "Privacy Policy" }
     ];

@@ -1,0 +1,451 @@
+{
+	"dat200-svm": [
+		{
+			"title": "Many lines separate the data, which one is best?",
+			"body": "If two classes are **linearly separable**, there are infinitely many hyperplanes (lines in 2D) that separate them. The perceptron simply stops at the first one it finds.\n\nThe support vector machine (SVM) picks the hyperplane with the **largest margin**: the largest distance to the closest training samples of either class. The intuition is that a boundary far away from both classes is less likely to misclassify new samples, so it generalizes better.\n\n- Large margin → lower generalization error\n- Small margin → more prone to overfitting",
+			"remember": [
+				"SVM objective: **maximize the margin**.",
+				"The SVM can be seen as an extension of the perceptron."
+			]
+		},
+		{
+			"title": "The decision boundary and the two margin hyperplanes",
+			"body": "A linear decision boundary is the set of points where the net input is zero:\n$$\\mathbf{x}\\boldsymbol\\theta = b + \\mathbf{x}\\mathbf{w} = 0$$\nThe weight vector $\\mathbf{w}$ is the **normal vector** of the hyperplane (it points perpendicular to it), and $b$ is the bias/offset.\n\nWith labels $y \\in \\{-1, 1\\}$, the SVM adds two parallel hyperplanes:\n- positive hyperplane: $b + \\mathbf{x}\\mathbf{w} = 1$\n- negative hyperplane: $b + \\mathbf{x}\\mathbf{w} = -1$\n\nThe training samples lying **on** these hyperplanes are the **support vectors**. For them $y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b) = 1$. They are the only samples that determine where the boundary ends up.",
+			"check": {
+				"question": "A sample satisfies $y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b) = 3$. Is it a support vector?",
+				"options": [
+					"Yes",
+					"No, it is correctly classified and outside the margin",
+					"No, it is misclassified",
+					"No, it lies on the decision boundary"
+				],
+				"answer": "B",
+				"explanation": "Support vectors give exactly 1. A value larger than 1 means the sample is on the correct side, beyond the margin hyperplane."
+			}
+		},
+		{
+			"title": "Margin size and the optimization problem",
+			"body": "The distance from the boundary to each margin hyperplane is $\\gamma = 1/\\lVert\\mathbf{w}\\rVert_2$, so the gap between the two hyperplanes is\n$$2\\gamma = \\frac{2}{\\lVert\\mathbf{w}\\rVert_2}.$$\nMaximizing $1/\\lVert\\mathbf{w}\\rVert_2$ is the same as minimizing $\\lVert\\mathbf{w}\\rVert_2$, which (since squaring is increasing for non-negative numbers) is the same as minimizing $\\mathbf{w}^T\\mathbf{w} = \\sum_i w_i^2$.\n\nThis gives the **hard margin** quadratic optimization problem:\n$$\\min_{\\mathbf{w},b}\\ \\mathbf{w}^T\\mathbf{w}\\quad\\text{such that}\\quad y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b) \\ge 1\\ \\text{for all } i$$\nThe constraint says every sample is on the correct side, at least on its margin hyperplane. (The derivation is not syllabus.)",
+			"example": "If $\\mathbf{w} = (3, 4)$, then $\\lVert\\mathbf{w}\\rVert_2 = \\sqrt{9+16} = 5$.\n\nThe margin is $\\gamma = 1/5 = 0.2$ and the distance between the hyperplanes is $2/5 = 0.4$."
+		},
+		{
+			"title": "Soft margin: slack variables and C",
+			"body": "Real data is often **not** linearly separable, so the hard constraint cannot be satisfied. The soft margin SVM introduces **slack variables** $\\xi^{(i)} \\ge 0$ that allow samples inside the margin or even on the wrong side:\n$$\\min_{\\mathbf{w},b}\\ \\mathbf{w}^T\\mathbf{w} + C\\sum_{i=1}^n \\xi^{(i)}\\quad\\text{s.t.}\\quad y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b) \\ge 1 - \\xi^{(i)}$$\n\nThe hyperparameter **C** controls how expensive violations are:\n- **Large C**: violations are punished strongly → narrow margin, fits the training data closely → risk of **overfitting** (high variance)\n- **Small C**: violations are cheap → wide margin, many samples inside it → risk of **underfitting** (high bias)\n\nIn the blobs notebook you can see this: with C = 0.002 almost every sample is a support vector, with C = 1000 only a few are.",
+			"check": {
+				"question": "Your SVM has 100% training accuracy but poor validation accuracy. What should you try?",
+				"options": [
+					"Increase C",
+					"Decrease C",
+					"Remove the bias term",
+					"Use labels {0, 1}"
+				],
+				"answer": "B",
+				"explanation": "The model overfits. A smaller C allows a wider margin and a simpler boundary."
+			}
+		},
+		{
+			"title": "The same thing as a loss function: hinge loss",
+			"body": "The soft margin problem can be written as a loss function to minimize:\n$$L(\\mathbf{w}, b) = \\underbrace{\\mathbf{w}^T\\mathbf{w}}_{\\ell_2\\text{-regularization}} + C\\sum_{i=1}^n \\underbrace{\\max\\{1 - y^{(i)}(\\mathbf{x}^{(i)}\\mathbf{w}+b),\\ 0\\}}_{\\text{hinge loss}}$$\n\nThe hinge loss is zero for samples correctly classified outside the margin, and grows linearly the further a sample is on the wrong side. So the SVM is \"$\\ell_2$-regularized hinge loss\". Note that C sits on the **data term**, so it works like $1/\\lambda$ in regularization: large C = little regularization.",
+			"example": "Take $\\mathbf{w}=(1, 0)$, $b = 0$:\n- $\\mathbf{x} = (3, 0)$, $y = 1$: net input 3, hinge $= \\max\\{1-3, 0\\} = 0$\n- $\\mathbf{x} = (0.5, 0)$, $y = 1$: net input 0.5, hinge $= 0.5$ (inside the margin)\n- $\\mathbf{x} = (-1, 0)$, $y = 1$: net input $-1$, hinge $= 2$ (misclassified)"
+		},
+		{
+			"title": "SVM vs logistic regression, and scikit-learn",
+			"body": "**Logistic regression vs linear SVM**\n- They often give very similar results.\n- Logistic regression maximizes the conditional likelihood of **all** training data, which makes it more sensitive to outliers.\n- The SVM mostly cares about the samples closest to the boundary (support vectors).\n- Logistic regression is simpler and gives probabilities.\n\n**In scikit-learn**\n- `Perceptron`, `LogisticRegression` and `LinearSVC` use the **LIBLINEAR** library.\n- `SVC` uses **LIBSVM**.\n- For datasets too large for memory: `SGDClassifier` with `loss='perceptron'`, `loss='log'` (logistic regression) or `loss='hinge'` (SVM), trained online with `partial_fit`.\n\nLinear models may look restrictive with few features, but with **many features** they can act as a guard against overfitting.",
+			"remember": [
+				"$2/\\lVert\\mathbf{w}\\rVert_2$ = distance between the margin hyperplanes.",
+				"Large C → small margin → overfitting risk. Small C → wide margin → underfitting risk.",
+				"SVM loss = $\\ell_2$ regularization + C × hinge loss."
+			]
+		}
+	],
+	"dat200-kernels": [
+		{
+			"title": "When a line is not enough",
+			"body": "Some datasets cannot be separated by a straight line, for example the **XOR** dataset (classes in opposite quadrants) or two **concentric circles**.\n\nIdea: map the data to a higher-dimensional feature space with a **feature mapping** $\\phi$, where it might become linearly separable. Learn a linear boundary there, and map back: in the original space the boundary becomes nonlinear.",
+			"example": "Circles dataset with $\\phi(x_1, x_2) = (x_1,\\ x_2,\\ x_1^2 + x_2^2)$.\n\nThe new third feature is the squared distance from the origin. Inner circle points get a small $z_3$, outer circle points a large $z_3$, so a horizontal plane $z_3 = c$ separates them. Back in 2D, that plane is the circle $x_1^2 + x_2^2 = c$."
+		},
+		{
+			"title": "The kernel trick",
+			"body": "Many algorithms only use the data through **inner products** $\\mathbf{x}^{(i)}\\mathbf{x}^{(j)T} = \\sum_k x_k^{(i)}x_k^{(j)}$.\n\nAfter a feature mapping, these become $\\phi(\\mathbf{x}^{(i)})\\phi(\\mathbf{x}^{(j)})^T$, which can be very expensive if $\\phi$ has many dimensions. Often we can compute that number directly in the original space with a **kernel function**:\n$$\\kappa(\\mathbf{x}^{(i)}, \\mathbf{x}^{(j)}) = \\phi(\\mathbf{x}^{(i)})\\phi(\\mathbf{x}^{(j)})^T$$\n**without ever computing** $\\phi$. For some kernels (like RBF) there is not even a finite-dimensional $\\phi$.",
+			"example": "Quadratic kernel $\\kappa(\\mathbf{x}, \\mathbf{x}') = (\\mathbf{x}^T\\mathbf{x}')^2$ with $m = 3$ features.\n\nExpanding: $(\\sum_k x_k x'_k)^2 = \\sum_k\\sum_l (x_k x_l)(x'_k x'_l)$, so the matching $\\phi$ has all $3 \\cdot 3 = 9$ products $x_k x_l$.\n\nKernel: 3 multiplications, a sum and a square. Feature space: build two 9-dimensional vectors and take their inner product. Same number, much less work."
+		},
+		{
+			"title": "Valid kernels and the kernel matrix",
+			"body": "A kernel can be read as a **similarity** between two samples: large when they are alike.\n\nCollect all pairwise values in the **kernel matrix** $K_{ij} = \\kappa(\\mathbf{x}^{(i)}, \\mathbf{x}^{(j)})$. A kernel is **valid** (a Mercer kernel) if this matrix is **positive semi-definite**: $\\mathbf{v}^T K \\mathbf{v} \\ge 0$ for all $\\mathbf{v}$.\n\nFor valid kernels a corresponding feature mapping is guaranteed to exist, although it may be infinite dimensional.\n\n(Not syllabus: there are kernels for strings and text too. The kernel should be tailored to the data.)"
+		},
+		{
+			"title": "The three typical kernels",
+			"body": "- **Linear**: $\\kappa = \\mathbf{x}^{(i)}\\mathbf{x}^{(j)T}$, just the ordinary inner product ($\\phi$ is the identity).\n- **Polynomial** with degree $p$: $\\kappa = (\\mathbf{x}^{(i)}\\mathbf{x}^{(j)T} + 1)^p$\n- **RBF / Gaussian**: $\\kappa = \\exp\\left(-\\gamma\\lVert\\mathbf{x}^{(i)}-\\mathbf{x}^{(j)}\\rVert_2^2\\right)$, with $\\gamma = 1/(2\\sigma^2)$\n\nThe RBF kernel is 1 for identical samples and decays towards 0 with distance. $\\gamma$ sets how fast: **large $\\gamma$** = very local influence = wiggly boundaries, \"islands\" around single samples, overfitting. **Small $\\gamma$** = smooth boundaries.",
+			"example": "$\\mathbf{x} = (1, 2)$, $\\mathbf{x}' = (2, 4)$:\n- Linear: $1\\cdot 2 + 2 \\cdot 4 = 10$\n- Polynomial, $p = 2$: $(10 + 1)^2 = 121$\n- RBF, $\\gamma = 0.1$: $\\lVert\\mathbf{x}-\\mathbf{x}'\\rVert^2 = 1 + 4 = 5$, so $e^{-0.5} \\approx 0.607$",
+			"check": {
+				"question": "Two identical samples are compared with an RBF kernel. What is $\\kappa$?",
+				"options": [
+					"0",
+					"1",
+					"$\\gamma$",
+					"It depends on the samples"
+				],
+				"answer": "B",
+				"explanation": "The distance is 0, and $e^0 = 1$ regardless of $\\gamma$."
+			}
+		},
+		{
+			"title": "Kernel SVM and tuning it",
+			"body": "In the SVM's dual formulation (not looked at in detail), the data only appears as inner products, so we **replace them with kernel calls**. In scikit-learn the kernel is a parameter: `SVC(kernel='rbf', C=..., gamma=...)` or `kernel='poly', degree=...`.\n\nNow **two** hyperparameters must be tuned together, typically with a **grid search**, e.g. C in [1, 100, 10000] and $\\gamma$ in [0.1, 1, 50]:\n- C: penalty for margin violations (as before)\n- $\\gamma$ (or the polynomial degree): flexibility of the boundary\n\nIn the XOR grid, $\\gamma = 50$ overfits for every C, while $\\gamma = 0.1$ – 1 gives the clean four-quadrant boundary. You can also compare kernels: linear, polynomial and RBF give very different boundaries on Iris."
+		},
+		{
+			"title": "Kernelizing the perceptron",
+			"body": "Perceptron training adds $\\eta y^{(i)}\\mathbf{x}^{(i)T}$ to $\\boldsymbol\\theta$ every time sample $i$ is misclassified. Starting from $\\boldsymbol\\theta = 0$, the weights are therefore a **linear combination of the samples**:\n$$\\boldsymbol\\theta = \\sum_{j=1}^n \\alpha^{(j)}\\eta y^{(j)}\\mathbf{x}^{(j)T}$$\nwhere $\\alpha^{(j)}$ counts how many times sample $j$ was misclassified.\n\nPlugging this into the prediction gives the **dual formulation**, where only inner products appear. Replace them by a kernel:\n$$\\hat y^{(i)} = \\operatorname{sign}\\left\\{\\sum_{j=1}^n \\alpha^{(j)}y^{(j)}\\kappa(\\mathbf{x}^{(i)}, \\mathbf{x}^{(j)})\\right\\}$$\nTraining now just increments $\\alpha^{(i)}$ on a mistake. With a polynomial kernel ($p = 5$) the perceptron can separate the moons dataset.",
+			"remember": [
+				"Perceptron, logistic regression, ridge regression, SVM and k-NN can all be kernelized.",
+				"Kernel SVM → **sparse** kernel machine (only support vectors). Plain kernel logistic regression → **dense** (all samples), unless L1 regularization makes it sparse."
+			]
+		}
+	],
+	"dat200-trees": [
+		{
+			"title": "A tree of questions",
+			"body": "A decision tree classifies a sample by asking a series of **questions** about its features, for example \"Is petal length ≥ 2.45 cm?\". Each answer leads to the next question, until a **leaf node** gives the class.\n\n- **Root node**: the first question\n- **Leaf node**: the outcome\n- **Tree depth**: the number of questions along the longest path; it determines the model complexity\n\nEach question splits the feature space with an **axis-oriented** hyperplane (one feature, one threshold). Recursively splitting cuts the space into rectangles, which can give complex, nonlinear decision boundaries.\n\nBig advantage: the result is easy to **interpret**, you can read the rules directly off the tree."
+		},
+		{
+			"title": "Impurity: how mixed is a node?",
+			"body": "To choose good questions we need to measure how far a node is from **pure** (all samples in one class). With $p(c \\mid D_n) = N_c / N_n$ the fraction of class $c$ at node $n$:\n\n- **Classification error**: $I_E = 1 - \\max_c p(c \\mid D_n)$\n- **Entropy**: $I_H = -\\sum_c p(c \\mid D_n)\\log_2 p(c \\mid D_n)$\n- **Gini impurity**: $I_{Gini} = \\sum_c p(1-p) = 1 - \\sum_c p(c \\mid D_n)^2$\n\nAll are 0 for a pure node. For two classes they are largest at $p = 0.5$: classification error and Gini are 0.5, entropy is 1.",
+			"example": "A node with 5 circles and 6 squares ($p = 5/11, 6/11$):\n- $I_E = 1 - 6/11 \\approx 0.455$\n- $I_{Gini} = 1 - (5/11)^2 - (6/11)^2 = 1 - 61/121 \\approx 0.496$\n- $I_H = -(0.455\\log_2 0.455 + 0.545\\log_2 0.545) \\approx 0.994$",
+			"check": {
+				"question": "A node contains 8 samples of class A and 0 of class B. What is its Gini impurity?",
+				"options": [
+					"0",
+					"0.5",
+					"1",
+					"0.8"
+				],
+				"answer": "A",
+				"explanation": "It is pure: $1 - 1^2 - 0^2 = 0$."
+			}
+		},
+		{
+			"title": "Information gain: choosing the split",
+			"body": "For a split on feature $f$ at threshold $t$, the **information gain** is the parent's impurity minus the weighted impurity of the children:\n$$IG(D_p, f, t) = I(D_p) - \\sum_{j=1}^{2}\\frac{N_j}{N_p}I(D_j)$$\nEach child is weighted by its share of the samples. The tree tries all features and thresholds and picks\n$$\\operatorname*{argmax}_{f,t}\\ IG(D_p, f, t)$$\nSplits are usually binary ($C = 2$ children), which gives efficient binary trees.",
+			"example": "Parent: 5 circles, 6 squares, $I_E(D_p) = 5/11$.\nLeft child $D_1$: 4 circles, 1 square → $I_E = 1 - 4/5 = 0.2$.\nRight child $D_2$: 1 circle, 5 squares → $I_E = 1 - 5/6 = 1/6$.\n\n$$IG = \\tfrac{5}{11} - \\tfrac{5}{11}(0.2) - \\tfrac{6}{11}\\left(\\tfrac{1}{6}\\right) = \\tfrac{5}{11} - \\tfrac{1}{11} - \\tfrac{1}{11} = \\tfrac{3}{11} \\approx 0.27$$\n\nA perfect split into two pure children would give the maximum, $IG = I(D_p) = 0.45$."
+		},
+		{
+			"title": "Which impurity measure to use?",
+			"body": "In practice **Gini impurity** or **entropy** are used, not classification error, because:\n- they are differentiable (classification error is not), which simplifies finding the optimal split\n- they are more sensitive to changes in the class probabilities, and prefer splits that make nodes purer\n\nIn scikit-learn: `DecisionTreeClassifier(criterion='gini')` (default) or `criterion='entropy'`. Gini and scaled entropy look very similar, so the choice rarely matters much."
+		},
+		{
+			"title": "Depth, overfitting and pruning",
+			"body": "You can keep splitting until every leaf is pure, but such a tree is usually **too deep** and memorizes the training data (overfitting). On Iris, max_depth = 2 gives a few clean rectangles; max_depth = 20 gives tiny boxes around single points.\n\n**Pruning** means removing branches or limiting growth, e.g. tuning with grid search:\n- `max_depth`: maximum number of questions\n- `min_samples_leaf`: minimum samples a leaf must contain\n- (cost-complexity pruning exists too, not syllabus)\n\nTree learning is **greedy**: each split is the locally best one, without checking whether a different split now would allow better splits later.",
+			"check": {
+				"question": "Training accuracy is 100%, test accuracy 70%. Which change is most sensible?",
+				"options": [
+					"Increase max_depth",
+					"Decrease max_depth or increase min_samples_leaf",
+					"Standardize the features",
+					"Switch from Gini to entropy"
+				],
+				"answer": "B",
+				"explanation": "The tree overfits, so make it simpler. Scaling has no effect on trees."
+			}
+		},
+		{
+			"title": "Summary",
+			"body": "Decision trees build nonlinear boundaries from axis-parallel rectangles, are easy to interpret and implicitly select features (useless features are never chosen for a split).\n\n**Feature scaling is not needed**: a split only compares one feature to a threshold, so rescaling a feature just rescales the threshold. Keeping the original scale also keeps the rules readable (\"sepal length ≤ 5.45 cm\").\n\nIn scikit-learn: `from sklearn.tree import DecisionTreeClassifier, plot_tree`.",
+			"remember": [
+				"$IG = I(\\text{parent}) - \\sum \\frac{N_j}{N_p} I(\\text{child}_j)$, choose the split with the largest IG.",
+				"Gini $= 1 - \\sum p^2$, entropy $= -\\sum p\\log_2 p$. Max for two classes: 0.5 and 1.",
+				"Deep trees overfit → prune (max_depth, min_samples_leaf)."
+			]
+		}
+	],
+	"dat200-forest": [
+		{
+			"title": "Why combine many trees?",
+			"body": "A single deep decision tree has **high variance**: small changes in the training data give a very different tree.\n\nA **random forest** trains many different trees and lets them **vote**. Averaging many high-variance models reduces the variance **without increasing the bias**, giving a more robust model with better generalization.\n\nIt is an instance of **ensemble learning** (more about bagging and boosting later in the course), and very popular because of its performance, scalability and ease of use."
+		},
+		{
+			"title": "Step 1: bootstrap samples",
+			"body": "Each tree gets its own **bootstrap sample**: draw $n$ samples from the training set (size $n$) **with replacement**.\n\nConsequences:\n- some samples occur several times\n- some samples do not occur at all (on average about a third are left out)\n\nSo every tree sees a slightly different dataset. **Bagging** = **b**ootstrap **agg**regat**ing** (Breiman 1994).",
+			"example": "Original data: rows 350, 100, 260, 10 (tumour volume).\nRandom picks with replacement: 350, 260, 100, 100.\n\nRow 100 occurs twice and row 10 is missing from this tree's training data."
+		},
+		{
+			"title": "Step 2: random features at every split",
+			"body": "When growing each tree, at **every node**:\n1. randomly select $d$ features **without replacement**\n2. find the best split (largest information gain) using **only those features**\n\nEach node may use a different subset. This makes the trees even more different from each other (decorrelated), which makes averaging more effective. A common choice is $d = \\sqrt{m}$ for $m$ features.",
+			"check": {
+				"question": "A dataset has 16 features. How many features are typically considered at each split?",
+				"options": [
+					"16",
+					"8",
+					"4",
+					"1"
+				],
+				"answer": "C",
+				"explanation": "$\\sqrt{16} = 4$."
+			}
+		},
+		{
+			"title": "Steps 3 and 4: repeat and vote",
+			"body": "3. Repeat steps 1–2 $k$ times to get $k$ trees (`n_estimators`).\n4. To predict, let every tree classify the sample, and assign the class by **majority vote**.\n\nBecause the final boundary is a vote over many jagged tree boundaries, it is **smoother** than a single tree's boundary, and the forest usually generalizes better.",
+			"example": "100 trees predict for a new tumour: 74 say \"malignant\", 26 say \"benign\".\nMajority vote: **malignant**."
+		},
+		{
+			"title": "Hyperparameters and trade-offs",
+			"body": "Random forests are robust, so there is little to tune:\n- **number of trees** (`n_estimators`): typically more is better, at a higher computational cost\n- size of the bootstrap samples: usually the training set size\n- number of features per split: usually $\\sqrt{m}$\n- trees can still be limited with `max_depth`\n\nTrees are independent, so training parallelizes easily (`n_jobs=2` trains two at a time).\n\nDownside: a forest of 100 trees is **not as interpretable** as one tree. Feature scaling is not needed, just as for single trees.",
+			"remember": [
+				"Bootstrap: $n$ samples **with** replacement. Features per node: $d$ **without** replacement, often $\\sqrt{m}$.",
+				"Majority vote over trees → lower variance, same bias.",
+				"`from sklearn.ensemble import RandomForestClassifier`"
+			]
+		}
+	],
+	"dat200-knn": [
+		{
+			"title": "A lazy learner",
+			"body": "k-nearest neighbours is fundamentally different from the models so far: it does **not learn a discriminative function**. Training just **memorizes** the training set. All the work happens at prediction time.\n\n**Algorithm**\n1. Choose $k$ and a distance metric.\n2. Find the $k$ training samples nearest to the new sample.\n3. Assign the class by **majority vote** among them.\n\nTie break (lecture): take the class of the closest neighbour; if still tied, use the lowest label.",
+			"example": "5-NN: the 5 nearest neighbours of \"?\" are 1 plus, 1 circle and 3 triangles.\nMajority vote → **triangle**."
+		},
+		{
+			"title": "Distance metrics",
+			"body": "scikit-learn uses the **Minkowski distance**:\n$$d(\\mathbf{x}^{(i)}, \\mathbf{x}^{(j)}) = \\left(\\sum_k \\left|x_k^{(i)} - x_k^{(j)}\\right|^p\\right)^{1/p}$$\n- $p = 1$: **Manhattan** distance $\\sum_k |x_k^{(i)} - x_k^{(j)}|$, like walking along a city grid\n- $p = 2$: **Euclidean** distance, the straight line\n\nThe metric should fit the type of data. Because distances mix all features, **scaling matters**: a feature measured in thousands would dominate one measured in decimals, so standardize first.",
+			"example": "Between $(1, 2)$ and $(4, 6)$: differences are 3 and 4.\n- Manhattan: $3 + 4 = 7$\n- Euclidean: $\\sqrt{9 + 16} = 5$",
+			"check": {
+				"question": "Which value of p in KNeighborsClassifier gives the Manhattan distance?",
+				"options": [
+					"p = 0",
+					"p = 1",
+					"p = 2",
+					"p = ∞"
+				],
+				"answer": "B",
+				"explanation": "p = 1 sums absolute differences."
+			}
+		},
+		{
+			"title": "Choosing k",
+			"body": "$k$ (and the metric) controls the balance between over- and underfitting:\n- **small k** (e.g. 1): very flexible, jagged boundary, follows noise → **high variance**\n- **large k**: smoother boundary, less variance, but far-away neighbours are consulted → **higher bias**; predictions also get more costly\n\nCompare the 1-NN, 3-NN and 9-NN boundaries in the notebook: the boundary gets smoother as $k$ grows. Tune $k$ on a validation set (see 03_knn_hyperparameters_validation_set)."
+		},
+		{
+			"title": "Strengths, weaknesses and the curse of dimensionality",
+			"body": "**Advantages**\n- low (or zero) cost of adapting to new training samples, just add them\n- good predictive vs computational performance for small to medium datasets\n\n**Disadvantages**\n- storage and prediction cost grow with the number of samples (k-d trees help)\n- **curse of dimensionality**: with many features the space is sparsely populated, so even the \"nearest\" neighbours are far away and not informative → overfitting. Feature selection or dimensionality reduction helps."
+		},
+		{
+			"title": "Parametric vs non-parametric models",
+			"body": "**Parametric models** learn a fixed set of parameters; after training, the training data is not needed for prediction.\nExamples: perceptron, Adaline, linear and logistic regression, **linear** SVM.\n\n**Non-parametric models** have a number of parameters that grows with the training data, and (at least a subset of) the training data is needed to predict.\nExamples: **k-NN**, most kernel machines (**kernel SVM** keeps its support vectors, **kernel perceptron** keeps all samples with $\\alpha > 0$).",
+			"remember": [
+				"k-NN memorizes, then votes among the k nearest.",
+				"Minkowski p = 1 Manhattan, p = 2 Euclidean.",
+				"Small k → high variance; large k → high bias.",
+				"`from sklearn.neighbors import KNeighborsClassifier`"
+			]
+		}
+	],
+	"dat200-preprocessing": [
+		{
+			"title": "Why preprocess?",
+			"body": "How well an algorithm learns depends on the **quality** of the data and the **amount of useful information** in it. It is critical to examine and preprocess a dataset before training.\n\nThis walkthrough covers the main steps from Ch. 4:\n- missing values (remove or impute)\n- outliers\n- encoding categorical data\n- scaling"
+		},
+		{
+			"title": "Missing values",
+			"body": "Missing values show up as **NaN** (not a number) or NULL.\n\n**Remove** them: `df.dropna(axis=0)` drops rows (samples), `df.dropna(axis=1)` drops columns (features). Simple, but with small datasets or poor data quality you may throw away too much information.\n\n**Impute** them: replace with a reasonable value so the rest of the sample can be kept. scikit-learn's `SimpleImputer` supports `strategy='mean'`, `'median'` and `'most_frequent'`.",
+			"example": "Column C = [3, NaN, 12]. Mean imputation uses the mean of the known values: $(3 + 12)/2 = 7.5$.\nColumn D = [4, 8, NaN] → $(4 + 8)/2 = 6$."
+		},
+		{
+			"title": "Outliers",
+			"body": "Handling outliers is very **dataset-specific**:\n- They can come from faulty instruments or data errors (e.g. a negative weight) → remove them, using domain knowledge.\n- They can be **rare** events. Sometimes we don't care about them, but sometimes they are exactly the **important** events we must handle well.\n\nIf you are sure you don't care about outliers, a **Z-score** filter can remove them:\n$$z = \\frac{x - \\text{mean}}{\\text{std}}$$\ncomputed per feature column. $|z| > 3$ means very unlikely, but only if the data is roughly **normally distributed**.",
+			"check": {
+				"question": "A feature has mean 50 and standard deviation 5. Which value has $|z| > 3$?",
+				"options": [
+					"60",
+					"40",
+					"66",
+					"36"
+				],
+				"answer": "C",
+				"explanation": "$(66-50)/5 = 3.2$. The others give $|z| = 2$ or $2.8$."
+			}
+		},
+		{
+			"title": "Categorical features: ordinal vs nominal",
+			"body": "Categorical features take one of a finite set of values.\n- **Ordinal**: has a natural order, e.g. T-shirt size S < M < L < XL\n- **Nominal**: no order, e.g. colour red/blue/green\n\n**Ordinal → integers** with a mapping, e.g. `{'M': 1, 'L': 2, 'XL': 3}`. If you don't want to claim XL is \"3 times\" M, use **threshold encoding** instead: binary features \"x > M\" and \"x > L\".\n\n**Class labels** are usually not ordinal, and none of the classifiers in the course care about label order, so just map them to integers (`LabelEncoder`)."
+		},
+		{
+			"title": "One-hot encoding for nominal features",
+			"body": "Mapping colours to 0, 1, 2 would invent an order (blue > green?) that models would use. Instead, **one-hot encode**: one binary feature per category, 1 (\"hot\") if the sample has that value.\n\nOnly **k − 1** columns are needed for k categories: the dropped category is the case where all bits are 0. In statistics these are called **dummy variables**.\n\n- pandas: `pd.get_dummies(df, drop_first=True)`\n- scikit-learn: `OneHotEncoder(drop='first', sparse_output=False)` (expects a 2D input, e.g. `df[['color']]`)",
+			"example": "color ∈ {blue, green, red}, drop \"blue\", keep color_green and color_red:\n\n- green → (1, 0)\n- red → (0, 1)\n- blue → (0, 0)"
+		},
+		{
+			"title": "Scaling",
+			"body": "Many models (gradient descent, SVM, k-NN, regularization) work best when features are on the same scale. Two main options, applied **per feature**:\n\n- **Min–max** (`MinMaxScaler`): $X_{scaled} = \\dfrac{X - \\min X}{\\max X - \\min X}$, maps to [0, 1]. **Sensitive to outliers**: one extreme value squashes everything else.\n- **Standardization** (`StandardScaler`): $X_{scaled} = \\dfrac{X - \\mu}{\\sigma}$, mean 0 and standard deviation 1.\n\nCareful with **image data**: pixels share a unit and are spatially correlated. Feature-wise scaling destroys that information and can hurt e.g. a kernel SVM; use the global mean/std of all pixels instead.",
+			"example": "Column values range from 10 to 30, mean 20, std 5. The value 15:\n- min–max: $(15-10)/(30-10) = 0.25$\n- standardized: $(15-20)/5 = -1$"
+		},
+		{
+			"title": "fit on training data, transform everything",
+			"body": "scikit-learn transformers (scalers, imputers, encoders) have a fixed interface:\n1. `fit(X_train)`: learn the parameters (means, stds, min/max, categories) **from the training data only**\n2. `transform(X_train)` and `transform(X_test)`: apply the same parameters to both\n\n`fit_transform(X_train)` does steps 1 and 2 on the training data in one call.\n\nNever fit on the test data: that leaks test information into the model. Estimators (classifiers) follow the same idea with `fit(X_train, y_train)` and `predict(X_test)`.",
+			"remember": [
+				"Impute with SimpleImputer (mean, median, most_frequent).",
+				"Ordinal → integers or thresholds. Nominal → one-hot (k − 1 columns).",
+				"Min–max is sensitive to outliers; standardization gives mean 0, std 1.",
+				"Fit transformers on training data only."
+			]
+		}
+	],
+	"dat200-feature-selection": [
+		{
+			"title": "Why select features?",
+			"body": "If a model does much better on the training set than on the test set, it is probably **overfitting**: it is too complex for the amount of data. Remedies:\n- collect more training data (often impossible)\n- regularization ($\\ell_1$, $\\ell_2$, ElasticNet)\n- a simpler model with fewer parameters\n- **reduce the dimensionality** of the data\n\nTwo ways to reduce dimensionality from $d$ to $k < d$ features:\n- **Feature selection**: keep a subset of the original features (this topic)\n- **Feature extraction**: construct new features, e.g. PCA/LDA (next topic)"
+		},
+		{
+			"title": "Relevant, irrelevant and redundant",
+			"body": "- **Relevant** features: needed to model the data\n- **Irrelevant** features: unnecessary → can go\n- **Redundant** features: become irrelevant **given others** (e.g. two strongly correlated features carry the same information) → one can go\n\nThe **worst mistake** is removing a relevant feature, so always **validate** the predictive performance for different subsets.\n\nGoals of feature selection: keep the most relevant features, improve computational efficiency, and sometimes reduce the generalization error by removing noise."
+		},
+		{
+			"title": "Filter methods",
+			"body": "Each feature is scored **separately**, e.g. by its correlation with the target, **independent of the learning algorithm**. Then features above a threshold are kept.\n\n- ✔ computationally efficient, robust to overfitting\n- ✘ tend to keep redundant features, ignore interactions, need a threshold\n\nA crude filter is the **correlation matrix**: drop features nearly uncorrelated with the target, and one of each pair of strongly correlated features. It is crude because correlation only detects **linear** relationships: points on a circle or a parabola have correlation ≈ 0 although they are strongly related.",
+			"check": {
+				"question": "In Iris, petal length and petal width have correlation 0.96. What does a correlation filter suggest?",
+				"options": [
+					"Keep both, they are both important",
+					"One of them may be redundant",
+					"Both are irrelevant",
+					"Correlation says nothing"
+				],
+				"answer": "B",
+				"explanation": "Strongly correlated features carry largely the same (linear) information."
+			}
+		},
+		{
+			"title": "Wrapper methods: SBS and SFS",
+			"body": "Wrappers search through feature subsets and **evaluate the actual model** on each. They are greedy search algorithms.\n\n- **Sequential Backward Selection (SBS)**: start with all features; at each step remove the feature whose removal causes the **least performance loss** (or even improves it); stop when there is no improvement or $k$ features remain.\n- **Sequential Forward Selection (SFS)**: start with none; add the feature that improves the model most. This is the default of scikit-learn's `SequentialFeatureSelector` (`direction='forward'`).\n- **Stepwise**: reconsiders earlier additions/removals at every step.\n\n- ✔ catch interactions, find a good subset for that specific model, work for models without regularization\n- ✘ expensive with many features, risk of overfitting with few samples",
+			"example": "In the notebook, SFS with k-NN kept only 3 features and still matched the test accuracy of the full dataset, while shrinking the data a lot. Fewer features also means cheaper data collection and easier interpretation. (The result depends on the train/test split, though.)"
+		},
+		{
+			"title": "Greedy vs exhaustive",
+			"body": "An **exhaustive** search would try every subset: $2^d$ of them, which quickly becomes impossible.\n\n**Greedy** algorithms (SBS, SFS, and decision tree splitting) make the locally best choice at each step. They are much faster but generally **suboptimal**, like finding a local instead of the global minimum.\n\nExample: in a tree with root 7 and children 3 and 12, a greedy \"largest path\" search goes to 12 and ends at 6, missing the path 7 → 3 → 99."
+		},
+		{
+			"title": "Embedded methods",
+			"body": "Feature selection is built into the training.\n\n**Regularization**\n- $\\ell_1$ (LASSO), $+\\lambda\\lVert\\mathbf{w}\\rVert_1$: promotes **sparsity**, some weights become exactly 0 → those features are dropped automatically.\n- $\\ell_2$ (Ridge), $+\\frac{\\lambda}{2}\\lVert\\mathbf{w}\\rVert_2^2$: weights get small but rarely exactly 0; you could drop features below a threshold.\n\n**Random forest importance**: for each feature, add up the impurity decrease of every split using it (weighted by the samples at the split), average over all trees, normalize to sum to 1. Read it from `feature_importances_` after fitting.\n\nCaveat: correlated features (or one-hot columns of the same category) **share** their importance, so each may look unimportant. This matters for interpretation, less for prediction. (Permutation importance is more robust, not syllabus.)",
+			"remember": [
+				"Filter: fast, model-independent, misses interactions.",
+				"Wrapper (SBS/SFS): uses the model, expensive, greedy.",
+				"Embedded: L1 regularization, random forest importances."
+			]
+		}
+	],
+	"dat200-model-selection": [
+		{
+			"title": "The holdout method",
+			"body": "To choose between models or hyperparameters we need data the model was not trained on.\n\nThe simplest holdout splits into **training** and **test** sets. Problem: if you try many models and keep the one with the best test score, the test set has become part of the model selection. This is **information leakage**, and the test score overestimates real performance.\n\nBetter (always do this):\n- **training set**: fit the models\n- **validation set**: compare models / tune hyperparameters\n- **test set**: one final, unbiased performance estimate\n\nAfter choosing, retrain the best model on training + validation data."
+		},
+		{
+			"title": "Averaging over splits (CA3 workflow)",
+			"body": "One random split can be lucky or unlucky. A remedy used in CA3: repeat the train/validation split many times (`train_test_split` with different `random_state`) and **average** the validation scores for each parameter setting.\n\nThe CA3 workflow:\n1. Split train.csv into X and y.\n2. Select a classifier, tune its parameters over many train/validation splits, decide on the best.\n3. **Retrain** on the entire training set with those parameters.\n4. Predict on X_test from test.csv and upload to Kaggle. The public leaderboard uses part of the test data; the final private ranking uses the rest.\n5. Repeat for other classifiers.\n\nLater in the course: **k-fold cross-validation**, a more robust version of the same idea.",
+			"check": {
+				"question": "Why not tune your hyperparameters by uploading many times and watching the Kaggle public leaderboard?",
+				"options": [
+					"Kaggle forbids it",
+					"You would overfit to the public part of the test data; the private leaderboard uses other data",
+					"The public leaderboard has no labels",
+					"It is slower than a validation split"
+				],
+				"answer": "B",
+				"explanation": "That is the same information leakage as tuning on the test set."
+			}
+		},
+		{
+			"title": "What a pipeline is",
+			"body": "A **pipeline** chains preprocessing steps and a final model into **one estimator**:\n```\npipeline = Pipeline([\n    ('imputer', SimpleImputer(strategy='mean')),\n    ('scaler', StandardScaler()),\n    ('classifier', LogisticRegression())\n])\n```\n- `pipeline.fit(X_train, y_train)`: each step is `fit` + `transform`ed in turn on the training data, the last step is `fit`.\n- `pipeline.predict(X_test)`: each step only `transform`s with what it learned, then the model `predict`s.\n\nSo the test data automatically gets the training statistics, which **prevents data leakage**."
+		},
+		{
+			"title": "Why use pipelines",
+			"body": "- **Consistency / reproducibility**: the same steps in the same order every time\n- **Automation**: transformations are applied to test data automatically\n- **Convenience**: fit, predict and evaluate in one call\n- **Modularity**: swap the scaler or classifier easily\n- **Hyperparameter tuning**: tune preprocessing and model together\n\nDifferent columns can get different preprocessing with a `ColumnTransformer`, e.g. `StandardScaler` on numeric and `OneHotEncoder` on categorical columns, which is then used as a step in the pipeline."
+		},
+		{
+			"title": "Tuning a pipeline",
+			"body": "Grid search works on the whole pipeline. Parameters are named **step name + double underscore + parameter**:\n```\nparam_grid = {'classifier__C': [0.1, 1, 10]}\ngrid = GridSearchCV(pipeline, param_grid, cv=5)\ngrid.fit(X_train, y_train)\n```\nBecause the scaler is inside the pipeline, it is refit on the training part of every split, so the validation part never leaks into the preprocessing.",
+			"remember": [
+				"Train → fit, validation → choose, test → final estimate.",
+				"Fit preprocessing on training data only; pipelines do this for you.",
+				"Pipeline parameter names: `step__param`, e.g. `classifier__C`."
+			]
+		}
+	],
+	"dat200-recap": [
+		{
+			"title": "Three types of machine learning",
+			"body": "- **Supervised**: labelled data $(X, y)$, direct feedback, predict outcomes → **classification** and **regression**\n- **Unsupervised**: only $X$, no feedback, find hidden structure → **PCA**, **clustering**\n- **Reinforcement**: an agent takes actions and gets (delayed) **rewards**, learns a series of actions\n\nThe ML pipeline: preprocessing (scaling, feature selection, dimensionality reduction) → learning (model selection, cross-validation, metrics, hyperparameter optimization) → evaluation on the test set → prediction on new data."
+		},
+		{
+			"title": "Four linear models",
+			"body": "All four compute the same **net input** $z = \\mathbf{x}\\boldsymbol\\theta = b + \\mathbf{x}\\mathbf{w}$, where $b = \\theta_0$ is the bias and $\\mathbf{w}$ the weights. They differ in activation, loss and output:\n\n- **Linear regression** (regression): identity activation, squared loss, output $\\mathbb{R}$\n- **Adaline**: identity activation, squared loss, then a threshold → $\\{-1, 1\\}$\n- **Perceptron**: step activation, \"hinge-like\" loss $\\max(0, -y\\mathbf{x}\\boldsymbol\\theta)$ → $\\{-1, 1\\}$\n- **Logistic regression**: sigmoid activation, log-loss → $\\{0, 1\\}$, plus a probability\n\nFor multiple classes, scikit-learn uses **One-vs-Rest**: one binary classifier per class.",
+			"check": {
+				"question": "Which of these models has a nonlinear activation function but is still a linear classifier?",
+				"options": [
+					"Linear regression",
+					"Adaline",
+					"Logistic regression",
+					"None"
+				],
+				"answer": "C",
+				"explanation": "The sigmoid is nonlinear, but the decision boundary $\\sigma(z) = 0.5 \\Leftrightarrow z = 0$ is a hyperplane."
+			}
+		},
+		{
+			"title": "Sigmoid and logit",
+			"body": "Logistic regression models the probability of class 1 as\n$$p = \\sigma(z) = \\frac{1}{1 + e^{-z}}$$\nwhich maps $\\mathbb{R} \\to (0, 1)$. Its inverse is the **logit** (log-odds):\n$$\\operatorname{logit}(p) = \\log\\frac{p}{1-p} = z$$\nPredict class 1 if $\\sigma(z) \\ge 0.5$, i.e. if $z \\ge 0$.",
+			"example": "$\\sigma(0) = 1/(1+1) = 0.5$, and $\\operatorname{logit}(0.5) = \\log 1 = 0$.\n$z = 2$: $\\sigma(2) = 1/(1 + e^{-2}) \\approx 0.88$ → class 1."
+		},
+		{
+			"title": "Gradient descent and Newton's method",
+			"body": "**Gradient descent** finds a minimum by stepping against the gradient:\n$$\\boldsymbol\\theta^{n+1} = \\boldsymbol\\theta^n - \\eta\\frac{\\partial L}{\\partial\\boldsymbol\\theta}$$\nThe learning rate $\\eta$ must be chosen (and maybe adapted).\n\n**Newton's method** finds a **root** (zero) of a function:\n$$\\theta^{n+1} = \\theta^n - \\frac{f(\\theta^n)}{f'(\\theta^n)}$$\nConnection: at a minimum the derivative is zero, so applying Newton to $f = \\partial L/\\partial\\theta$ finds the minimum of $L$, usually in larger steps.",
+			"example": "Find the root of $f(\\theta) = \\theta^2 - 4$ from $\\theta^0 = 3$: $f(3) = 5$, $f'(3) = 6$.\n$\\theta^1 = 3 - 5/6 \\approx 2.167$, already close to the root 2."
+		},
+		{
+			"title": "Bias, variance and over-/underfitting",
+			"body": "- **Bias**: systematic error, how far off predictions are in general, even if retrained on other data. High bias = **underfitting** (too simple).\n- **Variance**: how much the prediction for a sample changes when retrained on different training subsets. High variance = **overfitting** (too complex, sensitive to noise).\n\nAs model complexity grows, the training error keeps dropping, while the test error first drops and then rises again. The sweet spot is in between."
+		},
+		{
+			"title": "Regularization",
+			"body": "Add a penalty on the weights (not the bias) to the loss:\n\n- $\\ell_2$ / **Ridge**: $+\\dfrac{\\lambda}{2}\\lVert\\mathbf{w}\\rVert_2^2 = \\dfrac{\\lambda}{2}\\sum w_i^2$. Encourages small weights; the constraint region is a circle.\n- $\\ell_1$ / **LASSO**: $+\\lambda\\lVert\\mathbf{w}\\rVert_1 = \\lambda\\sum |w_i|$. The constraint region is a diamond whose corners lie on the axes, so the optimum often has some $w_i = 0$ exactly → **sparsity** / automatic feature selection.\n\nLarger $\\lambda$ = more weight on the penalty = simpler model. (In scikit-learn, C = $1/\\lambda$.)",
+			"example": "$\\mathbf{w} = (3, -4)$: $\\lVert\\mathbf{w}\\rVert_1 = 3 + 4 = 7$, $\\lVert\\mathbf{w}\\rVert_2^2 = 9 + 16 = 25$, $\\lVert\\mathbf{w}\\rVert_2 = 5$.",
+			"remember": [
+				"Same net input for all four linear models; they differ in activation and loss.",
+				"GD minimizes; Newton finds roots (use it on the derivative).",
+				"L1 → sparse weights, L2 → small weights."
+			]
+		}
+	],
+	"dat200-mixed": [
+		{
+			"title": "The tour of classifiers in one page",
+			"body": "- **Perceptron**: simple linear model with a threshold function. `sklearn.linear_model.Perceptron`\n- **Logistic regression**: linear, gives class **probabilities**. `sklearn.linear_model.LogisticRegression`\n- **SVM**: maximum-margin linear model; kernels make it nonlinear; tune C (and γ). `sklearn.svm.SVC`\n- **Decision tree**: easy to interpret, implicitly selects features, overfits when deep. `sklearn.tree.DecisionTreeClassifier`\n- **Random forest**: ensemble of trees, little tuning, robust, parallelizable. `sklearn.ensemble.RandomForestClassifier`\n- **k-NN**: lazy learner, good in low dimensions, expensive predictions, suffers in high dimensions. `sklearn.neighbors.KNeighborsClassifier`"
+		},
+		{
+			"title": "Linear vs nonlinear, parametric vs not",
+			"body": "**Linear decision boundaries**: perceptron, Adaline, logistic regression, linear SVM.\n**Nonlinear**: kernel SVM (RBF, polynomial), decision trees and random forests (axis-parallel rectangles), k-NN.\n\n**Parametric** (training data not needed after fitting): perceptron, Adaline, logistic regression, linear SVM.\n**Non-parametric** (keeps training data): k-NN, kernel SVM (support vectors only → sparse), kernel perceptron."
+		},
+		{
+			"title": "Which models need scaling?",
+			"body": "Scaling matters for models based on **distances** or **gradients/weights**:\n- k-NN (distances)\n- SVM, especially with an RBF kernel (distances, margin)\n- perceptron, Adaline, logistic regression trained with gradient descent, and anything regularized\n\nTrees and random forests compare one feature to a threshold, so they **do not need scaling**, and splits stay readable on the original scale.\n\nThat is why the wine exercise (alcohol + hue, 30% test set) standardizes for every classifier **except** the decision tree and random forest.",
+			"check": {
+				"question": "You add a feature measured in grams (values ~1000) next to features in [0, 1]. Which classifier is least affected?",
+				"options": [
+					"k-NN",
+					"RBF SVM",
+					"Random forest",
+					"Logistic regression with L2"
+				],
+				"answer": "C",
+				"explanation": "Trees only use thresholds on single features."
+			}
+		},
+		{
+			"title": "How to pick a classifier",
+			"body": "**No free lunch**: no classifier is best for every problem and every kind of data. So:\n1. try several classifiers\n2. tune each one's hyperparameters on validation data (never on the test set)\n3. compare, pick the best, retrain on all training data\n\nAnd remember: no algorithm can make good predictions without **informative, discriminatory features**. Good preprocessing and feature selection often matter more than the choice of classifier.",
+			"remember": [
+				"Trees/forests: no scaling. k-NN/SVM/linear models: scale.",
+				"Kernel SVM is sparse; k-NN keeps all data.",
+				"Try several models, tune on validation data."
+			]
+		}
+	]
+}

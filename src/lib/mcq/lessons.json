@@ -1,0 +1,127 @@
+{
+	"histograms": [
+		{
+			"title": "What a histogram is",
+			"body": "An image **histogram** $h(i)$ counts how many pixels have each intensity $i$. On the horizontal axis are the intensities $0 \\dots K-1$ (for an 8-bit image $K = 256$), on the vertical axis the pixel counts.\n\nThe histogram describes the **distribution** of intensities, but throws away **where** the pixels are. Very different images can therefore have the same histogram, and an image cannot be reconstructed from its histogram alone.\n\nWhat you **can** read from it: the range of intensities, the most frequent intensity, how many dark or bright pixels there are.",
+			"example": "The $3\\times 3$ image\n$$\\begin{matrix} 10 & 10 & 20 \\\\ 20 & 20 & 50 \\\\ 50 & 100 & 100 \\end{matrix}$$\nhas $h(10) = 2$, $h(20) = 3$, $h(50) = 2$, $h(100) = 2$, and 0 for all other intensities. The counts sum to the number of pixels, 9."
+		},
+		{
+			"title": "The normalized histogram",
+			"body": "Dividing by the total number of pixels $N = M\\cdot N_{cols}$ gives the **normalized histogram**:\n$$p(r_k) = \\frac{n_k}{N}$$\nwhere $n_k$ is the number of pixels with intensity $r_k$. $p(r_k)$ is the probability that a randomly chosen pixel has intensity $r_k$, and all values **sum to 1**.",
+			"example": "An $8\\times 8$ image (64 pixels) has 3 pixels at intensity 0: $p(r_0) = 3/64 \\approx 0.047$.",
+			"check": {
+				"question": "A $10\\times 10$ image has 25 pixels at intensity 200. What is $p(200)$?",
+				"options": [
+					"25",
+					"0.25",
+					"0.025",
+					"2.5"
+				],
+				"answer": "B",
+				"explanation": "$25/100 = 0.25$."
+			}
+		},
+		{
+			"title": "Brightness, contrast and exposure",
+			"body": "- **Brightness**: the overall lightness or darkness. Making an image brighter shifts the whole histogram to the right.\n- **Contrast**: the difference in brightness between objects or regions (a black dog on snow has high contrast). A histogram squeezed into a **narrow range** means **low contrast**; a full-contrast image spans the whole range $0 \\dots K-1$.\n\nExposure problems are easy to spot:\n- **underexposed**: values crowded toward the dark end\n- **overexposed**: values crowded toward the bright end\n- **saturation/clipping**: a tall spike at the very end of the range (0 or 255 for 8 bit), where many different true values were cut off to the same number"
+		},
+		{
+			"title": "Colour images",
+			"body": "For RGB images there are two common kinds of histogram:\n- the **luminance** histogram of the grey version, where the grey value is a **weighted sum** of the channels, e.g. $Y = 0.299R + 0.587G + 0.114B$ (green counts most)\n- **separate R, G and B histograms**, one per channel\n\nThe channel histograms show channel-specific distributions and **saturation in a single channel**, which can be hidden in the luminance histogram because the weighted sum mixes the channels together.\n\nThe channel histograms do not tell you how the channels combine within a pixel: if $h_R(50) = h_G(50) = h_B(50) = 100$, then **at most** 100 pixels can be $(50, 50, 50)$, possibly none."
+		},
+		{
+			"title": "Cumulative histogram (CDF)",
+			"body": "The **cumulative distribution function** adds up the normalized histogram:\n$$\\text{cdf}(r_k) = \\sum_{j=0}^{k} p(r_j)$$\nIt **never decreases** and **ends at 1**. It is the key ingredient of histogram equalization: steep parts of the CDF are where many pixels are packed together.",
+			"example": "A 4×4 image with 8 levels has the histogram $[3, 2, 2, 3, 3, 1, 1, 1]$ (16 pixels).\nCumulative counts: $3, 5, 7, 10, 13, 14, 15, 16$, so cdf $= 3/16, 5/16, \\dots, 16/16 = 1$."
+		},
+		{
+			"title": "Histogram equalization",
+			"body": "**Histogram equalization** improves contrast by spreading out the intensities. Each intensity is mapped through the scaled CDF:\n$$s_k = \\operatorname{round}\\big((K-1)\\cdot\\text{cdf}(r_k)\\big)$$\nThe result is **rounded** because output levels must be integers.\n\n**CDF-min normalization**: the basic formula never maps the first occupied intensity to 0. To use the full range, subtract the smallest non-zero CDF value:\n$$s_k = \\operatorname{round}\\left(\\frac{\\text{cdf}(r_k) - \\text{cdf}_{min}}{1 - \\text{cdf}_{min}}\\,(K-1)\\right)$$",
+			"example": "Same 4×4 image, $K - 1 = 7$, cumulative counts $3, 5, 7, 10, 13, 14, 15, 16$:\n- basic: $s = \\operatorname{round}(7\\cdot\\text{count}/16)$ gives $1, 2, 3, 4, 6, 6, 7, 7$\n- CDF-min ($\\text{cdf}_{min} = 3/16$): $\\operatorname{round}(7\\cdot(\\text{count} - 3)/13)$ gives $0, 1, 2, 4, 5, 6, 6, 7$\n\nLevels 4 and 5 were merged into one output level: equalization can merge levels but never split them.",
+			"check": {
+				"question": "Which output does the basic formula give for intensity 0 in the example, and why is that a problem?",
+				"options": [
+					"0, nothing wrong",
+					"1, the darkest value 0 is no longer used",
+					"7, everything becomes white",
+					"3, the CDF is not normalized"
+				],
+				"answer": "B",
+				"explanation": "$\\operatorname{round}(7\\cdot 3/16) = 1$, so the output never reaches 0. CDF-min normalization fixes this."
+			}
+		},
+		{
+			"title": "Limitations of equalization",
+			"body": "- The result is **not exactly uniform**. Pixels with the same input value always get the same output value, so with discrete intensities (especially in small images) the histogram can only be spread out, not flattened.\n- With a **very narrow** histogram, a few levels are stretched far apart. This can create **false edges and false regions** and amplify noise.\n- An image whose intensities **already span almost the full range** changes very little: its CDF is already close to a straight line.",
+			"remember": [
+				"$p(r_k) = n_k/N$, sums to 1. The histogram loses all spatial information.",
+				"Narrow histogram = low contrast; spikes at 0 or 255 = clipping.",
+				"Equalization: $s_k = \\operatorname{round}((K-1)\\,\\text{cdf}(r_k))$; CDF-min maps the first occupied level to 0.",
+				"Not exactly uniform; can create false edges on narrow histograms."
+			]
+		}
+	],
+	"filters": [
+		{
+			"title": "Spatial filtering",
+			"body": "A **spatial filter** computes each output pixel from a **neighbourhood** of input pixels, for enhancement (smoothing, sharpening) or analysis (edges).\n\n- **Linear filters**: the output is a **weighted sum** of the neighbours. The weights form a **kernel** (mask). Sliding the kernel over the image, multiplying and summing at every position, is **2D convolution**.\n- **Non-linear filters**: the output is some other function of the neighbours, e.g. sorting them (median, max, min).\n\nAt the image border part of the kernel falls outside the image, so the image is typically padded (zeros, copies of edge pixels, or mirroring) or the border is skipped."
+		},
+		{
+			"title": "Mean (box) filter",
+			"body": "The **mean filter** replaces each pixel by the **average** of its neighbourhood. A $3\\times 3$ mean filter uses 9 pixels, each with weight $1/9$:\n$$\\frac{1}{9}\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1\\end{bmatrix}$$\n- larger kernels (e.g. $15\\times 15$) blur more\n- it reduces random noise, but **blurs edges and fine detail**\n- isolated salt-and-pepper noise is only **spread out**: the peak is flattened but leaves a visible smudge\n- RGB images: filter each channel (R, G, B) separately",
+			"example": "Neighbourhood $\\begin{matrix} 10 & 12 & 11 \\\\ 9 & 255 & 13 \\\\ 11 & 10 & 12\\end{matrix}$: the mean is $343/9 \\approx 38$.\nThe noisy 255 is reduced, but 38 is still far from the surrounding values around 11."
+		},
+		{
+			"title": "Gaussian filter",
+			"body": "The **Gaussian filter** also smooths, but weights pixels by a 2D Gaussian: the **centre gets the largest weight** and weights drop with distance. The parameter $\\sigma$ controls the **spread**: larger $\\sigma$ = wider kernel = more smoothing.\n\nThe kernel is **normalized** so the weights sum to 1 (keeps the overall brightness). A common $3\\times 3$ integer approximation:\n$$\\frac{1}{16}\\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 4 & 2 \\\\ 1 & 2 & 1\\end{bmatrix}$$\nCompared with the mean filter, the blur looks smoother and more natural.",
+			"check": {
+				"question": "Why is the kernel above multiplied by $1/16$?",
+				"options": [
+					"To sharpen the image",
+					"Because the integer weights sum to 16, so the result is normalized to sum 1",
+					"Because it is a 4×4 kernel",
+					"To detect edges"
+				],
+				"answer": "B",
+				"explanation": "$1+2+1+2+4+2+1+2+1 = 16$."
+			}
+		},
+		{
+			"title": "Laplacian: second derivative",
+			"body": "The **Laplacian** approximates the **second-order** derivative $\\frac{\\partial^2 f}{\\partial x^2} + \\frac{\\partial^2 f}{\\partial y^2}$. A common kernel:\n$$\\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & -4 & 1 \\\\ 0 & 1 & 0\\end{bmatrix}$$\n- the coefficients **sum to zero**, so a **constant region gives 0**\n- strong responses appear where the intensity changes abruptly (edges, fine detail); it is used to find edges and to sharpen\n- flipping the sign of the kernel flips the sign of the response, but the **edge locations stay the same**\n- like all second-derivative filters it is **very sensitive to noise**, so images are often smoothed first",
+			"example": "Neighbourhood $\\begin{matrix} 10 & 10 & 10 \\\\ 10 & 10 & 50 \\\\ 10 & 10 & 50\\end{matrix}$ (centre 10, bright region to the right):\n$10 + 10 + 10 + 50 - 4\\cdot 10 = 40$. In a flat region of all 10s the result is $40 - 40 = 0$."
+		},
+		{
+			"title": "Sobel: first derivative and gradient",
+			"body": "The **Sobel filter** estimates the **first derivative** (the gradient) with two kernels:\n$$G_x: \\begin{bmatrix} -1 & 0 & 1 \\\\ -2 & 0 & 2 \\\\ -1 & 0 & 1\\end{bmatrix} \\qquad G_y: \\begin{bmatrix} -1 & -2 & -1 \\\\ 0 & 0 & 0 \\\\ 1 & 2 & 1\\end{bmatrix}$$\n$G_x$ responds to horizontal changes (vertical edges), $G_y$ to vertical changes. They combine into\n- **magnitude** (edge strength): $\\sqrt{G_x^2 + G_y^2}$\n- **orientation** (direction of steepest increase): $\\theta = \\operatorname{atan2}(G_y, G_x)$\n\nThe middle row/column weight 2 adds a little smoothing, which makes Sobel less noise-sensitive than a plain difference.",
+			"example": "Neighbourhood $\\begin{matrix} 10 & 10 & 50 \\\\ 10 & 10 & 50 \\\\ 10 & 10 & 50\\end{matrix}$ (vertical edge):\n$G_x = (50 - 10) + 2(50 - 10) + (50 - 10) = 160$, $G_y = 0$.\nMagnitude 160, orientation $0$: the gradient points right, perpendicular to the edge.",
+			"check": {
+				"question": "$G_x = 3$ and $G_y = 4$. What is the gradient magnitude?",
+				"options": [
+					"7",
+					"5",
+					"12",
+					"1"
+				],
+				"answer": "B",
+				"explanation": "$\\sqrt{9 + 16} = 5$."
+			}
+		},
+		{
+			"title": "Median filter",
+			"body": "The **median filter** is non-linear: **sort** the neighbourhood values and take the **middle** one.\n\nBecause one extreme value only moves to the end of the sorted list, the median ignores outliers. It is the classic choice for **salt-and-pepper noise**, and it **preserves edges** much better than the mean filter.",
+			"example": "Same neighbourhood as for the mean filter: $10, 12, 11, 9, 255, 13, 11, 10, 12$.\nSorted: $9, 10, 10, 11, \\mathbf{11}, 12, 12, 13, 255$. The median (5th of 9) is **11**: the noise is gone completely, where the mean gave 38."
+		},
+		{
+			"title": "Maximum and minimum filters",
+			"body": "- **Maximum filter**: output the **largest** value in the neighbourhood. Bright regions **expand**, and dark **pepper** noise (isolated 0s) disappears.\n- **Minimum filter**: output the **smallest** value. Dark regions expand, and bright **salt** noise (isolated 255s) disappears.\n\n(These correspond to dilation and erosion for greyscale images.)",
+			"example": "For $\\begin{matrix} 10 & 12 & 11 \\\\ 9 & 255 & 13 \\\\ 11 & 10 & 12\\end{matrix}$: the maximum filter gives 255 (keeps the salt pixel!) and the minimum filter gives 9 (removes it).",
+			"remember": [
+				"Linear (weighted sum, convolution): mean, Gaussian, Laplacian, Sobel.",
+				"Non-linear (sorting): median, maximum, minimum.",
+				"Smoothing: mean and Gaussian (weights sum to 1). Edges: Laplacian (2nd derivative, sum 0), Sobel (1st derivative).",
+				"Salt-and-pepper noise → median filter."
+			]
+		}
+	]
+}

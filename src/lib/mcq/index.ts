@@ -1,5 +1,6 @@
 import quizzes from './questions.json';
 import exams from './exams.json';
+import lessons from './lessons.json';
 
 export type Letter = string;
 
@@ -74,16 +75,32 @@ export interface Category {
 	group: string;
 	description?: string;
 	questions: Question[];
+	/** Optional walkthrough shown before the quiz */
+	lesson?: LessonStep[];
 }
 
-export const categories = [...quizzes.categories, ...exams.categories] as Category[];
+export type { LessonCheck, LessonStep } from '$lib/lesson';
+import type { LessonStep } from '$lib/lesson';
+
+const lesson_by_id = lessons as Record<string, LessonStep[]>;
+
+/** INF250 categories, with the walkthrough for each lecture topic attached */
+export const categories = ([...quizzes.categories, ...exams.categories] as Category[]).map((c) => ({
+	...c,
+	lesson: lesson_by_id[c.id]
+}));
 
 /** Categories grouped by their heading, in the order the groups first appear */
-export const groups = new Map<string, Category[]>();
-for (const c of categories) {
-	if (!groups.has(c.group)) groups.set(c.group, []);
-	groups.get(c.group)!.push(c);
+export function group_categories(list: Category[]) {
+	const groups = new Map<string, Category[]>();
+	for (const c of list) {
+		if (!groups.has(c.group)) groups.set(c.group, []);
+		groups.get(c.group)!.push(c);
+	}
+	return groups;
 }
+
+export const groups = group_categories(categories);
 
 export const letters: Letter[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 

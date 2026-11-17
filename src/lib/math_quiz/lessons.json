@@ -1,0 +1,572 @@
+{
+	"det": [
+		{
+			"title": "Determinanten til en 2×2- og 3×3-matrise",
+			"body": "For en $2\\times 2$-matrise er\n$$\\det\\begin{bmatrix} a & b \\\\ c & d\\end{bmatrix} = ad - bc.$$\n\nFor større matriser bruker vi **kofaktorutvikling** langs en rad eller kolonne:\n$$\\det A = \\sum_j a_{ij}C_{ij}, \\qquad C_{ij} = (-1)^{i+j}\\det A_{ij}$$\nder $A_{ij}$ er matrisen uten rad $i$ og kolonne $j$. Fortegnene følger sjakkbrettmønsteret $\\begin{smallmatrix} + & - & + \\\\ - & + & - \\\\ + & - & + \\end{smallmatrix}$.\n\n**Tips:** utvikle langs raden eller kolonnen med flest nuller.",
+			"example": "$A = \\begin{bmatrix} 1 & 2 & 0 \\\\ 3 & 1 & 2 \\\\ 0 & 1 & 1\\end{bmatrix}$, utvikling langs første rad:\n$$\\det A = 1\\cdot\\begin{vmatrix} 1 & 2 \\\\ 1 & 1\\end{vmatrix} - 2\\cdot\\begin{vmatrix} 3 & 2 \\\\ 0 & 1\\end{vmatrix} + 0 = 1\\cdot(-1) - 2\\cdot 3 = -7$$"
+		},
+		{
+			"title": "Trekantmatriser og radoperasjoner",
+			"body": "For en **trekantmatrise** (øvre eller nedre) er determinanten produktet av diagonalelementene.\n\nRadoperasjoner endrer determinanten på en kontrollert måte:\n- bytte to rader: determinanten skifter **fortegn**\n- multiplisere en rad med $k$: determinanten ganges med $k$\n- legge et multiplum av en rad til en annen: **ingen endring**\n\nDerfor kan vi radredusere til trappeform, gange sammen diagonalen og korrigere for bytter og skaleringer.",
+			"example": "$\\begin{vmatrix} 2 & 4 \\\\ 1 & 5\\end{vmatrix}$: trekk $\\tfrac12\\cdot$ rad 1 fra rad 2 → $\\begin{vmatrix} 2 & 4 \\\\ 0 & 3\\end{vmatrix} = 2\\cdot 3 = 6$.\nSjekk: $2\\cdot 5 - 4\\cdot 1 = 6$.",
+			"check": {
+				"question": "Du bytter to rader i en matrise med $\\det A = 4$, og ganger deretter én rad med 3. Hva blir determinanten?",
+				"options": [
+					"12",
+					"-12",
+					"4",
+					"-4"
+				],
+				"answer": "B",
+				"explanation": "Byttet gir $-4$, skaleringen ganger med 3: $-12$."
+			}
+		},
+		{
+			"title": "Regneregler",
+			"body": "For $n\\times n$-matriser $A$ og $B$:\n- $\\det(AB) = \\det A\\cdot\\det B$\n- $\\det(A^T) = \\det A$\n- $\\det(A^{-1}) = \\dfrac{1}{\\det A}$\n- $\\det(kA) = k^n\\det A$ (hver av de $n$ radene ganges med $k$)\n\nMerk: $\\det(A+B) \\ne \\det A + \\det B$ generelt.",
+			"example": "$A$ er $2\\times 2$ med $\\det A = 5$:\n- $\\det(2A) = 2^2\\cdot 5 = 20$\n- $\\det(A^{-1}) = 1/5$\n- $\\det(A^TA) = 5\\cdot 5 = 25$",
+			"check": {
+				"question": "$A$ er en $4\\times 4$-matrise med $\\det A = 3$. Hva er $\\det(2A)$?",
+				"options": [
+					"6",
+					"24",
+					"48",
+					"81"
+				],
+				"answer": "C",
+				"explanation": "$2^4\\cdot 3 = 48$."
+			}
+		},
+		{
+			"title": "Determinanten og invertibilitet",
+			"body": "$A$ er **invertibel** hvis og bare hvis $\\det A \\ne 0$. Matrisen er **singulær** når $\\det A = 0$, det vil si når kolonnene (eller radene) er lineært avhengige.\n\nTypisk oppgave: finn verdien av en parameter som gjør matrisen singulær. Sett opp $\\det A$ som et uttrykk i parameteren og løs $\\det A = 0$.\n\nGeometrisk er $|\\det A|$ arealet (2D) eller volumet (3D) som enhetskvadratet/-kuben avbildes på.",
+			"example": "For hvilken $k$ er $\\begin{bmatrix} 2 & k \\\\ 3 & 6\\end{bmatrix}$ singulær?\n$12 - 3k = 0 \\Rightarrow k = 4$. (Da er rad 1 lik $\\tfrac23\\cdot$ rad 2.)",
+			"remember": [
+				"$2\\times 2$: $ad - bc$. Større: kofaktorutvikling eller radreduksjon.",
+				"Bytte rader → fortegnsskifte; $\\det(kA) = k^n\\det A$.",
+				"Invertibel ⇔ $\\det A \\ne 0$."
+			]
+		}
+	],
+	"eigen": [
+		{
+			"title": "Hva er en egenvektor?",
+			"body": "En **egenvektor** til $A$ er en vektor $\\vec v \\ne \\vec 0$ som bare skaleres av $A$:\n$$A\\vec v = \\lambda\\vec v$$\nTallet $\\lambda$ er den tilhørende **egenverdien**. Alle løsninger av $(A - \\lambda I)\\vec v = \\vec 0$ danner **egenrommet** til $\\lambda$, altså $\\operatorname{Nul}(A - \\lambda I)$.\n\n$\\lambda = 0$ er en egenverdi akkurat når $A$ ikke er invertibel.",
+			"check": {
+				"question": "$A\\vec v = 3\\vec v$ for $\\vec v = (1, 2)$. Hva er $A\\vec w$ for $\\vec w = (2, 4)$?",
+				"options": [
+					"$(2, 4)$",
+					"$(6, 12)$",
+					"$(3, 6)$",
+					"Kan ikke avgjøres"
+				],
+				"answer": "B",
+				"explanation": "$\\vec w = 2\\vec v$ er også en egenvektor med egenverdi 3, så $A\\vec w = 3\\vec w = (6, 12)$."
+			}
+		},
+		{
+			"title": "Den karakteristiske likningen",
+			"body": "Egenverdiene er løsningene av\n$$\\det(A - \\lambda I) = 0.$$\nFor en $2\\times 2$-matrise blir dette\n$$\\lambda^2 - (\\operatorname{tr}A)\\lambda + \\det A = 0, \\qquad \\operatorname{tr}A = a_{11} + a_{22}$$\n\nNyttige kontroller:\n- summen av egenverdiene er $\\operatorname{tr}A$\n- produktet av egenverdiene er $\\det A$\n- for en **trekantmatrise** er egenverdiene diagonalelementene",
+			"example": "$A = \\begin{bmatrix} 2 & 1 \\\\ 1 & 2\\end{bmatrix}$: $\\operatorname{tr}A = 4$, $\\det A = 3$.\n$\\lambda^2 - 4\\lambda + 3 = (\\lambda - 1)(\\lambda - 3) = 0$, så $\\lambda = 1$ og $\\lambda = 3$.\nKontroll: $1 + 3 = 4$ og $1\\cdot 3 = 3$."
+		},
+		{
+			"title": "Finne egenvektorene",
+			"body": "For hver egenverdi løser vi $(A - \\lambda I)\\vec v = \\vec 0$. Matrisen $A - \\lambda I$ er singulær, så for en $2\\times 2$-matrise er de to radene proporsjonale, og én rad er nok.\n\nHvis oppgaven sier for eksempel \"$v_2 = 1$\", setter du inn det og løser for $v_1$.",
+			"example": "Samme $A$, $\\lambda = 3$: $A - 3I = \\begin{bmatrix} -1 & 1 \\\\ 1 & -1\\end{bmatrix}$, gir $-v_1 + v_2 = 0$, altså $\\vec v = (1, 1)$.\n$\\lambda = 1$: $A - I = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1\\end{bmatrix}$, gir $v_1 + v_2 = 0$, altså $\\vec v = (1, -1)$.\nKontroll: $A(1, 1) = (3, 3) = 3\\cdot(1,1)$ ✓"
+		},
+		{
+			"title": "Diagonalisering",
+			"body": "$A$ ($n\\times n$) er **diagonaliserbar** hvis den har $n$ lineært uavhengige egenvektorer. Da er\n$$A = PDP^{-1}$$\nder kolonnene i $P$ er egenvektorene og $D$ har de tilhørende egenverdiene på diagonalen (i samme rekkefølge).\n\n- $n$ **forskjellige** egenverdier ⇒ alltid diagonaliserbar\n- ved gjentatte egenverdier må egenrommet ha full dimensjon\n\nPotenser blir enkle: $A^k = PD^kP^{-1}$, og $D^k$ får vi ved å opphøye diagonalelementene.",
+			"example": "For $A = \\begin{bmatrix} 2 & 1 \\\\ 1 & 2\\end{bmatrix}$: $P = \\begin{bmatrix} 1 & 1 \\\\ 1 & -1\\end{bmatrix}$, $D = \\begin{bmatrix} 3 & 0 \\\\ 0 & 1\\end{bmatrix}$.\nDa er $A^{10} = P\\begin{bmatrix} 3^{10} & 0 \\\\ 0 & 1\\end{bmatrix}P^{-1}$.",
+			"remember": [
+				"$A\\vec v = \\lambda\\vec v$, $\\vec v \\ne \\vec 0$.",
+				"$2\\times 2$: $\\lambda^2 - \\operatorname{tr}(A)\\lambda + \\det A = 0$.",
+				"Sum = spor, produkt = determinant.",
+				"$A = PDP^{-1}$, $A^k = PD^kP^{-1}$."
+			]
+		}
+	],
+	"eigvec": [
+		{
+			"title": "Komplekse egenverdier",
+			"body": "Når den karakteristiske likningen har negativ diskriminant, får en reell $2\\times 2$-matrise komplekse egenverdier:\n$$\\lambda = \\frac{\\operatorname{tr}A}{2} \\pm \\sqrt{\\left(\\frac{\\operatorname{tr}A}{2}\\right)^2 - \\det A}$$\nDe kommer alltid i **konjugerte par** $a \\pm bi$, og egenvektorene er også konjugerte: er $\\vec v$ egenvektor for $\\lambda$, er $\\bar{\\vec v}$ egenvektor for $\\bar\\lambda$.",
+			"example": "$A = \\begin{bmatrix} 3 & -5 \\\\ 1 & -1\\end{bmatrix}$: $\\operatorname{tr}A = 2$, $\\det A = -3 + 5 = 2$.\n$\\lambda = 1 \\pm\\sqrt{1 - 2} = 1 \\pm i$."
+		},
+		{
+			"title": "Egenvektoren: bruk én rad",
+			"body": "Fremgangsmåten er den samme som i det reelle tilfellet, bare med kompleks regning. $A - \\lambda I$ er singulær, så én rad gir hele egenvektoren:\n$$(a_{11} - \\lambda)v_1 + a_{12}v_2 = 0$$\nVelg den raden som gir enklest regning, og sett inn betingelsen oppgaven gir (for eksempel $v_1 = -1$ eller $v_2 = 1$).",
+			"example": "Samme $A$, $\\lambda = 1 + i$. Rad 2 i $A - \\lambda I$ er $\\begin{bmatrix} 1 & -2 - i\\end{bmatrix}$:\n$$v_1 + (-2 - i)v_2 = 0 \\Rightarrow v_1 = (2 + i)v_2$$\nMed $v_2 = 1$: $\\vec v = (2 + i,\\ 1)$.\nKontroll med rad 1: $(3 - (1+i))(2+i) - 5 = (2 - i)(2 + i) - 5 = 5 - 5 = 0$ ✓"
+		},
+		{
+			"title": "Kompleks regning du trenger",
+			"body": "- $i^2 = -1$\n- divisjon: gang med den konjugerte, $\\dfrac{1}{c + di} = \\dfrac{c - di}{c^2 + d^2}$\n- realdel og imaginærdel: for $p + qi$ er realdelen $p$ og imaginærdelen $q$ (et reelt tall, uten $i$)\n- modulus: $|a + bi| = \\sqrt{a^2 + b^2}$\n\nNår du må løse for $v_1$ med $v_2$ gitt, ender du ofte med en brøk med $i$ i nevneren: rydd opp med den konjugerte.",
+			"example": "$\\dfrac{2}{1 + i} = \\dfrac{2(1 - i)}{(1+i)(1-i)} = \\dfrac{2 - 2i}{2} = 1 - i$. Realdel 1, imaginærdel $-1$.",
+			"check": {
+				"question": "Hva er imaginærdelen til $\\dfrac{5}{2 - i}$?",
+				"options": [
+					"$-1$",
+					"$1$",
+					"$i$",
+					"$2$"
+				],
+				"answer": "B",
+				"explanation": "$\\dfrac{5(2 + i)}{4 + 1} = 2 + i$, så imaginærdelen er 1."
+			}
+		},
+		{
+			"title": "Geometrisk tolkning: rotasjon og skalering",
+			"body": "En reell $2\\times 2$-matrise med egenverdier $a \\pm bi$ ($b \\ne 0$) er similær med\n$$C = \\begin{bmatrix} a & -b \\\\ b & a\\end{bmatrix} = r\\begin{bmatrix} \\cos\\varphi & -\\sin\\varphi \\\\ \\sin\\varphi & \\cos\\varphi\\end{bmatrix}, \\qquad r = |\\lambda| = \\sqrt{a^2 + b^2}$$\nvia $P = [\\operatorname{Re}\\vec v\\ \\ \\operatorname{Im}\\vec v]$, der $\\vec v$ er egenvektoren til $\\lambda = a - bi$. $C$ er en **rotasjon** med vinkel $\\varphi$ og en **skalering** med $r$.\n\nGjentatt bruk av $A$ gir derfor spiraler: utover hvis $r > 1$, innover hvis $r < 1$, og en lukket bane (ellipse) hvis $r = 1$.",
+			"example": "$\\lambda = 1 \\pm i$: $r = \\sqrt 2$, $\\varphi = \\pi/4$. Hver multiplikasjon med $A$ roterer $45^\\circ$ (i de nye koordinatene) og forlenger med $\\sqrt 2$: en spiral utover.",
+			"remember": [
+				"Reelle matriser: komplekse egenverdier i konjugerte par.",
+				"Én rad i $A - \\lambda I$ gir egenvektoren.",
+				"Del med kompleks tall: gang med den konjugerte.",
+				"$|\\lambda| > 1$ spiral ut, $< 1$ spiral inn."
+			]
+		}
+	],
+	"dds": [
+		{
+			"title": "Løsning via egenvektorer",
+			"body": "Et diskret dynamisk system er $\\vec x_{k+1} = A\\vec x_k$, så $\\vec x_k = A^k\\vec x_0$.\n\nHvis $A$ har en basis av egenvektorer $\\vec v_1, \\dots, \\vec v_n$, skriver vi startvektoren i den basisen:\n$$\\vec x_0 = c_1\\vec v_1 + c_2\\vec v_2 \\quad\\Rightarrow\\quad \\vec x_k = c_1\\lambda_1^k\\vec v_1 + c_2\\lambda_2^k\\vec v_2$$\nHver komponent langs en egenvektor ganges bare med sin egenverdi i hvert steg.",
+			"example": "$\\lambda_1 = 2$, $\\vec v_1 = (1, 1)$, $\\lambda_2 = 0.5$, $\\vec v_2 = (1, -1)$, $\\vec x_0 = (5, 1)$.\n$c_1 + c_2 = 5$, $c_1 - c_2 = 1$ ⇒ $c_1 = 3$, $c_2 = 2$.\n$\\vec x_2 = 3\\cdot 2^2(1, 1) + 2\\cdot 0.5^2(1, -1) = (12.5,\\ 11.5)$."
+		},
+		{
+			"title": "Langtidsoppførsel",
+			"body": "For store $k$ dominerer leddet med størst $|\\lambda|$:\n$$\\vec x_k \\approx c_1\\lambda_1^k\\vec v_1, \\qquad \\vec x_{k+1} \\approx \\lambda_1\\vec x_k$$\nDen største egenverdien er altså **vekstraten** på lang sikt, og $\\vec v_1$ gir **retningen** (fordelingen) systemet nærmer seg.\n\nOrigo er\n- en **tiltrekker** hvis alle $|\\lambda| < 1$\n- en **frastøter** hvis alle $|\\lambda| > 1$\n- et **sadelpunkt** hvis noen er større og noen mindre enn 1",
+			"check": {
+				"question": "Egenverdiene er $1.05$ og $0.6$. Hva skjer med en typisk bestand på lang sikt?",
+				"options": [
+					"Den dør ut",
+					"Den vokser med 5 % per steg",
+					"Den stabiliserer seg",
+					"Den vokser med 60 % per steg"
+				],
+				"answer": "B",
+				"explanation": "Den dominerende egenverdien er $1.05$."
+			}
+		},
+		{
+			"title": "Markovkjeder og likevekt",
+			"body": "I en **stokastisk matrise** (Markovmatrise) er alle elementer $\\ge 0$ og hver **kolonne** summerer til 1. Da er $\\lambda = 1$ alltid en egenverdi, og de andre har $|\\lambda| \\le 1$.\n\nSystemet går mot **likevektsvektoren**: egenvektoren for $\\lambda = 1$, skalert slik at den har samme totalsum som $\\vec x_0$ (for sannsynligheter: sum 1).",
+			"example": "$A = \\begin{bmatrix} 0.9 & 0.2 \\\\ 0.1 & 0.8\\end{bmatrix}$. $A - I = \\begin{bmatrix} -0.1 & 0.2 \\\\ 0.1 & -0.2\\end{bmatrix}$ gir $v_1 = 2v_2$, altså $\\vec v = (2, 1)$.\nSkalert til sum 1: $(2/3,\\ 1/3)$. Den andre egenverdien er $\\operatorname{tr}A - 1 = 0.7$, så avviket fra likevekten krymper med faktor $0.7$ per steg.",
+			"remember": [
+				"$\\vec x_k = \\sum c_i\\lambda_i^k\\vec v_i$ med $\\vec x_0 = \\sum c_i\\vec v_i$.",
+				"Største $|\\lambda|$ styrer langtidsoppførselen.",
+				"Markov: likevekt = egenvektor for $\\lambda = 1$, skalert til riktig sum."
+			]
+		}
+	],
+	"sys": [
+		{
+			"title": "Egenfunksjoner $e^{\\lambda t}\\vec v$",
+			"body": "For systemet $\\vec x'(t) = A\\vec x(t)$: hvis $A\\vec v = \\lambda\\vec v$, så er $\\vec x(t) = e^{\\lambda t}\\vec v$ en løsning, fordi\n$$\\frac{d}{dt}\\left(e^{\\lambda t}\\vec v\\right) = \\lambda e^{\\lambda t}\\vec v = A\\left(e^{\\lambda t}\\vec v\\right).$$\nDen generelle løsningen (med to uavhengige egenvektorer) er\n$$\\vec x(t) = c_1e^{\\lambda_1 t}\\vec v_1 + c_2e^{\\lambda_2 t}\\vec v_2$$\nog konstantene finner vi fra $\\vec x(0) = c_1\\vec v_1 + c_2\\vec v_2$.",
+			"example": "$A = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1\\end{bmatrix}$ har $\\lambda_1 = 3$, $\\vec v_1 = (1, 1)$ og $\\lambda_2 = -1$, $\\vec v_2 = (1, -1)$.\nMed $\\vec x(0) = (3, 1)$: $c_1 = 2$, $c_2 = 1$, så\n$$\\vec x(t) = 2e^{3t}(1, 1) + e^{-t}(1, -1), \\qquad x_1(t) = 2e^{3t} + e^{-t}.$$"
+		},
+		{
+			"title": "Klassifisering av origo",
+			"body": "Fortegnet på egenverdiene bestemmer hvordan banene oppfører seg nær origo:\n- begge **negative**: tiltrekker (alle baner går inn mot origo)\n- begge **positive**: frastøter\n- **motsatte fortegn**: sadelpunkt (inn langs den ene egenvektoren, ut langs den andre; retningen med størst frastøting er egenvektoren til den positive egenverdien)\n\nKomplekse egenverdier $a \\pm bi$ gir spiraler:\n- $a < 0$: spiral inn\n- $a > 0$: spiral ut\n- $a = 0$: lukkede baner (ellipser, et senter)\n\nMerk forskjellen fra diskrete systemer: her sammenligner vi med **0**, der sammenlignet vi $|\\lambda|$ med **1**.",
+			"check": {
+				"question": "$A$ har egenverdier $-2$ og $5$. Hva slags punkt er origo for $\\vec x' = A\\vec x$?",
+				"options": [
+					"Tiltrekker",
+					"Frastøter",
+					"Sadelpunkt",
+					"Senter"
+				],
+				"answer": "C",
+				"explanation": "Motsatte fortegn gir sadelpunkt."
+			}
+		},
+		{
+			"title": "Komplekse egenverdier",
+			"body": "Hvis $\\lambda = a + bi$ med egenvektor $\\vec v$, er $e^{\\lambda t}\\vec v$ en kompleks løsning. Real- og imaginærdelen er to **reelle** løsninger:\n$$e^{\\lambda t} = e^{at}(\\cos bt + i\\sin bt)$$\nDen generelle reelle løsningen er $c_1\\operatorname{Re}(e^{\\lambda t}\\vec v) + c_2\\operatorname{Im}(e^{\\lambda t}\\vec v)$. Faktoren $e^{at}$ gir vekst eller demping, $\\cos bt$ og $\\sin bt$ gir rotasjonen."
+		},
+		{
+			"title": "Eulers metode",
+			"body": "Eulers metode tilnærmer løsningen numerisk med skrittlengde $h$. For $\\vec x' = A\\vec x + \\vec b$:\n$$\\vec x_{k+1} = \\vec x_k + h\\left(A\\vec x_k + \\vec b\\right)$$\nder $\\vec x_k \\approx \\vec x(kh)$. Regn ut høyresiden med den **gamle** verdien, ett steg om gangen. For å nå tiden $t$ trengs $t/h$ steg.",
+			"example": "$A = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0\\end{bmatrix}$, $\\vec b = \\vec 0$, $\\vec x_0 = (1, 0)$, $h = 0.1$:\n- $A\\vec x_0 = (0, -1)$, så $\\vec x_1 = (1, 0) + 0.1(0, -1) = (1,\\ -0.1)$\n- $A\\vec x_1 = (-0.1, -1)$, så $\\vec x_2 = (1, -0.1) + 0.1(-0.1, -1) = (0.99,\\ -0.2)$",
+			"remember": [
+				"$\\vec x(t) = \\sum c_ie^{\\lambda_i t}\\vec v_i$, konstanter fra $\\vec x(0)$.",
+				"Kontinuerlig: sammenlign egenverdiene med 0 (realdelen ved komplekse).",
+				"Euler: $\\vec x_{k+1} = \\vec x_k + h(A\\vec x_k + \\vec b)$."
+			]
+		}
+	],
+	"orto": [
+		{
+			"title": "Indreprodukt, lengde og vinkel",
+			"body": "For $\\vec u, \\vec v \\in \\mathbb{R}^n$:\n- indreprodukt: $\\vec u\\cdot\\vec v = \\sum u_iv_i = \\vec u^T\\vec v$\n- lengde: $\\lVert\\vec u\\rVert = \\sqrt{\\vec u\\cdot\\vec u}$\n- avstand: $\\operatorname{dist}(\\vec u, \\vec v) = \\lVert\\vec u - \\vec v\\rVert$\n- vinkel: $\\cos\\theta = \\dfrac{\\vec u\\cdot\\vec v}{\\lVert\\vec u\\rVert\\,\\lVert\\vec v\\rVert}$\n- **ortogonale** vektorer: $\\vec u\\cdot\\vec v = 0$\n\nEn **enhetsvektor** har lengde 1; normaliser med $\\vec u/\\lVert\\vec u\\rVert$.",
+			"example": "$\\vec u = (1, 0)$, $\\vec v = (1, 1)$: $\\cos\\theta = \\dfrac{1}{1\\cdot\\sqrt 2}$, så $\\theta = \\pi/4$.\n$\\operatorname{dist}((7, 1), (3, 4)) = \\lVert(4, -3)\\rVert = 5$."
+		},
+		{
+			"title": "Ortogonalt komplement",
+			"body": "Det **ortogonale komplementet** $W^\\perp$ er alle vektorer som står vinkelrett på hele $W$. Det holder å sjekke vinkelrett mot en basis for $W$.\n\nFor en matrise $A$: $(\\operatorname{Row}A)^\\perp = \\operatorname{Nul}A$ og $(\\operatorname{Col}A)^\\perp = \\operatorname{Nul}A^T$.",
+			"check": {
+				"question": "For hvilken $k$ er $(1, k, 2)$ ortogonal på $(3, 1, -1)$?",
+				"options": [
+					"$-1$",
+					"$1$",
+					"$5$",
+					"$-5$"
+				],
+				"answer": "A",
+				"explanation": "$3 + k - 2 = 0 \\Rightarrow k = -1$."
+			}
+		},
+		{
+			"title": "Ortogonale baser og projeksjon på en linje",
+			"body": "Med en **ortogonal basis** $\\{\\vec u_1, \\dots, \\vec u_p\\}$ for $W$ finner vi koordinatene uten å løse et likningssystem:\n$$\\vec y = \\sum_j c_j\\vec u_j, \\qquad c_j = \\frac{\\vec y\\cdot\\vec u_j}{\\vec u_j\\cdot\\vec u_j}$$\n\n**Projeksjon på en linje** utspent av $\\vec u$:\n$$\\hat y = \\frac{\\vec y\\cdot\\vec u}{\\vec u\\cdot\\vec u}\\vec u, \\qquad \\vec z = \\vec y - \\hat y \\perp \\vec u$$\n$\\lVert\\vec z\\rVert$ er avstanden fra $\\vec y$ til linjen.",
+			"example": "$\\vec y = (7, 6)$, $\\vec u = (4, 2)$: $\\vec y\\cdot\\vec u = 40$, $\\vec u\\cdot\\vec u = 20$.\n$\\hat y = 2(4, 2) = (8, 4)$ og $\\vec z = (-1, 2)$. Kontroll: $\\vec z\\cdot\\vec u = -4 + 4 = 0$ ✓. Avstanden er $\\sqrt 5$."
+		},
+		{
+			"title": "Projeksjon på et underrom",
+			"body": "Med ortogonal basis $\\vec u_1, \\dots, \\vec u_p$ for $W$ er projeksjonen summen av projeksjonene på hver basisvektor:\n$$\\operatorname{proj}_W\\vec y = \\frac{\\vec y\\cdot\\vec u_1}{\\vec u_1\\cdot\\vec u_1}\\vec u_1 + \\cdots + \\frac{\\vec y\\cdot\\vec u_p}{\\vec u_p\\cdot\\vec u_p}\\vec u_p$$\nDette er **nærmeste punkt** i $W$, og avstanden fra $\\vec y$ til $W$ er $\\lVert\\vec y - \\operatorname{proj}_W\\vec y\\rVert$.\n\nFormelen krever **ortogonal** basis. Er basisen ikke ortogonal, bruk Gram–Schmidt først."
+		},
+		{
+			"title": "Ortonormale kolonner og ortogonale matriser",
+			"body": "En matrise $U$ har **ortonormale kolonner** hvis $U^TU = I$. Da bevarer den lengder og vinkler: $\\lVert U\\vec x\\rVert = \\lVert\\vec x\\rVert$.\n\nEn **ortogonal matrise** er kvadratisk med ortonormale kolonner, så $U^{-1} = U^T$.\n\nTypisk oppgave: fyll inn ukjente slik at matrisen blir ortogonal. Bruk at hver kolonne har lengde 1 og at kolonnene står vinkelrett på hverandre.",
+			"example": "$A = \\begin{bmatrix} -8s & a \\\\ 6s & b\\end{bmatrix}$ er ortogonal med $a > 0$.\nKolonne 1 har lengde 1: $64s^2 + 36s^2 = 1$, så $s = \\pm\\tfrac{1}{10}$.\nVinkelrett: $-8sa + 6sb = 0 \\Rightarrow b = \\tfrac43a$.\nLengde 1: $a^2 + \\tfrac{16}{9}a^2 = 1 \\Rightarrow a = \\tfrac35$, $b = \\tfrac45$.",
+			"remember": [
+				"$\\cos\\theta = \\dfrac{\\vec u\\cdot\\vec v}{\\lVert\\vec u\\rVert\\lVert\\vec v\\rVert}$, ortogonal ⇔ indreprodukt 0.",
+				"$\\hat y = \\dfrac{\\vec y\\cdot\\vec u}{\\vec u\\cdot\\vec u}\\vec u$; på underrom: sum over ortogonal basis.",
+				"Ortogonal matrise: $U^TU = I$, $U^{-1} = U^T$."
+			]
+		}
+	],
+	"lsq": [
+		{
+			"title": "Når $A\\vec x = \\vec b$ ikke har løsning",
+			"body": "Et overbestemt system (flere likninger enn ukjente) er ofte **inkonsistent**. Da søker vi $\\hat x$ som gjør feilen så liten som mulig:\n$$\\hat x \\text{ minimerer } \\lVert\\vec b - A\\vec x\\rVert$$\nGeometrisk: $A\\hat x$ er **projeksjonen** av $\\vec b$ på $\\operatorname{Col}A$, så feilvektoren $\\vec b - A\\hat x$ står vinkelrett på alle kolonnene i $A$."
+		},
+		{
+			"title": "Normallikningene",
+			"body": "At feilen står vinkelrett på kolonnene betyr $A^T(\\vec b - A\\hat x) = \\vec 0$, altså **normallikningene**:\n$$A^TA\\hat x = A^T\\vec b$$\nLøsningen er entydig når kolonnene i $A$ er lineært uavhengige ($A^TA$ invertibel): $\\hat x = (A^TA)^{-1}A^T\\vec b$.\n\n**Minste kvadraters feil** er $\\lVert\\vec b - A\\hat x\\rVert$.",
+			"example": "$A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1\\end{bmatrix}$, $\\vec b = (1, 1, 0)$.\n$A^TA = \\begin{bmatrix} 2 & 1 \\\\ 1 & 2\\end{bmatrix}$, $A^T\\vec b = (1, 1)$.\n$2x_1 + x_2 = 1$, $x_1 + 2x_2 = 1$ ⇒ $\\hat x = (\\tfrac13, \\tfrac13)$.\n$A\\hat x = (\\tfrac13, \\tfrac13, \\tfrac23)$, feil $= \\lVert(\\tfrac23, \\tfrac23, -\\tfrac23)\\rVert = \\tfrac{2}{\\sqrt 3}$.",
+			"check": {
+				"question": "Hvilken likning gir minste kvadraters løsning?",
+				"options": [
+					"$A\\hat x = \\vec b$",
+					"$AA^T\\hat x = \\vec b$",
+					"$A^TA\\hat x = A^T\\vec b$",
+					"$A^T\\hat x = A\\vec b$"
+				],
+				"answer": "C",
+				"explanation": "Normallikningene $A^TA\\hat x = A^T\\vec b$."
+			}
+		},
+		{
+			"title": "Minste kvadraters linje",
+			"body": "For datapunkter $(x_i, y_i)$ søker vi $y = \\beta_0 + \\beta_1x$. Det er et minste kvadraters problem $X\\vec\\beta \\approx \\vec y$ med\n$$X = \\begin{bmatrix} 1 & x_1 \\\\ \\vdots & \\vdots \\\\ 1 & x_n\\end{bmatrix}, \\qquad X^TX\\vec\\beta = X^T\\vec y$$\nFor en rett linje gir dette de praktiske formlene\n$$\\beta_1 = \\frac{\\sum(x_i - \\bar x)(y_i - \\bar y)}{\\sum(x_i - \\bar x)^2}, \\qquad \\beta_0 = \\bar y - \\beta_1\\bar x$$\nAndre modeller (f.eks. $y = \\beta_0 + \\beta_1x + \\beta_2x^2$) fungerer på samme måte, bare med flere kolonner i $X$.",
+			"example": "Punktene $(0, 1), (1, 1), (2, 2), (3, 2)$: $\\bar x = \\bar y = 1.5$.\nAvvik i $x$: $-1.5, -0.5, 0.5, 1.5$. Avvik i $y$: $-0.5, -0.5, 0.5, 0.5$.\n$\\sum(\\cdot)(\\cdot) = 0.75 + 0.25 + 0.25 + 0.75 = 2$, $\\sum(x_i - \\bar x)^2 = 5$.\n$\\beta_1 = 0.4$, $\\beta_0 = 1.5 - 0.4\\cdot 1.5 = 0.9$.",
+			"remember": [
+				"Normallikningene: $A^TA\\hat x = A^T\\vec b$.",
+				"Feil: $\\lVert\\vec b - A\\hat x\\rVert$; $A\\hat x = \\operatorname{proj}_{\\operatorname{Col}A}\\vec b$.",
+				"Linje: designmatrise med en kolonne av 1-ere og en med $x_i$."
+			]
+		}
+	],
+	"quad": [
+		{
+			"title": "Symmetriske matriser",
+			"body": "En matrise er **symmetrisk** når $A^T = A$. Spektralteoremet sier at da\n- er alle egenverdiene **reelle**\n- står egenvektorer for forskjellige egenverdier **vinkelrett** på hverandre\n- kan $A$ **ortogonalt diagonaliseres**: $A = PDP^T$, med ortonormale egenvektorer i $P$\n\nFor $\\begin{bmatrix} a & b \\\\ b & c\\end{bmatrix}$ er egenverdiene\n$$\\lambda = \\frac{a + c}{2} \\pm\\sqrt{\\left(\\frac{a - c}{2}\\right)^2 + b^2}.$$",
+			"example": "$\\begin{bmatrix} 3 & 1 \\\\ 1 & 3\\end{bmatrix}$: $\\lambda = 3 \\pm 1$, altså 4 og 2, med egenvektorer $(1, 1)/\\sqrt 2$ og $(1, -1)/\\sqrt 2$ (vinkelrett ✓)."
+		},
+		{
+			"title": "Kvadratiske former og deres matrise",
+			"body": "En **kvadratisk form** er $Q(\\vec x) = \\vec x^TA\\vec x$ med $A$ symmetrisk. Les av matrisen slik:\n- diagonalen: koeffisientene foran $x_i^2$\n- $a_{ij} = a_{ji}$: **halvparten** av koeffisienten foran $x_ix_j$",
+			"example": "$Q = 3x_1^2 - 2x_2^2 + 6x_1x_2$ gir $A = \\begin{bmatrix} 3 & 3 \\\\ 3 & -2\\end{bmatrix}$.\nKontroll: $\\vec x^TA\\vec x = 3x_1^2 + 3x_1x_2 + 3x_2x_1 - 2x_2^2$ ✓",
+			"check": {
+				"question": "Hva er $a_{12}$ for $Q = x_1^2 + 4x_2^2 + 10x_1x_2$?",
+				"options": [
+					"10",
+					"5",
+					"4",
+					"20"
+				],
+				"answer": "B",
+				"explanation": "Halvparten av 10."
+			}
+		},
+		{
+			"title": "Hovedakser: fjerne kryssleddene",
+			"body": "Med $A = PDP^T$ og variabelskiftet $\\vec x = P\\vec y$ blir\n$$Q = \\vec y^TD\\vec y = \\lambda_1y_1^2 + \\lambda_2y_2^2 + \\cdots$$\nuten kryssledd. Koeffisientene er altså **egenverdiene**, og kolonnene i $P$ er de nye aksene (hovedaksene).\n\nKlassifisering:\n- **positivt definitt**: alle $\\lambda > 0$ ($Q > 0$ for $\\vec x \\ne \\vec 0$)\n- **negativt definitt**: alle $\\lambda < 0$\n- **indefinitt**: både positive og negative egenverdier\n- semidefinitt: noen egenverdier er 0"
+		},
+		{
+			"title": "Maksimum og minimum på enhetssfæren",
+			"body": "Under bibetingelsen $\\vec x^T\\vec x = 1$ ($\\lVert\\vec x\\rVert = 1$) gjelder:\n- **maksimum** av $Q$ er den **største** egenverdien til $A$\n- **minimum** av $Q$ er den **minste** egenverdien\n\nDe nås i de tilhørende enhetsegenvektorene. Ingen derivasjon trengs!",
+			"example": "Minimum av $Q = 4x_1^2 + 4x_2^2 - 5x_1x_2$ når $x_1^2 + x_2^2 = 1$:\n$A = \\begin{bmatrix} 4 & -\\tfrac52 \\\\ -\\tfrac52 & 4\\end{bmatrix}$, egenverdier $4 \\pm \\tfrac52$.\nMinimum $= \\tfrac32$, i retningen $(1, 1)/\\sqrt 2$.",
+			"remember": [
+				"Symmetrisk ⇒ reelle egenverdier, ortogonale egenvektorer, $A = PDP^T$.",
+				"$a_{ij}$ = halve koeffisienten foran $x_ix_j$.",
+				"Maks/min av $Q$ på enhetssfæren = største/minste egenverdi."
+			]
+		}
+	],
+	"svd": [
+		{
+			"title": "Singulærverdier",
+			"body": "For en vilkårlig $m\\times n$-matrise $A$ er $A^TA$ symmetrisk med egenverdier $\\lambda_i \\ge 0$. **Singulærverdiene** er\n$$\\sigma_i = \\sqrt{\\lambda_i(A^TA)}, \\qquad \\sigma_1 \\ge \\sigma_2 \\ge \\cdots \\ge 0$$\nTolkning: $\\sigma_1$ er den største verdien av $\\lVert A\\vec x\\rVert$ over alle enhetsvektorer $\\vec x$, altså hvor mye $A$ maksimalt kan forlenge en vektor.\n\nAntall singulærverdier som ikke er null, er **rangen** til $A$."
+		},
+		{
+			"title": "Regn med den minste matrisen",
+			"body": "$A^TA$ ($n\\times n$) og $AA^T$ ($m\\times m$) har de **samme ikke-null egenverdiene**. Velg den minste av dem, så blir den karakteristiske likningen enklere.\n\nFor en $2\\times 3$-matrise bruker du altså gjerne $AA^T$, som er $2\\times 2$. Den større matrisen har bare ekstra egenverdier lik 0.",
+			"example": "$A = \\begin{bmatrix} 3 & 0 \\\\ 4 & 5\\end{bmatrix}$: $A^TA = \\begin{bmatrix} 25 & 20 \\\\ 20 & 25\\end{bmatrix}$, egenverdier $25 \\pm 20$, altså 45 og 5.\n$\\sigma_1 = \\sqrt{45} = 3\\sqrt 5$, $\\sigma_2 = \\sqrt 5$.\nKontroll: for kvadratisk $A$ er $\\sigma_1\\sigma_2 = |\\det A| = 15$ ✓",
+			"check": {
+				"question": "$A$ er $3\\times 2$. Hvilken matrise er minst å regne egenverdier for?",
+				"options": [
+					"$AA^T$ ($3\\times 3$)",
+					"$A^TA$ ($2\\times 2$)",
+					"De er like store",
+					"$A$ selv"
+				],
+				"answer": "B",
+				"explanation": "$A^TA$ er $n\\times n = 2\\times 2$."
+			}
+		},
+		{
+			"title": "Singulærverdidekomposisjonen",
+			"body": "Enhver matrise kan skrives\n$$A = U\\Sigma V^T$$\n- $V$: ortonormale egenvektorer $\\vec v_i$ til $A^TA$\n- $\\Sigma$: singulærverdiene på diagonalen ($m\\times n$, nuller ellers)\n- $U$: $\\vec u_i = \\dfrac{A\\vec v_i}{\\sigma_i}$ for $\\sigma_i \\ne 0$ (utvidet til en ortonormal basis om nødvendig)\n\nFor en **symmetrisk** matrise er singulærverdiene absoluttverdiene av egenverdiene.",
+			"example": "$A = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1\\end{bmatrix}$ er symmetrisk med egenverdier 3 og $-1$.\nSingulærverdiene er 3 og 1, og maksimum av $\\lVert A\\vec x\\rVert$ over enhetsvektorer er 3.",
+			"remember": [
+				"$\\sigma_i = \\sqrt{\\text{egenverdier av } A^TA}$, sortert synkende.",
+				"$\\sigma_1 = \\max\\lVert A\\vec x\\rVert$ for $\\lVert\\vec x\\rVert = 1$.",
+				"Bruk den minste av $A^TA$ og $AA^T$.",
+				"$A = U\\Sigma V^T$, $\\vec u_i = A\\vec v_i/\\sigma_i$."
+			]
+		}
+	],
+	"extr": [
+		{
+			"title": "Kritiske punkter",
+			"body": "Lokale ekstremalpunkter for en deriverbar $f(x, y)$ i det indre av definisjonsmengden må være **kritiske punkter**:\n$$\\nabla f = \\vec 0 \\iff f_x = 0 \\text{ og } f_y = 0$$\nLøs de to likningene samtidig. Ikke alle kritiske punkter er ekstremalpunkter: de kan også være **sadelpunkter**."
+		},
+		{
+			"title": "Andrederiverttesten",
+			"body": "I et kritisk punkt regner vi ut **diskriminanten**\n$$D = f_{xx}f_{yy} - f_{xy}^2$$\n- $D > 0$ og $f_{xx} > 0$: lokalt **minimum**\n- $D > 0$ og $f_{xx} < 0$: lokalt **maksimum**\n- $D < 0$: **sadelpunkt**\n- $D = 0$: testen sier ingenting",
+			"example": "$f = x^2 + xy + y^2 - 3x$: $f_x = 2x + y - 3$, $f_y = x + 2y$.\n$f_y = 0 \\Rightarrow x = -2y$, innsatt: $-3y = 3$, så $(x, y) = (2, -1)$.\n$f_{xx} = 2$, $f_{yy} = 2$, $f_{xy} = 1$: $D = 3 > 0$ og $f_{xx} > 0$ ⇒ minimum.\n$f(2, -1) = 4 - 2 + 1 - 6 = -3$.",
+			"check": {
+				"question": "I et kritisk punkt er $f_{xx} = 2$, $f_{yy} = -3$, $f_{xy} = 0$. Hva er punktet?",
+				"options": [
+					"Lokalt minimum",
+					"Lokalt maksimum",
+					"Sadelpunkt",
+					"Testen avgjør ikke"
+				],
+				"answer": "C",
+				"explanation": "$D = -6 < 0$."
+			}
+		},
+		{
+			"title": "Globale ekstremalverdier på lukkede, begrensede områder",
+			"body": "En kontinuerlig funksjon på et **lukket og begrenset** område har både et globalt maksimum og minimum (ekstremalverditeoremet). Finn dem slik:\n1. finn kritiske punkter i det **indre** av området\n2. finn maks/min på **randen** (parametriser hver del og reduser til én variabel, eller bruk Lagrange)\n3. ta med **hjørnene**\n4. regn ut $f$ i alle kandidatene: største verdi er maksimum, minste er minimum\n\nIngen andrederiverttest trengs her, bare sammenlign verdiene.",
+			"example": "$f(x, y) = x^2 + y^2 - 2x$ på kvadratet $[0, 2]\\times[0, 2]$.\nIndre: $\\nabla f = (2x - 2, 2y) = \\vec 0$ ved $(1, 0)$, som ligger på randen.\nRanden $y = 0$: $x^2 - 2x$, min $-1$ i $x = 1$. Hjørner: $f(0,0) = 0$, $f(2,0) = 0$, $f(0,2) = 4$, $f(2,2) = 4$.\nGlobalt minimum $-1$ i $(1, 0)$, maksimum $4$ i $(0, 2)$ og $(2, 2)$.",
+			"remember": [
+				"Kritiske punkter: $f_x = f_y = 0$.",
+				"$D = f_{xx}f_{yy} - f_{xy}^2$: $D<0$ sadel, $D>0$ maks/min etter fortegnet på $f_{xx}$.",
+				"Globalt på lukket område: indre + rand + hjørner, sammenlign verdier."
+			]
+		}
+	],
+	"lagr": [
+		{
+			"title": "Ideen: tangerende nivåkurver",
+			"body": "Vi vil maksimere eller minimere $f(x, y)$ under en **bibetingelse** $g(x, y) = c$.\n\nI et ekstremalpunkt tangerer nivåkurven til $f$ kurven $g = c$, så gradientene er parallelle:\n$$\\nabla f = \\lambda\\nabla g, \\qquad g(x, y) = c$$\nDet gir tre likninger for $x$, $y$ og **Lagrange-multiplikatoren** $\\lambda$ (tre variabler gir fire likninger)."
+		},
+		{
+			"title": "Fremgangsmåten",
+			"body": "1. Skriv opp $f_x = \\lambda g_x$, $f_y = \\lambda g_y$ og $g = c$.\n2. Eliminer $\\lambda$, for eksempel ved å dele likningene på hverandre eller uttrykke $x$ og $y$ ved $\\lambda$. Pass på tilfeller der du deler på null.\n3. Sett inn i bibetingelsen og finn alle kandidatpunktene.\n4. Regn ut $f$ i hvert punkt: største verdi er maksimum, minste er minimum (når bibetingelsen er en lukket, begrenset kurve).",
+			"example": "Maks/min av $f = x + y$ på sirkelen $x^2 + y^2 = 2$.\n$1 = 2\\lambda x$, $1 = 2\\lambda y$ ⇒ $x = y$. Innsatt: $2x^2 = 2$, så $x = \\pm 1$.\n$f(1, 1) = 2$ (maksimum), $f(-1, -1) = -2$ (minimum)."
+		},
+		{
+			"title": "Et minimeringseksempel",
+			"body": "Lagrange gir ofte en elegant løsning på avstandsproblemer: å minimere avstanden er det samme som å minimere avstanden **i andre**, som er lettere å derivere.",
+			"example": "Minimum av $f = x^2 + y^2$ (avstand² til origo) på linjen $2x + y = 5$.\n$2x = 2\\lambda$, $2y = \\lambda$ ⇒ $x = \\lambda$, $y = \\lambda/2$.\n$2\\lambda + \\lambda/2 = 5 \\Rightarrow \\lambda = 2$, punktet $(2, 1)$, $f = 5$.\nKontroll: avstanden fra origo til linjen er $5/\\sqrt 5 = \\sqrt 5$, og $(\\sqrt 5)^2 = 5$ ✓",
+			"check": {
+				"question": "Hva er maksimum av $f = xy$ under $x + y = 6$?",
+				"options": [
+					"6",
+					"9",
+					"12",
+					"36"
+				],
+				"answer": "B",
+				"explanation": "$y = \\lambda$, $x = \\lambda$ ⇒ $x = y = 3$, $f = 9$."
+			}
+		},
+		{
+			"title": "Kombinert med et område",
+			"body": "For globale ekstremalverdier på et lukket område $g(x, y) \\le c$:\n- kritiske punkter i det indre ($\\nabla f = \\vec 0$, med $g < c$)\n- Lagrange på randen $g = c$\n- sammenlign alle verdiene\n\nTolkning: $\\lambda$ sier omtrent hvor mye den optimale verdien endrer seg når $c$ økes litt.",
+			"remember": [
+				"$\\nabla f = \\lambda\\nabla g$ og $g = c$.",
+				"Eliminer $\\lambda$, sett inn i bibetingelsen, sammenlign $f$-verdiene.",
+				"Område: indre kritiske punkter + Lagrange på randen."
+			]
+		}
+	],
+	"line": [
+		{
+			"title": "Skalare kurveintegraler $\\int_C f\\,ds$",
+			"body": "Parametriser kurven $\\vec r(t)$, $a \\le t \\le b$. Da er $ds = \\lVert\\vec r'(t)\\rVert\\,dt$ og\n$$\\int_C f\\,ds = \\int_a^b f(\\vec r(t))\\,\\lVert\\vec r'(t)\\rVert\\,dt$$\nDette måler for eksempel masse (med $f$ = tetthet) eller buelengde (med $f = 1$). Verdien avhenger **ikke** av retningen kurven gjennomløpes.\n\nStandardparametriseringer:\n- linjestykke fra $P$ til $Q$: $\\vec r(t) = P + t(Q - P)$, $0 \\le t \\le 1$\n- sirkel med radius $R$: $\\vec r(t) = (R\\cos t, R\\sin t)$",
+			"example": "$\\int_C x\\,ds$ langs linjestykket fra $(0, 0)$ til $(3, 4)$: $\\vec r = (3t, 4t)$, $\\lVert\\vec r'\\rVert = 5$.\n$$\\int_0^1 3t\\cdot 5\\,dt = \\tfrac{15}{2}$$"
+		},
+		{
+			"title": "Arbeid: $\\int_C \\vec F\\cdot d\\vec r$",
+			"body": "For et vektorfelt $\\vec F = \\langle P, Q\\rangle$:\n$$\\int_C\\vec F\\cdot d\\vec r = \\int_a^b\\vec F(\\vec r(t))\\cdot\\vec r'(t)\\,dt = \\int_C P\\,dx + Q\\,dy$$\nHer er det **ingen** $\\lVert\\vec r'\\rVert$. Snur du retningen på kurven, skifter integralet **fortegn**.",
+			"example": "$\\vec F = \\langle y, x\\rangle$ langs $\\vec r(t) = (t, t^2)$, $0 \\le t \\le 1$:\n$\\vec F(\\vec r(t)) = \\langle t^2, t\\rangle$, $\\vec r'(t) = \\langle 1, 2t\\rangle$.\n$$\\int_0^1(t^2 + 2t^2)\\,dt = \\int_0^1 3t^2\\,dt = 1$$"
+		},
+		{
+			"title": "Konservative felt",
+			"body": "$\\vec F$ er **konservativt** hvis $\\vec F = \\nabla f$ for en potensialfunksjon $f$. Da gjelder fundamentalteoremet for kurveintegraler:\n$$\\int_C\\nabla f\\cdot d\\vec r = f(B) - f(A)$$\nIntegralet avhenger bare av endepunktene, og er 0 rundt enhver lukket kurve.\n\n**Test** (på et enkeltsammenhengende område):\n- 2D: $\\vec F = \\langle P, Q\\rangle$ er konservativt ⇔ $P_y = Q_x$\n- 3D: $\\operatorname{curl}\\vec F = \\vec 0$",
+			"example": "$\\vec F = \\langle y, x\\rangle$: $P_y = 1 = Q_x$ ✓. Potensial: $f_x = y \\Rightarrow f = xy + h(y)$, $f_y = x + h'(y) = x \\Rightarrow h$ konstant. $f = xy$.\nIntegralet fra $(0, 0)$ til $(1, 1)$ er $f(1,1) - f(0,0) = 1$, samme svar som parametriseringen ga.",
+			"check": {
+				"question": "Er $\\vec F = \\langle 2xy,\\ x^2 + 1\\rangle$ konservativt?",
+				"options": [
+					"Ja, $P_y = Q_x = 2x$",
+					"Nei, $P_y \\ne Q_x$",
+					"Bare på enhetssirkelen",
+					"Kan ikke avgjøres"
+				],
+				"answer": "A",
+				"explanation": "$P_y = 2x$ og $Q_x = 2x$. Et potensial er $x^2y + y$."
+			}
+		},
+		{
+			"title": "Finne en potensialfunksjon",
+			"body": "1. Integrer $P$ med hensyn på $x$: $f = \\int P\\,dx + h(y)$ (konstanten kan avhenge av $y$).\n2. Deriver med hensyn på $y$ og sett lik $Q$ for å bestemme $h(y)$.\n3. (3D: gjenta med $z$.)\n\nDeretter er integralet langs enhver kurve fra $A$ til $B$ bare $f(B) - f(A)$, ingen parametrisering nødvendig.",
+			"remember": [
+				"$\\int_C f\\,ds$: med $\\lVert\\vec r'\\rVert$, uavhengig av retning.",
+				"$\\int_C\\vec F\\cdot d\\vec r$: med $\\vec r'$, skifter fortegn ved snudd retning.",
+				"Konservativt: $P_y = Q_x$ (2D), integral = $f(B) - f(A)$."
+			]
+		}
+	],
+	"green": [
+		{
+			"title": "Greens teorem",
+			"body": "La $C$ være en enkel, lukket, stykkevis glatt kurve som er **positivt orientert** (mot klokken, området til venstre), og $D$ området den omslutter. Da er\n$$\\oint_C P\\,dx + Q\\,dy = \\iint_D\\left(Q_x - P_y\\right)dA$$\nEt vanskelig kurveintegral rundt en lukket kurve kan altså erstattes med et dobbeltintegral, og omvendt. Går kurven **med** klokken, får du et minustegn."
+		},
+		{
+			"title": "Eksempler",
+			"body": "Regn ut $Q_x - P_y$ først. Ofte blir det noe enkelt (en konstant eller en enkel funksjon), selv når $P$ og $Q$ ser stygge ut, fordi de stygge delene forsvinner ved derivasjonen.",
+			"example": "$\\oint_C -y\\,dx + x\\,dy$ rundt sirkelen med radius $R$: $Q_x - P_y = 1 - (-1) = 2$.\n$$\\iint_D 2\\,dA = 2\\pi R^2$$\n$\\oint_C xy\\,dx + x^2\\,dy$ rundt enhetskvadratet $[0,1]^2$: $Q_x - P_y = 2x - x = x$.\n$$\\int_0^1\\!\\!\\int_0^1 x\\,dx\\,dy = \\tfrac12$$",
+			"check": {
+				"question": "$\\oint_C (5y + e^{x^2})\\,dx + (8x - \\sin y)\\,dy$ rundt en sirkel med areal $\\pi$, mot klokken?",
+				"options": [
+					"$13\\pi$",
+					"$3\\pi$",
+					"$-3\\pi$",
+					"$0$"
+				],
+				"answer": "B",
+				"explanation": "$Q_x - P_y = 8 - 5 = 3$, så svaret er $3\\cdot\\pi$."
+			}
+		},
+		{
+			"title": "Areal med Greens teorem",
+			"body": "Velger vi $P$ og $Q$ slik at $Q_x - P_y = 1$, får vi arealet av $D$:\n$$\\text{Areal}(D) = \\oint_C x\\,dy = -\\oint_C y\\,dx = \\frac12\\oint_C x\\,dy - y\\,dx$$",
+			"example": "Ellipsen $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1$: $\\vec r(t) = (a\\cos t, b\\sin t)$.\n$$\\frac12\\int_0^{2\\pi}\\left(a\\cos t\\cdot b\\cos t - b\\sin t\\cdot(-a\\sin t)\\right)dt = \\frac12\\int_0^{2\\pi}ab\\,dt = \\pi ab$$",
+			"remember": [
+				"$\\oint_C P\\,dx + Q\\,dy = \\iint_D(Q_x - P_y)\\,dA$, mot klokken.",
+				"Regn ut $Q_x - P_y$ først, det blir ofte enkelt.",
+				"Areal $= \\tfrac12\\oint x\\,dy - y\\,dx$; ellipse: $\\pi ab$."
+			]
+		}
+	],
+	"divcurl": [
+		{
+			"title": "Divergens",
+			"body": "For $\\vec F = \\langle P, Q, R\\rangle$ er divergensen en **skalar**:\n$$\\operatorname{div}\\vec F = \\nabla\\cdot\\vec F = P_x + Q_y + R_z$$\nDen måler netto **utstrømning** (kilde) per volum i et punkt: positiv der feltet \"sprer seg ut\", negativ der det \"trekker seg sammen\".",
+			"example": "$\\vec F = \\langle xy,\\ yz,\\ zx\\rangle$: $\\operatorname{div}\\vec F = y + z + x$.\nI punktet $(1, 2, 3)$: $6$."
+		},
+		{
+			"title": "Curl",
+			"body": "Curl er en **vektor**:\n$$\\operatorname{curl}\\vec F = \\nabla\\times\\vec F = \\left\\langle R_y - Q_z,\\ P_z - R_x,\\ Q_x - P_y\\right\\rangle$$\nDen måler **rotasjon**: retningen er rotasjonsaksen, lengden hvor kraftig feltet virvler.\n\nHukseregel: skriv determinanten\n$\\begin{vmatrix} \\vec i & \\vec j & \\vec k \\\\ \\partial_x & \\partial_y & \\partial_z \\\\ P & Q & R\\end{vmatrix}$.\n\nI planet er bare $z$-komponenten interessant: den **skalare curlen** $Q_x - P_y$, den samme som i Greens teorem.",
+			"example": "$\\vec F = \\langle xy,\\ yz,\\ zx\\rangle$:\n- $R_y - Q_z = 0 - y$\n- $P_z - R_x = 0 - z$\n- $Q_x - P_y = 0 - x$\n$\\operatorname{curl}\\vec F = \\langle -y, -z, -x\\rangle$.",
+			"check": {
+				"question": "Hva er $\\operatorname{curl}\\vec F$ for $\\vec F = \\langle -y, x, 0\\rangle$?",
+				"options": [
+					"$\\vec 0$",
+					"$\\langle 0, 0, 2\\rangle$",
+					"$\\langle 0, 0, -2\\rangle$",
+					"$2$"
+				],
+				"answer": "B",
+				"explanation": "$Q_x - P_y = 1 - (-1) = 2$, de andre komponentene er 0."
+			}
+		},
+		{
+			"title": "Viktige identiteter",
+			"body": "For glatte felt gjelder alltid:\n- $\\operatorname{curl}(\\nabla f) = \\vec 0$ (gradientfelt virvler ikke)\n- $\\operatorname{div}(\\operatorname{curl}\\vec F) = 0$\n\nDerfor: er $\\operatorname{curl}\\vec F \\ne \\vec 0$, kan $\\vec F$ **ikke** være konservativt. Omvendt er et felt med $\\operatorname{curl}\\vec F = \\vec 0$ på hele $\\mathbb{R}^3$ konservativt.",
+			"remember": [
+				"div: skalar $P_x + Q_y + R_z$, kilde/utstrømning.",
+				"curl: vektor $\\langle R_y - Q_z, P_z - R_x, Q_x - P_y\\rangle$, rotasjon.",
+				"$\\operatorname{curl}\\nabla f = \\vec 0$, $\\operatorname{div}\\operatorname{curl}\\vec F = 0$."
+			]
+		}
+	],
+	"surf": [
+		{
+			"title": "Parametriserte flater og flateelementet",
+			"body": "En flate parametriseres som $\\vec r(u, v)$. Flateelementet er\n$$dS = \\lVert\\vec r_u\\times\\vec r_v\\rVert\\,du\\,dv$$\n\nFor en **graf** $z = g(x, y)$ over et område $D$ i $xy$-planet blir dette\n$$dS = \\sqrt{1 + g_x^2 + g_y^2}\\;dA$$\n\n**Kule** med radius $a$ (sfæriske koordinater): $dS = a^2\\sin\\varphi\\,d\\varphi\\,d\\theta$."
+		},
+		{
+			"title": "Skalare flateintegraler og areal",
+			"body": "$$\\iint_S f\\,dS = \\iint_D f(\\vec r(u, v))\\,\\lVert\\vec r_u\\times\\vec r_v\\rVert\\,du\\,dv$$\nMed $f = 1$ får vi **arealet** av flaten.",
+			"example": "Arealet av den delen av planet $z = x + y$ som ligger over enhetskvadratet:\n$g_x = g_y = 1$, så $dS = \\sqrt 3\\,dA$ og arealet er $\\sqrt 3\\cdot 1 = \\sqrt 3$.",
+			"check": {
+				"question": "Hva er $dS$ for planet $z = 2x - 2y + 5$?",
+				"options": [
+					"$dA$",
+					"$3\\,dA$",
+					"$\\sqrt 5\\,dA$",
+					"$9\\,dA$"
+				],
+				"answer": "B",
+				"explanation": "$\\sqrt{1 + 4 + 4} = 3$."
+			}
+		},
+		{
+			"title": "Fluks: $\\iint_S \\vec F\\cdot\\vec n\\,dS$",
+			"body": "Fluksen måler hvor mye av feltet som strømmer **gjennom** flaten i retning av normalvektoren $\\vec n$:\n$$\\iint_S\\vec F\\cdot\\vec n\\,dS = \\iint_D\\vec F(\\vec r(u, v))\\cdot(\\vec r_u\\times\\vec r_v)\\,du\\,dv$$\nSjekk at $\\vec r_u\\times\\vec r_v$ peker i den **oppgitte** retningen (oppover/utover); ellers bytt fortegn.\n\nFor en graf $z = g(x, y)$ orientert **oppover**: $\\vec r_x\\times\\vec r_y = \\langle -g_x, -g_y, 1\\rangle$, så\n$$\\iint_S\\vec F\\cdot\\vec n\\,dS = \\iint_D\\left(-Pg_x - Qg_y + R\\right)dA$$",
+			"example": "$\\vec F = \\langle x, y, z\\rangle$ ut gjennom kula med radius $a$: utoverrettet normal er $\\vec n = \\langle x, y, z\\rangle/a$, så $\\vec F\\cdot\\vec n = a$ på kuleflaten.\nFluks $= a\\cdot 4\\pi a^2 = 4\\pi a^3$.",
+			"remember": [
+				"Graf: $dS = \\sqrt{1 + g_x^2 + g_y^2}\\,dA$.",
+				"Kule: $dS = a^2\\sin\\varphi\\,d\\varphi\\,d\\theta$, $\\vec n = \\vec r/a$.",
+				"Fluks oppover for graf: $\\iint(-Pg_x - Qg_y + R)\\,dA$. Sjekk orienteringen!"
+			]
+		}
+	],
+	"divthm": [
+		{
+			"title": "Divergensteoremet",
+			"body": "La $E$ være et begrenset område med lukket randflate $S$, orientert **utover**. Da er\n$$\\iint_S\\vec F\\cdot\\vec n\\,dS = \\iiint_E\\operatorname{div}\\vec F\\,dV$$\nFluksen ut av en lukket flate er altså lik den totale \"kildestyrken\" inne i volumet. Ofte er trippelintegralet mye enklere enn å parametrisere flere flatestykker.",
+			"example": "$\\vec F = \\langle x, y, z\\rangle$ ut av kula med radius $a$: $\\operatorname{div}\\vec F = 3$.\n$$\\iiint_E 3\\,dV = 3\\cdot\\tfrac43\\pi a^3 = 4\\pi a^3$$\nSamme svar som flateintegralet ✓"
+		},
+		{
+			"title": "Bokser, sylindre og kuler",
+			"body": "Velg koordinater etter formen på $E$:\n- **boks**: integrer direkte, $\\int\\!\\int\\!\\int\\dots\\,dx\\,dy\\,dz$\n- **sylinder**: sylinderkoordinater, $dV = r\\,dr\\,d\\theta\\,dz$; volumet er $\\pi r^2h$\n- **kule**: sfæriske koordinater, $dV = \\rho^2\\sin\\varphi\\,d\\rho\\,d\\varphi\\,d\\theta$; volumet er $\\tfrac43\\pi a^3$\n\nEr divergensen en konstant $k$, er fluksen bare $k\\cdot$volumet.",
+			"example": "$\\vec F = \\langle x^2, y, z\\rangle$ ut av enhetskuben $[0, 1]^3$: $\\operatorname{div}\\vec F = 2x + 2$.\n$$\\int_0^1\\!\\!\\int_0^1\\!\\!\\int_0^1(2x + 2)\\,dx\\,dy\\,dz = 1 + 2 = 3$$",
+			"check": {
+				"question": "$\\operatorname{div}\\vec F = 4$ overalt. Hva er fluksen ut av sylinderen $x^2 + y^2 \\le 1$, $0 \\le z \\le 2$?",
+				"options": [
+					"$4\\pi$",
+					"$8\\pi$",
+					"$2\\pi$",
+					"$16\\pi$"
+				],
+				"answer": "B",
+				"explanation": "Volumet er $\\pi\\cdot 1^2\\cdot 2 = 2\\pi$, ganger 4 gir $8\\pi$."
+			}
+		},
+		{
+			"title": "Åpne flater: lukk dem med et lokk",
+			"body": "Divergensteoremet krever en **lukket** flate. For en åpen flate (for eksempel en halvkule eller paraboloide uten bunn):\n1. legg til et \"lokk\" (ofte en flat skive) slik at flaten blir lukket\n2. regn ut fluksen ut av hele den lukkede flaten med divergensteoremet\n3. trekk fra fluksen gjennom lokket (med utoverrettet normal), som ofte er enkel å regne direkte",
+			"remember": [
+				"$\\oiint_S\\vec F\\cdot\\vec n\\,dS = \\iiint_E\\operatorname{div}\\vec F\\,dV$, utoverrettet normal.",
+				"Konstant divergens: fluks = konstant × volum.",
+				"Åpen flate: lukk med lokk, trekk fra lokkets fluks."
+			]
+		}
+	]
+}

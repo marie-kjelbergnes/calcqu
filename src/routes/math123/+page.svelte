@@ -6,6 +6,7 @@
     } from "$lib/math_quiz";
     import { render_expression } from "$lib/common";
     import FormulaSheet from "$lib/math_quiz/FormulaSheet.svelte";
+    import Walkthrough from "$lib/Walkthrough.svelte";
 
     let results = $state<Results>({});
     let category = $state<MathCategory | null>(null);
@@ -14,6 +15,8 @@
     let verdict = $state<Verdict | null>(null);
     let mfe: any = $state();
     let sheet_open = $state(false);
+    // showing the walkthrough of the open category instead of its questions
+    let learning = $state(false);
 
     onMount(async () => {
         await import("mathlive");
@@ -47,8 +50,14 @@
         }
     }
 
+    function learn(cat: MathCategory) {
+        category = cat;
+        learning = true;
+    }
+
     function open(cat: MathCategory) {
         category = cat;
+        learning = false;
         // continue at the first question that isn't solved yet
         const next = cat.questions.findIndex((q) => results[q.id]?.status !== "correct");
         go_to(next === -1 ? 0 : next);
@@ -106,20 +115,40 @@
             <ul class="categories">
                 {#each cats as cat (cat.id)}
                     {@const s = stats(cat)}
-                    <li>
+                    <li class:has-lesson={cat.lesson}>
                         <button onclick={() => open(cat)}>
                             <span class="name">{cat.name}</span>
                             <span class="progress">{s.correct}/{s.total} correct · {s.attempted} attempted</span>
                         </button>
+                        {#if cat.lesson}
+                            <button class="learn" onclick={() => learn(cat)}>
+                                Walkthrough
+                                <span class="progress">{cat.lesson.length} steps</span>
+                            </button>
+                        {/if}
                     </li>
                 {/each}
             </ul>
         {/each}
+    {:else if learning && category.lesson}
+        {@const cat = category}
+        <div class="bar">
+            <button class="link" onclick={() => (category = null)}>&larr; Categories</button>
+            <span>{cat.name}</span>
+            <button class="link" onclick={() => open(cat)}>Go to questions &rarr;</button>
+            <button class="link" onclick={() => (sheet_open = !sheet_open)} aria-expanded={sheet_open}>Formelsamling</button>
+        </div>
+        <Walkthrough lesson={cat.lesson!} onquiz={() => open(cat)} />
     {:else if question}
         {@const s = stats(category)}
         <div class="bar">
             <button class="link" onclick={() => (category = null)}>&larr; Categories</button>
-            <span>{category.name}</span>
+            <span>
+                {category.name}
+                {#if category.lesson}
+                    · <button class="link" onclick={() => learn(category!)}>Walkthrough</button>
+                {/if}
+            </span>
             <span>{s.correct}/{s.total} correct</span>
             <button class="link" onclick={() => (sheet_open = !sheet_open)} aria-expanded={sheet_open}>Formelsamling</button>
         </div>
@@ -276,6 +305,26 @@
         padding: 1rem 1.25rem;
         background-color: var(--surface);
         text-align: left;
+    }
+
+    .categories li.has-lesson {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .categories li.has-lesson > button:first-child {
+        flex: 1;
+    }
+
+    .categories button.learn {
+        width: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 0.2rem;
+        color: var(--foam);
+        text-align: center;
     }
 
     .progress {
