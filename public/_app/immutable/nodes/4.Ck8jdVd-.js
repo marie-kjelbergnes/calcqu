@@ -1,0 +1,1 @@
+import"../chunks/B4Byy7pF.js";import"../chunks/v_jBEYI6.js";import{n as e,t}from"../chunks/6y0cy8Zc.js";function n(n){t(n,{title:`INF250`,get categories(){return e}})}export{n as component};
